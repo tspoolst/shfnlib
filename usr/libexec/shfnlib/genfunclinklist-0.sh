@@ -402,6 +402,11 @@ echo "#[cf]"
 #[cf]
   done
 #[cf]
+#[of]:  add vim marker foldmethod footer
+  for _includefile in functions-test functions functions-devtest functions-dev ; do
+    echo "# vim:number:tabstop=2:shiftwidth=2:autoindent:foldmethod=marker:foldlevel=0:foldmarker=#[of]\:,#[cf]" >> "${_includefile}-${_libver}.sh"
+  done
+#[cf]
 #[of]:  remove unneeded index files
   ##if this version is the same as the old version remove it
   if [[ -e "functions-${_libver}.sh" && "$(cat functions-${_libver}.sh | cksum)" = "$(cat functions-dev-${_libver}.sh | cksum)" ]] ; then

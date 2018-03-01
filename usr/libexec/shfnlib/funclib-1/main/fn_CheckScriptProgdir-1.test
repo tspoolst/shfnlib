@@ -1,0 +1,18 @@
+#!/bin/sh
+
+echo fn CheckScriptProgdir /bin
+gl_progdir=/bin
+(fn CheckScriptProgdir)
+checkresult -t -eq 1
+
+echo
+echo fn CheckScriptProgdir /usr/bin
+gl_progdir=/usr/bin
+(fn CheckScriptProgdir)
+checkresult -t -eq 1
+
+echo
+echo fn CheckScriptProgdir /test/bin
+gl_progdir=/test/bin
+(fn CheckScriptProgdir)
+checkresult -t

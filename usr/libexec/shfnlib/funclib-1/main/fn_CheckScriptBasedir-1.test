@@ -1,0 +1,33 @@
+#!/bin/sh
+
+#[c]gl_basedir="${gl_basedir%/*}"
+#[c]gl_interface="${gl_basedir##*/}"
+
+mkdir -p "${HOME}/bin"
+cd "${HOME}/bin"
+echo ${HOME} ${HOME##*/}
+
+gl_pathprogname=${HOME}/bin/t.sh
+fn CheckScriptBasedir
+checkresult -v "${HOME}" "${gl_basedir}"
+checkresult -v "${HOME##*/}" "${gl_interface}"
+
+gl_pathprogname=t.sh
+fn CheckScriptBasedir
+checkresult -v "${HOME}" "${gl_basedir}"
+checkresult -v "${HOME##*/}" "${gl_interface}"
+
+gl_pathprogname=../bin/t.sh
+fn CheckScriptBasedir
+checkresult -v "${HOME}" "${gl_basedir}"
+checkresult -v "${HOME##*/}" "${gl_interface}"
+
+gl_pathprogname=/bin/t.sh
+fn CheckScriptBasedir
+checkresult -v "${HOME}" "${gl_basedir}"
+checkresult -v "${HOME##*/}" "${gl_interface}"
+
+gl_pathprogname=/usr/bin/t.sh
+fn CheckScriptBasedir
+checkresult -v "${HOME}" "${gl_basedir}"
+checkresult -v "${HOME##*/}" "${gl_interface}"

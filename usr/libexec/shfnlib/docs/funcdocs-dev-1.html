@@ -1,0 +1,1046 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html;charset=ISO-8859-1" http-equiv="Content-Type">
+  <title>Function Library dev Branch Version 1</title>
+</head>
+<body>
+<div align="center">
+<h2>Function Library dev Branch Version 1</h2>
+</div>
+
+<hr size="2" width="100%">
+<h4>contents</h4>
+<ol>
+<li><a name="argexist_contents"></a><a href="#argexist_block">argexist</a></li>
+<li><a name="aset_contents"></a><a href="#aset_block">aset</a></li>
+<li><a name="asort_contents"></a><a href="#asort_block">asort</a></li>
+<li><a name="asplit_contents"></a><a href="#asplit_block">asplit</a></li>
+<li><a name="ajoin_contents"></a><a href="#ajoin_block">ajoin</a></li>
+<li><a name="apush_contents"></a><a href="#apush_block">apush</a></li>
+<li><a name="apop_contents"></a><a href="#apop_block">apop</a></li>
+<li><a name="aunshift_contents"></a><a href="#aunshift_block">aunshift</a></li>
+<li><a name="ashift_contents"></a><a href="#ashift_block">ashift</a></li>
+<li><a name="awalkl_contents"></a><a href="#awalkl_block">awalkl</a></li>
+<li><a name="awalkr_contents"></a><a href="#awalkr_block">awalkr</a></li>
+<li><a name="die_contents"></a><a href="#die_block">die</a></li>
+<li><a name="errorlevel_contents"></a><a href="#errorlevel_block">errorlevel</a></li>
+<li><a name="pushd_contents"></a><a href="#pushd_block">pushd</a></li>
+<li><a name="popd_contents"></a><a href="#popd_block">popd</a></li>
+<li><a name="dirs_contents"></a><a href="#dirs_block">dirs</a></li>
+<li><a name="filepath_contents"></a><a href="#filepath_block">filepath</a></li>
+<li><a name="filename_contents"></a><a href="#filename_block">filename</a></li>
+<li><a name="filebase_contents"></a><a href="#filebase_block">filebase</a></li>
+<li><a name="fileext_contents"></a><a href="#fileext_block">fileext</a></li>
+<li><a name="fn_contents"></a><a href="#fn_block">fn</a></li>
+<li><a name="hashkeys_contents"></a><a href="#hashkeys_block">hashkeys</a></li>
+<li><a name="hashdump_contents"></a><a href="#hashdump_block">hashdump</a></li>
+<li><a name="hashsave_contents"></a><a href="#hashsave_block">hashsave</a></li>
+<li><a name="hashload_contents"></a><a href="#hashload_block">hashload</a></li>
+<li><a name="hashsetkey_contents"></a><a href="#hashsetkey_block">hashsetkey</a></li>
+<li><a name="hashgetkey_contents"></a><a href="#hashgetkey_block">hashgetkey</a></li>
+<li><a name="hashdelkey_contents"></a><a href="#hashdelkey_block">hashdelkey</a></li>
+<li><a name="hashgetsize_contents"></a><a href="#hashgetsize_block">hashgetsize</a></li>
+<li><a name="hashgetfirst_contents"></a><a href="#hashgetfirst_block">hashgetfirst</a></li>
+<li><a name="hashgetnext_contents"></a><a href="#hashgetnext_block">hashgetnext</a></li>
+<li><a name="msgdbg_contents"></a><a href="#msgdbg_block">msgdbg</a></li>
+<li><a name="instring_contents"></a><a href="#instring_block">instring</a></li>
+<li><a name="substr_contents"></a><a href="#substr_block">substr</a></li>
+<li><a name="tolower_contents"></a><a href="#tolower_block">tolower</a></li>
+<li><a name="toupper_contents"></a><a href="#toupper_block">toupper</a></li>
+<li><a name="ascii2hex_contents"></a><a href="#ascii2hex_block">ascii2hex</a></li>
+<li><a name="cleancat_contents"></a><a href="#cleancat_block">cleancat</a></li>
+<li><a name="isdir_contents"></a><a href="#isdir_block">isdir</a></li>
+<li><a name="isfile_contents"></a><a href="#isfile_block">isfile</a></li>
+<li><a name="isfilelocked_contents"></a><a href="#isfilelocked_block">isfilelocked</a></li>
+<li><a name="isinpath_contents"></a><a href="#isinpath_block">isinpath</a></li>
+<li><a name="isnum_contents"></a><a href="#isnum_block">isnum</a></li>
+<li><a name="isset_contents"></a><a href="#isset_block">isset</a></li>
+<li><a name="istextfile_contents"></a><a href="#istextfile_block">istextfile</a></li>
+<li><a name="isuser_contents"></a><a href="#isuser_block">isuser</a></li>
+<li><a name="uniqname_contents"></a><a href="#uniqname_block">uniqname</a></li>
+<li><a name="fn_AtomicLock_contents"></a><a href="#fn_AtomicLock_block">fn_AtomicLock</a></li>
+<li><a name="fn_CheckHeaderFooter_contents"></a><a href="#fn_CheckHeaderFooter_block">fn_CheckHeaderFooter</a></li>
+<li><a name="fn_CheckScriptBasedir_contents"></a><a href="#fn_CheckScriptBasedir_block">fn_CheckScriptBasedir</a></li>
+<li><a name="fn_CheckScriptProgdir_contents"></a><a href="#fn_CheckScriptProgdir_block">fn_CheckScriptProgdir</a></li>
+<li><a name="fn_CompareTime_contents"></a><a href="#fn_CompareTime_block">fn_CompareTime</a></li>
+<li><a name="fn_DisplayUsage_contents"></a><a href="#fn_DisplayUsage_block">fn_DisplayUsage</a></li>
+<li><a name="fn_FilePathBaseExtSplit_contents"></a><a href="#fn_FilePathBaseExtSplit_block">fn_FilePathBaseExtSplit</a></li>
+<li><a name="fn_FileSizeClip_contents"></a><a href="#fn_FileSizeClip_block">fn_FileSizeClip</a></li>
+<li><a name="fn_FormatDos2Unix_contents"></a><a href="#fn_FormatDos2Unix_block">fn_FormatDos2Unix</a></li>
+<li><a name="fn_FormatTime_contents"></a><a href="#fn_FormatTime_block">fn_FormatTime</a></li>
+<li><a name="fn_FormatUnix2Dos_contents"></a><a href="#fn_FormatUnix2Dos_block">fn_FormatUnix2Dos</a></li>
+<li><a name="fn_GetTime_contents"></a><a href="#fn_GetTime_block">fn_GetTime</a></li>
+<li><a name="fn_GlobalUsage_contents"></a><a href="#fn_GlobalUsage_block">fn_GlobalUsage</a></li>
+<li><a name="fn_ResolveProgdir_contents"></a><a href="#fn_ResolveProgdir_block">fn_ResolveProgdir</a></li>
+<li><a name="fn_SetVars_contents"></a><a href="#fn_SetVars_block">fn_SetVars</a></li>
+<li><a name="fn_ShiftTime_contents"></a><a href="#fn_ShiftTime_block">fn_ShiftTime</a></li>
+<li><a name="fn_VerifyDir_contents"></a><a href="#fn_VerifyDir_block">fn_VerifyDir</a></li>
+<li><a name="exit_code_definitions_contents"></a><a href="#exit_code_definitions_block">exit code definitions</a></li>
+</ol>
+<br>
+
+<hr size="2" width="100%">
+    <h4><a name="argexist_block"></a><a href="#argexist_contents">argexist</a></h4>
+    <pre>
+Usage: argexist arg [argline]
+
+Description: looks for arg in argline
+note, this only searches one arg at a time.  also, if no argline is specified gl_progargs is used.
+
+Examples:
+argexist arg $gl_progargs
+it works good in if blocks
+if [ ${gl_return} -eq 0 ] || argexist arg ; then
+echo do something
+fi
+
+Returns:
+0 true
+1 false
+
+</pre>
+<hr size="2" width="100%">
+    <h4><a name="aset_block"></a><a href="#aset_contents">aset</a></h4>
+    <pre>
+Usage: aset var [val val val ...]
+
+Description:
+sets a given array variable
+this exist because, there is no common way of setting an array in ksh and bash
+
+Examples:
+i.e.  aset gl_BusinessDays mon tue wed thu fri
+
+Returns:
+0 success
+
+</pre>
+<hr size="2" width="100%">
+    <h4><a name="asort_block"></a><a href="#asort_contents">asort</a></h4>
+    <pre>
+Usage: asort {-|array} [val val val ...]
+
+Description:
+sorts an array
+
+Examples:
+i.e.  asort a "${a[@]}"
+
+Returns:
+0 success
+
+</pre>
+<hr size="2" width="100%">
+    <h4><a name="asplit_block"></a><a href="#asplit_contents">asplit</a></h4>
+    <pre>
+Usage: asplit {array} {delimiter} [string]
+
+Description:
+splits a string into an array list
+this emulates the perl function join
+
+Examples:
+i.e.  asplit b : "part1:part2:part3:part4"
+
+Returns:
+0 success
+
+</pre>
+<hr size="2" width="100%">
+    <h4><a name="ajoin_block"></a><a href="#ajoin_contents">ajoin</a></h4>
+    <pre>
+Usage: ajoin {var} {delimiter} [val val val ...]
+
+Description:
+joins a list into a single string
+this emulates the perl function join
+
+Examples:
+i.e.  ajoin a : "${a[@]}"
+
+Returns:
+0 success
+
+</pre>
+<hr size="2" width="100%">
+    <h4><a name="apush_block"></a><a href="#apush_contents">apush</a></h4>
+    <pre>
+Usage: apush {array} [val val val ...]
+
+Description:
+adds new element/s to the end of an array
+this emulates the perl function unshift
+
+Examples:
+i.e.  apush b "a string"
+
+Returns:
+0 success
+
+</pre>
+<hr size="2" width="100%">
+    <h4><a name="apop_block"></a><a href="#apop_contents">apop</a></h4>
+    <pre>
+Usage: apop {!|-|var} {array}
+
+Description:
+shift an array 1 element right and return that element in var
+this emulates the perl function shift
+
+Examples:
+i.e.  apop b a
+
+Returns:
+0 success
+
+</pre>
+<hr size="2" width="100%">
+    <h4><a name="aunshift_block"></a><a href="#aunshift_contents">aunshift</a></h4>
+    <pre>
+Usage: aunshift {array} [val val val ...]
+
+Description:
+adds new element/s to the beginning of an array
+this emulates the perl function unshift
+
+Examples:
+i.e.  aunshift b "a string"
+
+Returns:
+0 success
+
+</pre>
+<hr size="2" width="100%">
+    <h4><a name="ashift_block"></a><a href="#ashift_contents">ashift</a></h4>
+    <pre>
+Usage: ashift {!|-|var} {array}
+
+Description:
+shift an array 1 element left and return that element in var
+this emulates the perl function shift
+
+Examples:
+i.e.  ashift b a
+
+Returns:
+0 success
+
+</pre>
+<hr size="2" width="100%">
+    <h4><a name="awalkl_block"></a><a href="#awalkl_contents">awalkl</a></h4>
+    <pre>
+Usage: awalkl {left array} {right array}
+
+Description:
+walks/moves array elements  <---  right to left
+
+Examples:
+i.e.  awalkl nodes args
+
+Returns:
+0 success
+1 if right array is empty
+
+</pre>
+<hr size="2" width="100%">
+    <h4><a name="awalkr_block"></a><a href="#awalkr_contents">awalkr</a></h4>
+    <pre>
+Usage: awalkr {left array} {right array}
+
+Description:
+walks/moves array elements  --->  left to right
+
+Examples:
+i.e.  awalkr args nodes
+
+Returns:
+0 success
+1 if left array is empty
+
+</pre>
+<hr size="2" width="100%">
+    <h4><a name="die_block"></a><a href="#die_contents">die</a></h4>
+    <pre>
+Usage: die exitcode "message"
+
+Description: outputs messages to stderr and exits with exitcode
+a quick way to kill a script
+
+Examples:
+die 1 "this bit of code failed to do something"
+
+Returns:
+1 or given exitcode
+
+</pre>
+<hr size="2" width="100%">
+    <h4><a name="errorlevel_block"></a><a href="#errorlevel_contents">errorlevel</a></h4>
+    <pre>
+Usage: errorlevel [arg]
+
+Description:
+this simply sets the desired errorlevel on return.  if arg is not a number it returns 0
+
+Examples:
+i.e. errorlevel 7
+sets errorlevel to 7
+
+Returns: 0 or arg
+
+</pre>
+<hr size="2" width="100%">
+    <h4><a name="pushd_block"></a><a href="#pushd_contents">pushd</a></h4>
+    <pre>
+Usage: pushd dir
+
+Description:
+pushes the current location onto the stack and changes to the dir specified
+in other words - pushd saves the current location
+this exist because, to emulate bash functionality in a non bash shell
+
+Examples: pushd /home/user
+
+Returns:
+0  success
+90 directory does not exist
+91 dest exist but is not a directory
+92 access denied
+
+</pre>
+<hr size="2" width="100%">
+    <h4><a name="popd_block"></a><a href="#popd_contents">popd</a></h4>
+    <pre>
+Usage: popd
+
+Description:
+pops the topmost dir off the stack and changes to that location
+in other words - popd returns us to the most recently saved dir
+this exist because, to emulate bash functionality in a non bash shell
+
+Examples: popd
+
+Returns:
+0  success
+93 previously saved directory no longer exist
+
+</pre>
+<hr size="2" width="100%">
+    <h4><a name="dirs_block"></a><a href="#dirs_contents">dirs</a></h4>
+    <pre>
+Usage: dirs [-c]
+
+Description:
+displays the DIRSTACK array used by pushd/popd
+this exist because, to emulate bash functionality in a non bash shell
+
+Examples: dirs -c
+
+Returns:
+0  success
+
+</pre>
+<hr size="2" width="100%">
+    <h4><a name="filepath_block"></a><a href="#filepath_contents">filepath</a></h4>
+    <pre>
+Usage: filepath [-r] {var|-} file
+
+Description:
+return the filepath only
+Options
+-r returns relative path
+
+Examples:
+filepath lc_RotateFiles_path ${lc_RotateFiles_file}
+
+Returns:
+0 success
+
+</pre>
+<hr size="2" width="100%">
+    <h4><a name="filename_block"></a><a href="#filename_contents">filename</a></h4>
+    <pre>
+Usage: filename {var|-} file
+
+Description:
+return a filename without the path
+
+Examples:
+filename lc_RotateFiles_name ${lc_RotateFiles_file}
+
+Returns:
+0 success
+
+</pre>
+<hr size="2" width="100%">
+    <h4><a name="filebase_block"></a><a href="#filebase_contents">filebase</a></h4>
+    <pre>
+Usage: filebase {var|-} file
+
+Description:
+returns only the base of a filename
+
+Examples:
+filebase lc_RotateFiles_name ${lc_RotateFiles_file}
+
+Returns:
+0 success
+
+</pre>
+<hr size="2" width="100%">
+    <h4><a name="fileext_block"></a><a href="#fileext_contents">fileext</a></h4>
+    <pre>
+Usage: fileext {var|-} file
+
+Description:
+returns only the extention of a filename
+
+Examples:
+fileext lc_RotateFiles_ext ${lc_RotateFiles_file}
+
+Returns:
+0 success
+
+</pre>
+<hr size="2" width="100%">
+    <h4><a name="fn_block"></a><a href="#fn_contents">fn</a></h4>
+    <pre>
+Usage: fn funcname [args]
+
+Description: fn is a function wrapper used for tracking current script processing states.
+all main functions labeled fn_* must be called through this function
+gl_funcname = current function name
+gl_funcfrom = parent calling current function
+gl_functree = complete calling tree (used for tracking dependancies)
+gl_return   = errorlevel of last called function
+
+Examples:
+i.e. fn SetVars 1 1 3 lc_func_var1 lc_func_var2 data1 data2 data3
+
+Returns: errerlevel from called function
+
+</pre>
+<hr size="2" width="100%">
+    <h4><a name="hashkeys_block"></a><a href="#hashkeys_contents">hashkeys</a></h4>
+    <pre></pre>
+<hr size="2" width="100%">
+    <h4><a name="hashdump_block"></a><a href="#hashdump_contents">hashdump</a></h4>
+    <pre></pre>
+<hr size="2" width="100%">
+    <h4><a name="hashsave_block"></a><a href="#hashsave_contents">hashsave</a></h4>
+    <pre></pre>
+<hr size="2" width="100%">
+    <h4><a name="hashload_block"></a><a href="#hashload_contents">hashload</a></h4>
+    <pre></pre>
+<hr size="2" width="100%">
+    <h4><a name="hashsetkey_block"></a><a href="#hashsetkey_contents">hashsetkey</a></h4>
+    <pre></pre>
+<hr size="2" width="100%">
+    <h4><a name="hashgetkey_block"></a><a href="#hashgetkey_contents">hashgetkey</a></h4>
+    <pre></pre>
+<hr size="2" width="100%">
+    <h4><a name="hashdelkey_block"></a><a href="#hashdelkey_contents">hashdelkey</a></h4>
+    <pre></pre>
+<hr size="2" width="100%">
+    <h4><a name="hashgetsize_block"></a><a href="#hashgetsize_contents">hashgetsize</a></h4>
+    <pre></pre>
+<hr size="2" width="100%">
+    <h4><a name="hashgetfirst_block"></a><a href="#hashgetfirst_contents">hashgetfirst</a></h4>
+    <pre></pre>
+<hr size="2" width="100%">
+    <h4><a name="hashgetnext_block"></a><a href="#hashgetnext_contents">hashgetnext</a></h4>
+    <pre></pre>
+<hr size="2" width="100%">
+    <h4><a name="msgdbg_block"></a><a href="#msgdbg_contents">msgdbg</a></h4>
+    <pre>
+Usage: msgdbg debuglevel message
+
+Description: outputs messages to stdout based on debuglevel
+used for debugging code as it is being built/tested
+
+Examples: msgdbg 3 "this bit of code is doing something"
+the message will only be seen if gl_debuglevel=3 or higher
+
+Returns: whatever errorlevel was before this function was called
+
+</pre>
+<hr size="2" width="100%">
+    <h4><a name="instring_block"></a><a href="#instring_contents">instring</a></h4>
+    <pre>
+Usage: instring {!|-|var} "{string}" {pattern}
+
+Description:
+returns the index of a pattern within a given string
+var|stdout = the index of the match 0-n
+if no match -1
+
+Examples:
+if found _position will be set with the index of YYYY
+_position=$(instring - "${_format}" YYYY)
+instring _position "${_format}" YYYY
+
+Returns:
+0 success
+1 no match
+
+</pre>
+<hr size="2" width="100%">
+    <h4><a name="substr_block"></a><a href="#substr_contents">substr</a></h4>
+    <pre>
+Usage: substr {var|-} "{string}" {index} [length]
+
+Description:
+returns, via stdout, a substring of the given string
+the index is 0 based
+this exist because, there is no common way of doing a substring in ksh and bash
+
+Examples:
+sets _year to a 2 character substring of _var
+_year="$(subst "${_var}" ${_position} 2)"
+
+Returns:
+0 success
+
+</pre>
+<hr size="2" width="100%">
+    <h4><a name="tolower_block"></a><a href="#tolower_contents">tolower</a></h4>
+    <pre>
+Usage: tolower {var|-} [string]
+
+Description: transforms a variable to lower case
+
+Examples:
+tolower lc_main_filename
+tolower - "A Test String"
+
+Returns:
+0 success
+
+</pre>
+<hr size="2" width="100%">
+    <h4><a name="toupper_block"></a><a href="#toupper_contents">toupper</a></h4>
+    <pre>
+Usage: toupper {var|-} [string]
+
+Description: transforms a variable to lower case
+
+Examples:
+toupper lc_main_filename
+toupper - "A Test String"
+
+Returns:
+0 success
+
+</pre>
+<hr size="2" width="100%">
+    <h4><a name="ascii2hex_block"></a><a href="#ascii2hex_contents">ascii2hex</a></h4>
+    <pre></pre>
+<hr size="2" width="100%">
+    <h4><a name="cleancat_block"></a><a href="#cleancat_contents">cleancat</a></h4>
+    <pre>
+Usage: cleancat [filename]|[redirect]
+
+Description: dumps a file or pipe removing blank lines and comments
+
+Examples:
+cleancat ${lc_main_filename}
+bigdataapp | cleancat
+cleancat < echo "A Test String"
+
+Returns:
+0 success
+
+</pre>
+<hr size="2" width="100%">
+    <h4><a name="isdir_block"></a><a href="#isdir_contents">isdir</a></h4>
+    <pre>
+Usage: isdir dirname
+
+Description: a simplified way of testing if something is a directory.
+
+Examples:
+"if isdir /home ; then
+echo is a dir
+else
+echo is not a dir
+fi"
+statement may also be negated
+"if ! isdir /home ; then"
+
+Returns:
+0 true
+1 false
+
+</pre>
+<hr size="2" width="100%">
+    <h4><a name="isfile_block"></a><a href="#isfile_contents">isfile</a></h4>
+    <pre>
+Usage: isfile filename
+
+Description: a simplified way of testing if something is a file.
+
+Examples:
+"if isfile /home/file ; then
+echo is a file
+else
+echo is not a file
+fi"
+statement may also be negated
+"if ! isfile /home/file ; then"
+
+Returns:
+0 true
+1 false
+
+</pre>
+<hr size="2" width="100%">
+    <h4><a name="isfilelocked_block"></a><a href="#isfilelocked_contents">isfilelocked</a></h4>
+    <pre>
+Usage: isfilelocked {filename}
+
+Description: checks if {filename} is locked by a process
+
+Examples:
+"if isfilelocked "testfile.txt" ; then
+echo is locked
+else
+echo is unlocked
+fi"
+statement may also be negated
+"if ! isfilelocked "testfile.txt" ; then"
+
+Returns:
+0 true
+1 false
+
+</pre>
+<hr size="2" width="100%">
+    <h4><a name="isinpath_block"></a><a href="#isinpath_contents">isinpath</a></h4>
+    <pre>
+Usage: isinpath arg
+
+Description: checks if a given prog is in the path
+
+Examples:
+"if isinpath grep ; then
+echo grep is installed
+else
+echo grep is missing
+fi"
+
+Returns:
+0 true
+1 false
+
+</pre>
+<hr size="2" width="100%">
+    <h4><a name="isnum_block"></a><a href="#isnum_contents">isnum</a></h4>
+    <pre>
+Usage: isnum arg
+
+Description: checks if arg is a number
+
+Examples:
+"if isnum 50 ; then
+echo is a number
+else
+echo is not a number
+fi"
+statement may also be negated
+"if ! isnum 50 ; then"
+
+Returns:
+0 true
+1 false
+
+</pre>
+<hr size="2" width="100%">
+    <h4><a name="isset_block"></a><a href="#isset_contents">isset</a></h4>
+    <pre>
+Usage: isset var
+
+Description: checks if a given variable is set (i.e. exist)
+
+Examples:
+"if isset your_var ; then
+echo your variable is set
+else
+echo your variable is not set
+fi"
+statement may also be negated
+"if ! isset your_var ; then"
+
+Returns:
+0 true
+1 false
+
+</pre>
+<hr size="2" width="100%">
+    <h4><a name="istextfile_block"></a><a href="#istextfile_contents">istextfile</a></h4>
+    <pre>
+Usage: istextfile filename
+
+Description: checks if filename is a textfile
+
+Examples:
+"if istextfile /home/file ; then
+echo is a textfile
+else
+echo is not a textfile
+fi"
+statement may also be negated
+"if ! istextfile /home/file ; then"
+
+Returns:
+0 true
+1 false
+
+</pre>
+<hr size="2" width="100%">
+    <h4><a name="isuser_block"></a><a href="#isuser_contents">isuser</a></h4>
+    <pre>
+Usage: isuser {user}
+
+Description: checks if the current user matches user
+
+Examples:
+"if isuser batch ; then
+echo user is batch
+else
+echo user is not batch
+fi"
+statement may also be negated
+"if ! isuser batch ; then"
+
+Returns:
+0 true
+1 false
+
+</pre>
+<hr size="2" width="100%">
+    <h4><a name="uniqname_block"></a><a href="#uniqname_contents">uniqname</a></h4>
+    <pre>
+Usage: uniqname
+
+Description:
+produces a uniq name based on the date and current process
+this can be used to generate filenames etc.
+output goes to stdout
+
+Examples:
+filename="`uniqname`.dat"
+
+Returns:
+0 success
+
+</pre>
+<hr size="2" width="100%">
+    <h4><a name="fn_AtomicLock_block"></a><a href="#fn_AtomicLock_contents">fn_AtomicLock</a></h4>
+    <pre>
+Usage: fn AtomicLock lockfile [pid]
+
+Description:
+creates an atomic lock
+
+Examples:
+fn AtomicLock ${gl_vardir}/${gl_progname}.lock $$
+#creates lock
+fn AtomicLock ${gl_vardir}/${gl_progname}.lock
+#removes lock
+
+Returns:
+0 success
+
+</pre>
+<hr size="2" width="100%">
+    <h4><a name="fn_CheckHeaderFooter_block"></a><a href="#fn_CheckHeaderFooter_contents">fn_CheckHeaderFooter</a></h4>
+    <pre>
+Usage: fn CheckHeaderFooter file header footer
+
+Description: checks file for both header and footer
+
+Examples:
+fn CheckHeaderFooter ${lc_main_checkfreefilename} ${lc_main_header} ${lc_main_footer}
+
+Returns:
+0 true
+1 false
+
+</pre>
+<hr size="2" width="100%">
+    <h4><a name="fn_CheckScriptBasedir_block"></a><a href="#fn_CheckScriptBasedir_contents">fn_CheckScriptBasedir</a></h4>
+    <pre>
+Usage: fn CheckScriptBasedir
+
+Description: determins gl_basedir and gl_interface based on selected criteria
+this allows a script and support files to be moved around without editing
+
+Examples: same as usage
+
+Returns:
+0 success
+
+</pre>
+<hr size="2" width="100%">
+    <h4><a name="fn_CheckScriptProgdir_block"></a><a href="#fn_CheckScriptProgdir_contents">fn_CheckScriptProgdir</a></h4>
+    <pre>
+Usage: fn CheckScriptProgdir
+
+Description: validates gl_progdir based on selected criteria
+this allows a script and support files to be moved around without editing
+
+Examples: same as usage
+
+Returns:
+0 success
+
+</pre>
+<hr size="2" width="100%">
+    <h4><a name="fn_CompareTime_block"></a><a href="#fn_CompareTime_contents">fn_CompareTime</a></h4>
+    <pre>
+Usage: fn CompareTime [-f] {{hour|day|dayhour}[.noholiday|bankholiday]} {{format} {string}|controltime|type} {-eq|gt|lt|ge|le} {{format} {string}|testtime}
+
+Description:
+sets var to a formatted time
+
+Examples:
+fn CompareTime day.noholiday YYYYMMDD ${lc_main_ctltime} -eq YYYYMMDD ${lc_main_testtime}
+fn CompareTime day.bankholiday yesterday.nearbusinessday -eq YYYYMMDD ${lc_main_headertime}
+
+Returns:
+
+Returns:
+0 success
+
+</pre>
+<hr size="2" width="100%">
+    <h4><a name="fn_DisplayUsage_block"></a><a href="#fn_DisplayUsage_contents">fn_DisplayUsage</a></h4>
+    <pre>
+Usage: fn DisplayUsage
+
+Description: displays the "description" section of the current running script
+section definitions are created using code-browser
+
+Examples:
+fn DisplayUsage
+
+Returns:
+0 success
+
+</pre>
+<hr size="2" width="100%">
+    <h4><a name="fn_FilePathBaseExtSplit_block"></a><a href="#fn_FilePathBaseExtSplit_contents">fn_FilePathBaseExtSplit</a></h4>
+    <pre>
+Usage: fn FileBaseExtSplit pathvar [basevar] [extvar] file
+
+Description:
+splits a filename into path, base, and extion
+a basevar
+splits a filename into path, base, and extion
+
+Examples:
+fn FileBaseExtSplit lc_RotateFiles_path lc_RotateFiles_base lc_RotateFiles_ext ${lc_RotateFiles_file}
+
+Returns:
+0 success
+
+</pre>
+<hr size="2" width="100%">
+    <h4><a name="fn_FileSizeClip_block"></a><a href="#fn_FileSizeClip_contents">fn_FileSizeClip</a></h4>
+    <pre>
+Usage: fn FileSizeClip file chopsize maxsize
+
+Description:
+clips file to specified size
+
+Examples:
+fn FileSizeClip ${gl_logfile} ${gl_logchopsize:-5000} ${gl_logmaxsize:-10000}
+
+Returns:
+0 success
+
+</pre>
+<hr size="2" width="100%">
+    <h4><a name="fn_FormatDos2Unix_block"></a><a href="#fn_FormatDos2Unix_contents">fn_FormatDos2Unix</a></h4>
+    <pre>
+Usage: fn FormatDos2Unix {-|srcfilename} [dstfilename]
+
+Description: reformats data from dos to unix format
+
+Examples:
+convert srcfile to dstfile
+fn FormatDos2Unix ${lc_main_srcfilename} ${lc_main_dstfilename}
+convert srcfile to stdout
+fn FormatDos2Unix ${lc_main_srcfilename}
+convert stdin to dstfile
+fn FormatDos2Unix - ${lc_main_dstfilename}
+
+Returns:
+0 success
+21 dst file write permission error
+22 src file read permission error
+44 src file does not exist
+
+</pre>
+<hr size="2" width="100%">
+    <h4><a name="fn_FormatTime_block"></a><a href="#fn_FormatTime_contents">fn_FormatTime</a></h4>
+    <pre>
+Usage: fn FormatTime {-|var} {format} [type [time]|time]
+
+Description:
+sets var to a formatted time
+
+Examples:
+fn FormatTime - "%a MM-DD-YYYY DDD Hh:mm:ss" previous.nearbusinessday
+
+Returns:
+
+Returns:
+0 success
+
+</pre>
+<hr size="2" width="100%">
+    <h4><a name="fn_FormatUnix2Dos_block"></a><a href="#fn_FormatUnix2Dos_contents">fn_FormatUnix2Dos</a></h4>
+    <pre>
+Usage: fn FormatUnix2Dos {-|srcfilename} [dstfilename]
+
+Description: reformats data from unix to dos format
+
+Examples:
+convert srcfile to dstfile
+fn FormatUnix2Dos ${lc_main_srcfilename} ${lc_main_dstfilename}
+convert srcfile to stdout
+fn FormatUnix2Dos ${lc_main_srcfilename}
+convert stdin to dstfile
+fn FormatUnix2Dos - ${lc_main_dstfilename}
+
+Returns:
+0 success
+21 dst file write permission error
+22 src file read permission error
+44 src file does not exist
+
+</pre>
+<hr size="2" width="100%">
+    <h4><a name="fn_GetTime_block"></a><a href="#fn_GetTime_contents">fn_GetTime</a></h4>
+    <pre>
+Usage: fn GetTime {var|-} {time_src|format {string}}
+
+Description: get unix epoch - seconds since 00:00:00 1970-01-01 UTC
+
+
+Examples:
+fn GetTime lc_main_time now
+
+Returns:
+0    success
+
+</pre>
+<hr size="2" width="100%">
+    <h4><a name="fn_GlobalUsage_block"></a><a href="#fn_GlobalUsage_contents">fn_GlobalUsage</a></h4>
+    <pre>
+Usage: fn GlobalUsage [-h]
+
+Description:
+dumps all usage blocks from this function library
+-h produces html output
+
+Examples:
+none
+
+Returns:
+0 success
+
+</pre>
+<hr size="2" width="100%">
+    <h4><a name="fn_ResolveProgdir_block"></a><a href="#fn_ResolveProgdir_contents">fn_ResolveProgdir</a></h4>
+    <pre>
+Usage: fn ResolveProgdir
+
+Description: determins and sets gl_progdir with a full qualified path
+gl_basedir and gl_interface are both derived from gl_progdir
+this allows a script and support files to be moved around without editing
+
+Examples: same as usage
+
+Returns:
+0 success
+
+</pre>
+<hr size="2" width="100%">
+    <h4><a name="fn_SetVars_block"></a><a href="#fn_SetVars_contents">fn_SetVars</a></h4>
+    <pre>
+Usage: fn SetVars [-r num] [start offset] [num of vars to set] [next offset] (lc|gl)_var [(lc|gl)_var] dataset
+-r 1-?  requires the dataset to be an exact length"
+
+Description: sets variables from data in a controlled mannor.  used as a read replacement
+
+Examples:
+"fn SetVars 1 3 11 lc_func_year lc_func_month lc_func_day lc_func_dayname `${gl_xdate} ${lc_func_dshift}`"
+if used the first offset is required.  the second value is assumed 0 (meaning continue until there
+are no more vars or no more data
+there is no limit to the number of offsets used
+"fn SetVars 1 3 11 1 8 5 2 ........."
+starting at data_1  3 vars are set
+jumping to  data_11 1 var is set
+jumping to  data_8  5 vars are set
+jumping to  data_2  the remander of the vars are set
+if there are more vars than data excess vars will be set empty
+
+Returns:
+0 success
+1 failure
+
+</pre>
+<hr size="2" width="100%">
+    <h4><a name="fn_ShiftTime_block"></a><a href="#fn_ShiftTime_contents">fn_ShiftTime</a></h4>
+    <pre>
+Usage: fn ShiftTime {var|-} {shift} [type] {time}
+
+Description:
+shift time forward or backwards depending on type
+shifts are in 1 day increments
+supported types are
+farbusinessday
+weekends days are skipped
+if the starting day is sat|sun, starting day is first shifted backward to fri
+nearbusinessday
+weekends days are skipped
+if the starting day is sat|sun, starting day is first shifted forward to mon
+if no type specified
+all days are considered
+
+Examples:
+go back one day
+fn ShiftTime lc_main_time -1 ${lc_main_time}
+go back one near businessday day
+fn ShiftTime lc_main_time -1 businessday.near ${lc_main_time}
+
+Returns:
+0    success
+
+</pre>
+<hr size="2" width="100%">
+    <h4><a name="fn_VerifyDir_block"></a><a href="#fn_VerifyDir_contents">fn_VerifyDir</a></h4>
+    <pre>
+Usage: fn VerifyDir DIRECTORY [DIRECTORY]...
+
+Description:
+checks for existence of one or more directories and rw permissions
+if a directory does not exist it will be created
+
+Examples:
+fn VerifyDir ${gl_tmpdir} ${gl_recvdir} ${gl_senddir} ${gl_logdir} ${gl_histdir}
+
+Returns:
+0  success
+20 location exist but is not a directory
+21 requires at least rw access</pre>
+<hr size="2" width="100%">
+    <h4><a name="exit_code_definitions_block"></a><a href="#exit_code_definitions_contents">exit code definitions</a></h4>
+    <pre></pre>
+
+</body>
+</html>
+

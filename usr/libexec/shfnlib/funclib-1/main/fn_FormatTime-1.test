@@ -1,0 +1,24 @@
+#!/bin/sh
+
+export TZ=America/Chicago
+
+fn GetTime lc_main_time "YYYY DDD hh CCC ss mm" "2007  50 13 jan 12 34"
+echo ${lc_main_time}
+fn FormatTime lc_main_ftime "YYYY MM DD" 1171913652
+checkresult -v "2007 02 19" "${lc_main_ftime}"
+
+fn FormatTime lc_main_ftime "YYYY/MM/DD hh:mm:ss PP" 1171913652
+checkresult -v "2007/02/19 01:34:12 PM" "${lc_main_ftime}"
+
+fn FormatTime lc_main_ftime "MM-DD-YYYY DDD Hh:mm:ss" 1171913652
+checkresult -v "02-19-2007 050 13:34:12" "${lc_main_ftime}"
+
+fn GetTime lc_main_time "MM/DD/YY" "10/11/11"
+echo ${lc_main_time}
+
+#gl_debuglevel=4
+fn FormatTime lc_main_ftime "MM-DD-YYYY %a" "previous.nearbusinessday.nonholiday" ${lc_main_time}
+checkresult -v "10-10-2011 Mon" "${lc_main_ftime}"
+
+fn FormatTime lc_main_ftime "MM-DD-YYYY %a" "previous.nearbusinessday.nonbankholiday" ${lc_main_time}
+checkresult -v "10-07-2011 Fri" "${lc_main_ftime}"

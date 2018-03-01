@@ -1,0 +1,127 @@
+#!/bin/sh
+
+gl_debuglevel=2
+
+gl_tmpdir=${HOME}/tmp
+_file=${gl_tmpdir}/testfile.dat
+
+echo "setkey/getkey with math += 1"
+i=0;while [[ ${i:-0} -lt 5 ]] && ((i+=1)) ; do
+  hashsetkey mhash aaaaabbbbbk$i += 1
+  hashgetkey _value mhash aaaaabbbbbk$i
+  checkresult -v "1" "${_value}"
+done
+
+echo
+echo "setkey/getkey with math += 4"
+i=0;while [[ ${i:-0} -lt 5 ]] && ((i+=1)) ; do
+  hashsetkey mhash aaaaabbbbbk$i += 4
+  hashgetkey _value mhash aaaaabbbbbk$i
+  checkresult -v "5" "${_value}"
+done
+
+echo
+echo setkey/getkey
+i=0;while [[ ${i:-0} -lt 5 ]] && ((i+=1)) ; do
+  hashsetkey mhash aaaaabbbbbk$i v$i
+  hashgetkey _value mhash aaaaabbbbbk$i
+  checkresult -v "v$i" "${_value}"
+done
+
+echo
+echo raw dump
+#hashdump -r mhash
+checkresult -v "1606903241" $(set -- $(hashdump -r mhash | cksum);echo $1)
+
+echo
+echo dump
+#hashdump mhash
+checkresult -v "385221821" $(set -- $(hashdump mhash | cksum);echo $1)
+
+echo
+echo key count
+checkresult -v "5" "$(hashgetsize - mhash)"
+
+echo
+echo list keys
+hashkeys _keys mhash
+checkresult -v "aaaaabbbbbk1 aaaaabbbbbk2 aaaaabbbbbk3 aaaaabbbbbk4 aaaaabbbbbk5" "${_keys[*]}"
+
+echo
+echo delkey
+hashdelkey mhash aaaaabbbbbk2
+hashkeys _keys mhash
+checkresult -v "aaaaabbbbbk1 aaaaabbbbbk3 aaaaabbbbbk4 aaaaabbbbbk5" "${_keys[*]}"
+checkresult -v "4" "$(hashgetsize - mhash)"
+
+echo
+echo getfirst
+hashgetfirst _value mhash
+checkresult -v "v1" "${_value}"
+
+echo
+echo getnext
+hashgetnext _value mhash
+checkresult -v "v3" "${_value}"
+
+echo
+echo getfirst with bad key
+hashgetfirst _value mhash aaaaabbbbbk20
+checkresult -t -eq 1
+
+echo
+echo getfirst with key
+hashgetfirst _value -k aaaaabbbbbk4 mhash
+checkresult -v "v4" "${_value}"
+
+echo
+echo getnext
+hashgetnext _value mhash
+checkresult -v "v5" "${_value}"
+
+echo
+echo getnext with no more elements
+hashgetnext _value mhash
+checkresult -t -eq 1
+
+echo
+echo hashsetkey nocasematch
+hashsetkey -l mhash FrEd 111
+hashsetkey -l mhash freD 222
+checkresult -v "222" $(hashgetkey -l - mhash FRed)
+
+echo
+echo hashdelkey nocasematch
+hashdelkey -l mhash fRed
+checkresult -v "" $(hashgetkey -l - mhash FRed)
+
+echo
+echo save raw
+hashsave -r mhash "${_file}"
+checkresult -t
+
+echo
+echo del
+hashdel mhash
+checkresult -v "0" "$(hashgetsize - mhash)"
+
+echo
+echo loading raw
+. "${_file}"
+#hashdump -r mhash
+checkresult -v "2293336647" $(set -- $(hashdump -r mhash | cksum);echo $1)
+
+echo
+echo save
+hashsave mhash "${_file}"
+checkresult -t
+
+hashdel mhash
+
+echo
+echo load
+hashload mhash "${_file}"
+#hashdump -r mhash
+checkresult -v "2293336647" $(set -- $(hashdump -r mhash | cksum);echo $1)
+
+rm -f "${_file}"

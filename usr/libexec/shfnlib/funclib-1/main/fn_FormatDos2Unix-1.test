@@ -1,0 +1,32 @@
+#!/bin/sh
+
+gl_tmpdir=${HOME}/tmp
+_file="${HOME}/tmp/testfile.txt"
+
+_text="this is a test
+a test
+the best test
+
+better than the rest
+a test
+" 
+
+echo creating Dos file
+echo "${_text}" | fn FormatUnix2Dos - "${_file}"
+checkresult -v "1006419625" $(set -- $(cksum "${_file}");echo $1)
+
+echo
+echo fn FormatDos2Unix {file} {stdout}
+checkresult -v "3571230494" $(set -- $(fn FormatDos2Unix "${_file}" | cksum);echo $1)
+
+echo
+echo fn FormatDos2Unix - {stdout}
+echo "${_text}" | fn FormatUnix2Dos - "${_file}"
+checkresult -v "3571230494" $(set -- $(cat "${_file}" | fn FormatDos2Unix - | cksum);echo $1)
+
+echo
+echo fn FormatDos2Unix {file} {file}
+fn FormatDos2Unix "${_file}" "${_file}"
+checkresult -v "3571230494" $(set -- $(cksum "${_file}");echo $1)
+
+rm -f "${_file}"

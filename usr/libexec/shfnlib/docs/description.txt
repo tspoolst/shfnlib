@@ -1,0 +1,108 @@
+function commentblock_description { echo -n
+###########################################################################################################
+##  Scripting Conventions:
+##    version function/file naming
+##             functions-0.1.0-060101
+##                      /  |  \     \
+##                     /   |   \     \
+##                    /    |    \     \
+##                   /     |     \     \
+##                  /      |      \     \
+##                 major   minor   fix   date
+##        first number  - major change   - old functions removed/changed
+##        second number - minor change   - new functions added/enhanced
+##        third number  - fix/patch      - bugfix
+##        date          - year/month/day - indicates work in progress/needs to be tested
+##      ln -s progname-0.9.0.ksh progname-0.ksh
+##      ln -s progname-1.2.3.ksh progname-1.ksh
+##
+##    variable naming
+##      all variable must be lowercase
+##      scope local vs global
+##        all local variable must be defined with "typeset"
+##        variables outside of a function can not be local
+##        local variables must have the following format    lc_(function name)_(variable name)
+##          if the variable is not in a function, and not defined global
+##          it should be named lc_main_(variable name)
+##          ie. lc_BigFunction_file or lc_BigFunction_tag or not in a function lc_main_currentlinenumber
+##        global variables must have the following format   gl_(variable name)
+##          ie. gl_progname or gl_confdir
+##      unique names
+##        ksh has no real usable scope per say.  so great care must be taken to prevent variables
+##        from having the same name.
+##      determining data vs variable
+##        a nice side affect of using lc_ and gl_ prefixes is the added ability to decern variable vs data
+##        in a command line or a text string.  Some functions that use this are: fn_SetVars and fn_GetParamGroup
+##
+##
+##  gl_debuglevel=0
+##    critical messages
+##  gl_debuglevel=1
+##    info messages
+##  gl_debuglevel=2
+##    function trace messages
+##  gl_debuglevel=3
+##    function operation messages - generic messages to say what we are working on in a function
+##  gl_debuglevel=4
+##    function operation diagnostic messages - shows arguments used to call functions and some important function variable settings
+##  gl_debuglevel=5
+##    function operation diagnostic messages - shows as much script detail as possible
+##
+##  rem levels
+##  #test code - used during code development
+##  ##operation comments - what is happening and general info
+##  ###development comments - what optional code can be changed
+##  ####planned development comments - what should/could be added/removed/changed
+##
+##  reserved exit/errorlevel blocks
+##  block           scope     - exit type
+##  1               all       - all usage errors
+##  2               main      - function lib is not readable or does not exist
+##  3               main      - function lib does not have read permissions
+##  4-9,11-19       main      - available for calling programs
+##  10              autosys   - reserved for autosys - do not use
+##                                causes restart processes to fail
+##  20-39           functions - init sanity checks - file existance/permissions/filetypes
+##  40-49           functions - file movements
+##  50-59           functions - config file processing
+##  60-69           functions - file compression/decompression
+##  70-79           functions - networking
+##  80-89           functions - file date/older/newer
+##  90-99           functions - called program execution  ie "could not find program" or "permission denied"
+##  100-109         functions - file encryption/decryption
+##  110-126,128-254 undefined
+##  127             shell     - command not found
+##
+##  reserved global variables
+##  gl_configfileindex  - stores current location in config file
+##  gl_configfilesize   - stores size of config file after empty lines and comments are removed
+##  gl_pathprogname     - same as $0
+##  gl_progname         - program name only
+##  gl_progargs         - program arguments only
+##  gl_return           - contains rutern value from last called function
+##  gl_user             - 
+##  gl_basedir          = /progs/apps
+##  gl_progdir          = ${gl_basedir}/bin
+##  gl_confdir          = ${gl_basedir}/conf
+##  gl_tmpdir           = ${gl_basedir}/tmp
+##  gl_vardir           = ${gl_basedir}/var
+##  gl_erecvdir         = ${gl_basedir}/ext/recv
+##  gl_esenddir         = ${gl_basedir}/ext/send
+##  gl_irecvdir         = ${gl_basedir}/int/recv
+##  gl_isenddir         = ${gl_basedir}/int/send
+##  gl_logdir           = ${gl_basedir}/log
+##  gl_logfile          = ${gl_logdir}/activity-${gl_progname##*/}.log
+##  gl_iarchdir         = ${gl_basedir}/archive/int
+##  gl_earchdir         = ${gl_basedir}/archive/ext
+##  gl_histdir          = ${gl_iarchdir}
+##
+##
+##
+##
+##
+##
+##
+##
+##
+###########################################################################################################
+}

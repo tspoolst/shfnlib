@@ -1,0 +1,31 @@
+#!/bin/sh
+
+echo isset
+echo unset a
+unset a
+isset a
+checkresult -t -eq 1
+echo a=5
+a=5
+isset a
+checkresult -t
+
+echo 'isnum "+6"'
+isnum "+6"
+checkresult -t
+echo 'isnum "+6a"'
+isnum "+6a"
+checkresult -t -eq 1
+echo 'isnum "i"'
+isnum "i"
+checkresult -t -eq 1
+echo 'isnum " "'
+isnum " "
+checkresult -t -eq 1
+echo 'isnum "1_"'
+isnum "1_"
+checkresult -t -eq 1
+
+echo "isuser \"\${USER}\" -- \"${USER}\""
+isuser "${USER}"
+checkresult -t

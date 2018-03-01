@@ -1,0 +1,18 @@
+#!/bin/sh
+
+echo "FilePathBaseExtSplit test 1 of 2"
+a="/dir1/dir2/file.gz"
+fn FilePathBaseExtSplit _path _file _ext "$a"
+echo "file $a"
+checkresult -v "${_path}" "/dir1/dir2"
+checkresult -v "${_file}" "file"
+checkresult -v "${_ext}" "gz"
+
+echo
+echo "FilePathBaseExtSplit test 2 of 2"
+a="/dir1/dir2/file.tar.bz2"
+fn FilePathBaseExtSplit _path _file _ext "$a"
+echo "file $a"
+checkresult -v "${_path}" "/dir1/dir2"
+checkresult -v "${_file}" "file"
+checkresult -v "${_ext}" "tar.bz2"

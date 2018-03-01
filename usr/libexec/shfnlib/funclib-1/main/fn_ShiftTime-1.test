@@ -1,0 +1,19 @@
+#!/bin/sh
+
+#[c]cat holidays
+
+
+#gl_debuglevel=1
+fn GetTime lc_main_time YYYYMMDD 20090412
+
+echo fn ShiftTime -1 day
+fn ShiftTime lc_main_time -1 ${lc_main_time}
+checkresult -v "Sat 04-11-2009 101 00:00:00" "$(fn FormatTime - "%a MM-DD-YYYY DDD Hh:mm:ss" ${lc_main_time})"
+
+echo fn ShiftTime -1 nearbusinessday day
+fn ShiftTime lc_main_time -1 nearbusinessday ${lc_main_time}
+checkresult -v "Fri 04-10-2009 100 00:00:00" "$(fn FormatTime - "%a MM-DD-YYYY DDD Hh:mm:ss" ${lc_main_time})"
+
+echo fn ShiftTime -1 farbusinessday day
+fn ShiftTime lc_main_time -1 farbusinessday ${lc_main_time}
+checkresult -v "Thu 04-09-2009 099 00:00:00" "$(fn FormatTime - "%a MM-DD-YYYY DDD Hh:mm:ss" ${lc_main_time})"

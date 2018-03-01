@@ -1,0 +1,102 @@
+#!/bin/sh
+
+#function norun {
+#[c]fn GetTime lc_main_time L2O3F2YYYYMMDD dtest.txt
+#[c]fn FormatTime - "YYYY/MM/DD %a" ${lc_main_time}
+#[c]fn GetTime lc_main_time now
+#[c]#fn CompareTime $1 $2 -eq ${lc_main_time}
+#[c]echo --
+#[c]fn FormatTime - "YYYY/MM/DD %a" previous.nearbusinessday.nonholiday
+#[c]check current time
+#[c]if check failed and checkholiday=true and time is holiday
+#[c]  check previous day type
+#[c]if nonholiday then checkholiday=false
+#[c]if noholiday then checkholiday=false
+#[c]type = type with noholiday
+#[c]
+
+
+
+#gl_debuglevel=2
+fn GetTime lc_main_time YYYYMMDD 20090409
+echo 20090408 --- 20090409
+echo "-eq"
+#gl_debuglevel=2
+fn CompareTime -t day.noholiday previous.nearbusinessday ${lc_main_time} -eq YYYYMMDD 20090409
+checkresult -t -eq 1
+echo "-le"
+fn CompareTime -t day.noholiday previous.nearbusinessday ${lc_main_time} -le YYYYMMDD 20090409
+checkresult -t
+echo "-lt"
+fn CompareTime -t day.noholiday previous.nearbusinessday ${lc_main_time} -lt YYYYMMDD 20090409
+checkresult -t
+echo "-gt"
+fn CompareTime -t day.noholiday previous.nearbusinessday ${lc_main_time} -gt YYYYMMDD 20090409
+checkresult -t -eq 1
+#gl_debuglevel=1
+
+
+#gl_debuglevel=2
+fn GetTime lc_main_time YYYYMMDD 20090409
+echo 20090409 --- 20090409
+echo "-eq"
+#gl_debuglevel=2
+fn CompareTime -t day.noholiday today ${lc_main_time} -eq YYYYMMDD 20090409
+checkresult -t
+echo "-le"
+fn CompareTime -t day.noholiday today ${lc_main_time} -le YYYYMMDD 20090409
+checkresult -t
+echo "-lt"
+fn CompareTime -t day.noholiday today ${lc_main_time} -lt YYYYMMDD 20090409
+checkresult -t -eq 1
+echo "-gt"
+fn CompareTime -t day.noholiday today ${lc_main_time} -gt YYYYMMDD 20090409
+checkresult -t -eq 1
+
+#gl_debuglevel=4
+echo "bankholiday"
+fn GetTime lc_main_time YYYYMMDD 20101012
+fn CompareTime -t day.bankholiday yesterday.nearbusinessday ${lc_main_time} -eq YYYYMMDD 20101008
+checkresult -t -eq 0
+
+#gl_debuglevel=1
+
+#[c]fn GetTime lc_main_time YYYYMMDD 20090412
+#[c]time fn CompareTime -t day previous.nearbusinessday ${lc_main_time} -eq YYYYMMDD 20090409
+#[c]echo $?
+#[c]echo ---
+
+#[c]fn GetTime lc_main_time L2O3F2YYYYMMDD dtest.txt
+#[c]echo ${lc_main_time}
+#[c]echo ---
+
+#[c]fn GetTime lc_main_time
+#[c]fn ShiftTime lc_main_time $1 ${lc_main_time}
+#[c]fn FormatTime - "%a MM-DD-YYYY DDD Hh:mm:ss" ${lc_main_time}
+#[c]fn ShiftTime lc_main_time $2 $3 ${lc_main_time}
+#[c]fn FormatTime - "%a MM-DD-YYYY DDD Hh:mm:ss" $4 ${lc_main_time}
+#[c]
+#[c]cat /home/batch/PIVOT
+#[c]fn GetTime - trading
+#[c]fn GetTime lc_main_time trading
+#[c]fn FormatTime - "YYYY MM DD" ${lc_main_time}
+#[c]fn FormatTime - "YYYY MM DD" $(fn GetTime - trading)
+#[c]cat /home/batch/PIVOT
+
+
+
+#[c]fn GetTime - now
+#[c]fn GetTime lc_main_time now
+#[c]fn FormatTime - "YYYY MM DD" ${lc_main_time}
+#[c]fn FormatTime - "YYYY MM DD" $(fn GetTime - now)
+#[c]fn GetTime - "MM YYYY DD hh ss mm" " 2 2007  3 13 12 34"
+#[c]fn GetTime - "YYYY DD hh CCC ss mm" "2007  3 13 feb 12 34"
+#[c]fn GetTime lc_main_time "YYYY DDD hh CCC ss mm" "2007  50 13 jan 12 34"
+#[c]fn FormatTime - "YYYY/MM/DD hh:mm:ss PP" ${lc_main_time}
+#[c]fn FormatTime - "MM-DD-YYYY DDD Hh:mm:ss" ${lc_main_time}
+
+
+
+#[c]fn GetFormattedTime lc_main_datestamp "$@"
+#[c]echo "-- ${lc_main_datestamp} --"
+#}

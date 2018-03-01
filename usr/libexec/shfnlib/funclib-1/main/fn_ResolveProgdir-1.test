@@ -1,0 +1,50 @@
+#!/bin/sh
+
+#[of]:function filepath {
+function filepath {
+  typeset lc_filepath_relative lc_filepath_path
+  if [[ "$1" = "-r" ]] ; then
+    lc_filepath_relative=true
+    shift
+  fi
+#[of]:  usage
+  if [ -z "$2" ] ; then
+    echo "Usage: filepath [-r] {var|-} file"
+    echo "Error: must have at least 2 arguments"
+    echo "Description:"
+    echo "  return the filepath only"
+    echo "Options"
+    echo "  -r returns relative path"
+    echo "Examples:"
+    echo '  filepath lc_RotateFiles_path ${lc_RotateFiles_file}'
+    echo "Returns:"
+    echo "  0 success"
+    exit 1
+  fi
+#[cf]
+  ## if file has a path grab the path else use pwd
+  if [[ -z "${2##*/*}" ]] ; then
+    lc_filepath_path="${2%/*}"
+    ##if relative != true, try to grab the absolute path - else just use what was given
+    if ! ${lc_filepath_relative:-false} ; then
+      if pushd "${lc_filepath_path}" 2>/dev/null ; then
+        lc_filepath_path="$(pwd)"
+        popd
+      fi
+    fi
+  else
+    lc_filepath_path="$(pwd)"
+  fi
+
+  if [[ "$1" = "-" ]] ; then
+    echo "${lc_filepath_path}"
+  else
+    eval $1=\"\${lc_filepath_path}\"
+  fi
+  return 0
+}
+#[cf]
+
+echo fn ResolveProgdir
+fn ResolveProgdir
+checkresult -v "$(filepath - "$0")" "${gl_progdir}"

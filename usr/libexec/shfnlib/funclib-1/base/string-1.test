@@ -1,0 +1,37 @@
+#!/bin/sh
+
+echo 'instring {var|-} "{string}" {pattern}'
+echo instring _result aaarraaaa rr
+instring _result aaarraaaa rr
+checkresult -v "3" "${_result}"
+echo 'instring _result "" rr'
+instring _result "" rr
+checkresult -t -eq 1
+checkresult -v "-1" "${_result}"
+echo 'instring _result "" ""'
+instring _result "" ""
+checkresult -t
+checkresult -v "0" "${_result}"
+echo 'instring _result "rr" ""'
+instring _result "rr" ""
+checkresult -t
+checkresult -v "0" "${_result}"
+
+echo substr _result aaarraaaa 3
+substr _result aaarraaaa 3
+checkresult -v "rraaaa" "${_result}"
+echo substr _result aaarraaaa 4 2
+substr _result aaarraaaa 4 2
+checkresult -v "ra" "${_result}"
+
+echo tolower _result AbC
+tolower _result AbC
+checkresult -v "abc" "${_result}"
+
+echo toupper _result AbC
+toupper _result AbC
+checkresult -v "ABC" "${_result}"
+
+echo ascii2hex _result abc
+ascii2hex _result abc
+checkresult -v "616263" "${_result}"

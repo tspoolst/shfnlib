@@ -1,0 +1,8 @@
+#!/bin/sh
+gl_pathprogname="${gl_funcdir}/funclib-1/main/fn_DisplayUsage-1.test"
+#[of]:description
+#############################################################################################################
+##some test text ${gl_progname} and some "quoted text" for testing
+###########################################################################################################
+#[cf]
+checkresult -v 'some test text '${gl_progname}' and some "quoted text" for testing' "$(fn DisplayUsage)"

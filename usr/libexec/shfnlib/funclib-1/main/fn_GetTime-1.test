@@ -1,0 +1,44 @@
+#!/bin/sh
+
+export TZ=America/Chicago
+
+#[c]gl_debuglevel=5
+
+checkresult -v $(fn GetTime - now) $(gnudate +%s)
+fn GetTime lc_main_time now
+checkresult -v ${lc_main_time} $(gnudate +%s)
+fn GetTime lc_main_parse "MM YYYY DD hh ss mm" " 2 2007  3 13 12 34"
+checkresult -v "1170531252" "${lc_main_parse}"
+fn GetTime lc_main_parse "YYYY DD hh CCC ss mm" "2007  3 13 feb 12 34"
+checkresult -v "1170531252" "${lc_main_parse}"
+
+
+echo "file date grab checks"
+gl_tmpdir="${HOME}/tmp"
+gl_testdatfile="${gl_tmpdir}/testgettime.dat"
+echo 'HEADER 20100402 H,000090,abc,110204,geh
+data data data
+HEADER 20110402 H,000090,abc,110909,geh
+data data data
+data data data
+data data data
+data data data
+TRAILER 20100302 H:100808:000090' > "${gl_testdatfile}"
+
+fn GetTime lc_main_parse "L0F1YYYYMMDD" "${gl_testdatfile}"
+checkresult -v "1270184400" "${lc_main_parse}"
+fn GetTime lc_main_parse "TL0F2I,F3YYMMDD" "${gl_testdatfile}"
+checkresult -v "1296799200" "${lc_main_parse}"
+fn GetTime lc_main_parse "BL0F1YYYYMMDD" "${gl_testdatfile}"
+checkresult -v "1267509600" "${lc_main_parse}"
+fn GetTime lc_main_parse "BL0F2I:F1YYMMDD" "${gl_testdatfile}"
+checkresult -v "1281243600" "${lc_main_parse}"
+
+echo "top/bottom direction checks"
+fn GetTime lc_main_parse "TL2F2I,F3YYMMDD" "${gl_testdatfile}"
+checkresult -v "1315544400" "${lc_main_parse}"
+fn GetTime lc_main_parse "BL5F2I,F3YYMMDD" "${gl_testdatfile}"
+checkresult -v "1315544400" "${lc_main_parse}"
+
+
+rm -f "${gl_testdatfile}"

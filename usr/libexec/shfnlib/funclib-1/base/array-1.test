@@ -1,0 +1,119 @@
+#!/bin/sh
+
+echo aset a= b g d e f a c
+aset a b g d e f a c
+checkresult -v "b g d e f a c" "${a[*]}"
+echo
+
+echo asort stdout
+echo a= ${a[@]}
+asort - "${a[@]}"
+checkresult -v "a b c d e f g" "$(asort - "${a[@]}")"
+
+echo "asort a -> b"
+echo a= ${a[@]}
+asort b "${a[@]}"
+checkresult -v "a b c d e f g" "${b[*]}"
+
+echo
+echo "asplit a \"\" 'a:b\:cc:d:ee:ff:'"
+asplit a "" 'a:b\:cc:d:ee:ff:'
+checkresult -v "a : b \ : c c : d : e e : f f :" "${a[*]}"
+
+echo
+echo "asplit a \":\" 'a:b\:cc:d:ee:ff:'"
+asplit a ":" 'a:b\:cc:d:ee:ff:'
+checkresult -v "a b\ cc d ee ff " "${a[*]}"
+
+echo
+echo "asplit -e a \":\" 'a:b\:cc:d:ee:ff:'"
+asplit -e a ":" 'a:b\:cc:d:ee:ff:'
+checkresult -v "a b:cc d ee ff " "${a[*]}"
+
+echo
+echo 'ajoin a "_" "${a[@]}"'
+ajoin a "_" "${a[@]}"
+checkresult -v "a_b:cc_d_ee_ff_" "${a}"
+
+aset a b g d e f a c
+
+echo
+echo apush
+echo a= ${a[@]}
+apush a pushme
+checkresult -v "b g d e f a c pushme" "${a[*]}"
+
+echo
+echo apop -
+echo a= ${a[@]}
+apop - a
+checkresult -v "b g d e f a c" "${a[*]}"
+
+echo
+echo apop !
+echo a= ${a[@]}
+apop ! a
+checkresult -v "b g d e f a" "${a[*]}"
+
+echo
+echo apop _var
+echo a= ${a[@]}
+apop _var a
+checkresult -v "a" "${_var}"
+checkresult -v "b g d e f" "${a[*]}"
+
+
+echo
+echo aunshift
+echo a= ${a[@]}
+aunshift a unshiftme
+checkresult -v "unshiftme b g d e f" "${a[*]}"
+
+echo
+echo ashift -
+echo a= ${a[@]}
+checkresult -v "unshiftme" $(ashift - a)
+ashift - a > /dev/null
+checkresult -v "b g d e f" "${a[*]}"
+
+echo
+echo ashift !
+echo a= ${a[@]}
+checkresult -v "" $(ashift ! a)
+ashift ! a
+checkresult -v "g d e f" "${a[*]}"
+
+echo
+echo ashift _var
+echo a= ${a[@]}
+ashift _var a
+checkresult -v "g" "${_var}"
+checkresult -v "d e f" "${a[*]}"
+
+echo
+echo awalkl a b
+aset a 1 2
+aset b 3 4
+echo a= ${a[@]}
+awalkl a b
+checkresult -v "1 2 3" "${a[*]}"
+checkresult -v "4" "${b[*]}"
+awalkl a b
+checkresult -v "1 2 3 4" "${a[*]}"
+checkresult -v "" "${b[*]}"
+awalkl a b
+checkresult -t -eq 1
+
+echo
+echo awalkr a b
+aset a 1 2
+aset b 3 4
+echo a= ${a[@]}
+awalkr a b
+checkresult -v "1" "${a[*]}"
+checkresult -v "2 3 4" "${b[*]}"
+awalkr a b
+checkresult -v "" "${a[*]}"
+checkresult -v "1 2 3 4" "${b[*]}"
+awalkr a b
+checkresult -t -eq 1

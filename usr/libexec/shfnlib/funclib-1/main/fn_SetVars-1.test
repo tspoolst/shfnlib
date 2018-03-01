@@ -1,0 +1,8 @@
+#!/bin/sh
+
+gl_debuglevel=1
+
+echo fn SetVars lc_main_var1 lc_main_var2 'aaa$$$' 'bbb!!!'
+fn SetVars lc_main_var1 lc_main_var2 'aaa$$$' 'bbb!!!'
+checkresult -v 'aaa$$$' "${lc_main_var1}"
+checkresult -v 'bbb!!!' "${lc_main_var2}"

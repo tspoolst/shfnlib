@@ -1,0 +1,26 @@
+#!/bin/sh
+
+echo pushd
+cd "${HOME}"
+pushd /home
+checkresult -v "/home" $(pwd)
+pushd /
+checkresult -v "/" $(pwd)
+
+echo popd
+popd
+checkresult -v "/home" "$(pwd)"
+popd
+checkresult -v "${HOME}" "$(pwd)"
+
+cd /usr
+echo filepath -r
+checkresult -v "./lib" $(filepath -r - ./lib/prog.tar.gz)
+echo filepath
+checkresult -v "/usr/lib" $(filepath - ./lib/prog.tar.gz)
+echo filename
+checkresult -v "prog.tar.gz" $(filename - ./lib/prog.tar.gz)
+echo filebase
+checkresult -v "prog" $(filebase - ./lib/prog.tar.gz)
+echo fileext
+checkresult -v "tar.gz" $(fileext - ./lib/prog.tar.gz)

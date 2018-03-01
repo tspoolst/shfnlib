@@ -1,0 +1,7 @@
+#!/bin/sh
+
+#[c]spawn 2 processes
+#[c]the first sleeps for 2 seconds
+#[c]  each process writes it's id into a file
+#[c]when the lock is removed the file must match crc check
+

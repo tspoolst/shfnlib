@@ -1,0 +1,5 @@
+#!/bin/sh
+
+echo "isuser \"\${gl_username}\" -- \"${gl_username}\""
+isuser "${gl_username}"
+checkresult -t

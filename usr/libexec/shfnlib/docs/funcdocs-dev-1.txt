@@ -1,0 +1,971 @@
+Function Library dev Branch Version 1
+
+
+-------------------------------------------------------------------------------------
+ function argexist
+
+     Usage: argexist arg [argline]
+
+     Description: looks for arg in argline
+             note, this only searches one arg at a time.  also, if no argline is specified gl_progargs is used.
+
+     Examples:
+             argexist arg $gl_progargs
+           it works good in if blocks
+             if [ ${gl_return} -eq 0 ] || argexist arg ; then
+               echo do something
+             fi
+
+     Returns:
+           0 true
+           1 false
+
+
+-------------------------------------------------------------------------------------
+ function aset
+
+     Usage: aset var [val val val ...]
+
+     Description:
+           sets a given array variable
+           this exist because, there is no common way of setting an array in ksh and bash
+
+     Examples:
+           i.e.  aset gl_BusinessDays mon tue wed thu fri
+
+     Returns:
+           0 success
+
+
+-------------------------------------------------------------------------------------
+ function asort
+
+     Usage: asort {-|array} [val val val ...]
+
+     Description:
+           sorts an array
+
+     Examples:
+           i.e.  asort a "${a[@]}"
+
+     Returns:
+           0 success
+
+
+-------------------------------------------------------------------------------------
+ function asplit
+
+     Usage: asplit {array} {delimiter} [string]
+
+     Description:
+           splits a string into an array list
+           this emulates the perl function join
+
+     Examples:
+           i.e.  asplit b : "part1:part2:part3:part4"
+
+     Returns:
+           0 success
+
+
+-------------------------------------------------------------------------------------
+ function ajoin
+
+     Usage: ajoin {var} {delimiter} [val val val ...]
+
+     Description:
+           joins a list into a single string
+           this emulates the perl function join
+
+     Examples:
+           i.e.  ajoin a : "${a[@]}"
+
+     Returns:
+           0 success
+
+
+-------------------------------------------------------------------------------------
+ function apush
+
+     Usage: apush {array} [val val val ...]
+
+     Description:
+           adds new element/s to the end of an array
+           this emulates the perl function unshift
+
+     Examples:
+           i.e.  apush b "a string"
+
+     Returns:
+           0 success
+
+
+-------------------------------------------------------------------------------------
+ function apop
+
+     Usage: apop {!|-|var} {array}
+
+     Description:
+           shift an array 1 element right and return that element in var
+           this emulates the perl function shift
+
+     Examples:
+           i.e.  apop b a
+
+     Returns:
+           0 success
+
+
+-------------------------------------------------------------------------------------
+ function aunshift
+
+     Usage: aunshift {array} [val val val ...]
+
+     Description:
+           adds new element/s to the beginning of an array
+           this emulates the perl function unshift
+
+     Examples:
+           i.e.  aunshift b "a string"
+
+     Returns:
+           0 success
+
+
+-------------------------------------------------------------------------------------
+ function ashift
+
+     Usage: ashift {!|-|var} {array}
+
+     Description:
+           shift an array 1 element left and return that element in var
+           this emulates the perl function shift
+
+     Examples:
+           i.e.  ashift b a
+
+     Returns:
+           0 success
+
+
+-------------------------------------------------------------------------------------
+ function awalkl
+
+     Usage: awalkl {left array} {right array}
+
+     Description:
+           walks/moves array elements  <---  right to left
+
+     Examples:
+           i.e.  awalkl nodes args
+
+     Returns:
+           0 success
+           1 if right array is empty
+
+
+-------------------------------------------------------------------------------------
+ function awalkr
+
+     Usage: awalkr {left array} {right array}
+
+     Description:
+           walks/moves array elements  --->  left to right
+
+     Examples:
+           i.e.  awalkr args nodes
+
+     Returns:
+           0 success
+           1 if left array is empty
+
+
+-------------------------------------------------------------------------------------
+ function die
+
+     Usage: die exitcode "message"
+
+     Description: outputs messages to stderr and exits with exitcode
+           a quick way to kill a script
+
+     Examples:
+           die 1 "this bit of code failed to do something"
+
+     Returns:
+           1 or given exitcode
+
+
+-------------------------------------------------------------------------------------
+ function errorlevel
+
+     Usage: errorlevel [arg]
+
+     Description:
+           this simply sets the desired errorlevel on return.  if arg is not a number it returns 0
+
+     Examples:
+           i.e. errorlevel 7
+             sets errorlevel to 7
+
+     Returns: 0 or arg
+
+
+-------------------------------------------------------------------------------------
+ function pushd
+
+     Usage: pushd dir
+
+     Description:
+           pushes the current location onto the stack and changes to the dir specified
+           in other words - pushd saves the current location
+           this exist because, to emulate bash functionality in a non bash shell
+
+     Examples: pushd /home/user
+
+     Returns:
+           0  success
+           90 directory does not exist
+           91 dest exist but is not a directory
+           92 access denied
+
+
+-------------------------------------------------------------------------------------
+ function popd
+
+     Usage: popd
+
+     Description:
+           pops the topmost dir off the stack and changes to that location
+           in other words - popd returns us to the most recently saved dir
+           this exist because, to emulate bash functionality in a non bash shell
+
+     Examples: popd
+
+     Returns:
+           0  success
+           93 previously saved directory no longer exist
+
+
+-------------------------------------------------------------------------------------
+ function dirs
+
+     Usage: dirs [-c]
+
+     Description:
+           displays the DIRSTACK array used by pushd/popd
+           this exist because, to emulate bash functionality in a non bash shell
+
+     Examples: dirs -c
+
+     Returns:
+           0  success
+
+
+-------------------------------------------------------------------------------------
+ function filepath
+
+     Usage: filepath [-r] {var|-} file
+
+     Description:
+           return the filepath only
+         Options
+           -r returns relative path
+
+     Examples:
+           filepath lc_RotateFiles_path ${lc_RotateFiles_file}
+
+     Returns:
+           0 success
+
+
+-------------------------------------------------------------------------------------
+ function filename
+
+     Usage: filename {var|-} file
+
+     Description:
+           return a filename without the path
+
+     Examples:
+           filename lc_RotateFiles_name ${lc_RotateFiles_file}
+
+     Returns:
+           0 success
+
+
+-------------------------------------------------------------------------------------
+ function filebase
+
+     Usage: filebase {var|-} file
+
+     Description:
+           returns only the base of a filename
+
+     Examples:
+           filebase lc_RotateFiles_name ${lc_RotateFiles_file}
+
+     Returns:
+           0 success
+
+
+-------------------------------------------------------------------------------------
+ function fileext
+
+     Usage: fileext {var|-} file
+
+     Description:
+           returns only the extention of a filename
+
+     Examples:
+           fileext lc_RotateFiles_ext ${lc_RotateFiles_file}
+
+     Returns:
+           0 success
+
+
+-------------------------------------------------------------------------------------
+ function fn
+
+     Usage: fn funcname [args]
+
+     Description: fn is a function wrapper used for tracking current script processing states.
+           all main functions labeled fn_* must be called through this function
+             gl_funcname = current function name
+             gl_funcfrom = parent calling current function
+             gl_functree = complete calling tree (used for tracking dependancies)
+             gl_return   = errorlevel of last called function
+
+     Examples:
+           i.e. fn SetVars 1 1 3 lc_func_var1 lc_func_var2 data1 data2 data3
+
+     Returns: errerlevel from called function
+
+
+-------------------------------------------------------------------------------------
+ function hashkeys
+
+
+-------------------------------------------------------------------------------------
+ function hashdump
+
+
+-------------------------------------------------------------------------------------
+ function hashsave
+
+
+-------------------------------------------------------------------------------------
+ function hashload
+
+
+-------------------------------------------------------------------------------------
+ function hashsetkey
+
+
+-------------------------------------------------------------------------------------
+ function hashgetkey
+
+
+-------------------------------------------------------------------------------------
+ function hashdelkey
+
+
+-------------------------------------------------------------------------------------
+ function hashgetsize
+
+
+-------------------------------------------------------------------------------------
+ function hashgetfirst
+
+
+-------------------------------------------------------------------------------------
+ function hashgetnext
+
+
+-------------------------------------------------------------------------------------
+ function msgdbg
+
+     Usage: msgdbg debuglevel message
+
+     Description: outputs messages to stdout based on debuglevel
+           used for debugging code as it is being built/tested
+
+     Examples: msgdbg 3 "this bit of code is doing something"
+           the message will only be seen if gl_debuglevel=3 or higher
+
+     Returns: whatever errorlevel was before this function was called
+
+
+-------------------------------------------------------------------------------------
+ function instring
+
+     Usage: instring {!|-|var} "{string}" {pattern}
+
+     Description:
+           returns the index of a pattern within a given string
+             var|stdout = the index of the match 0-n
+                      if no match -1
+
+     Examples:
+           if found _position will be set with the index of YYYY
+             _position=$(instring - "${_format}" YYYY)
+             instring _position "${_format}" YYYY
+
+     Returns:
+           0 success
+           1 no match
+
+
+-------------------------------------------------------------------------------------
+ function substr
+
+     Usage: substr {var|-} "{string}" {index} [length]
+
+     Description:
+           returns, via stdout, a substring of the given string
+           the index is 0 based
+           this exist because, there is no common way of doing a substring in ksh and bash
+
+     Examples:
+           sets _year to a 2 character substring of _var
+             _year="$(subst "${_var}" ${_position} 2)"
+
+     Returns:
+           0 success
+
+
+-------------------------------------------------------------------------------------
+ function tolower
+
+     Usage: tolower {var|-} [string]
+
+     Description: transforms a variable to lower case
+
+     Examples:
+           tolower lc_main_filename
+           tolower - "A Test String"
+
+     Returns:
+           0 success
+
+
+-------------------------------------------------------------------------------------
+ function toupper
+
+     Usage: toupper {var|-} [string]
+
+     Description: transforms a variable to lower case
+
+     Examples:
+           toupper lc_main_filename
+           toupper - "A Test String"
+
+     Returns:
+           0 success
+
+
+-------------------------------------------------------------------------------------
+ function ascii2hex
+
+
+-------------------------------------------------------------------------------------
+ function cleancat
+
+     Usage: cleancat [filename]|[redirect]
+
+     Description: dumps a file or pipe removing blank lines and comments
+
+     Examples:
+           cleancat ${lc_main_filename}
+           bigdataapp | cleancat
+           cleancat < echo "A Test String"
+
+     Returns:
+           0 success
+
+
+-------------------------------------------------------------------------------------
+ function isdir
+
+     Usage: isdir dirname
+
+     Description: a simplified way of testing if something is a directory.
+
+     Examples:
+           "if isdir /home ; then
+             echo is a dir
+           else
+             echo is not a dir
+           fi"
+           statement may also be negated
+             "if ! isdir /home ; then"
+
+     Returns:
+           0 true
+           1 false
+
+
+-------------------------------------------------------------------------------------
+ function isfile
+
+     Usage: isfile filename
+
+     Description: a simplified way of testing if something is a file.
+
+     Examples:
+           "if isfile /home/file ; then
+             echo is a file
+           else
+             echo is not a file
+           fi"
+           statement may also be negated
+             "if ! isfile /home/file ; then"
+
+     Returns:
+           0 true
+           1 false
+
+
+-------------------------------------------------------------------------------------
+ function isfilelocked
+
+     Usage: isfilelocked {filename}
+
+     Description: checks if {filename} is locked by a process
+
+     Examples:
+           "if isfilelocked "testfile.txt" ; then
+             echo is locked
+           else
+             echo is unlocked
+           fi"
+           statement may also be negated
+             "if ! isfilelocked "testfile.txt" ; then"
+
+     Returns:
+           0 true
+           1 false
+
+
+-------------------------------------------------------------------------------------
+ function isinpath
+
+     Usage: isinpath arg
+
+     Description: checks if a given prog is in the path
+
+     Examples:
+           "if isinpath grep ; then
+             echo grep is installed
+           else
+             echo grep is missing
+           fi"
+
+     Returns:
+           0 true
+           1 false
+
+
+-------------------------------------------------------------------------------------
+ function isnum
+
+     Usage: isnum arg
+
+     Description: checks if arg is a number
+
+     Examples:
+           "if isnum 50 ; then
+             echo is a number
+           else
+             echo is not a number
+           fi"
+           statement may also be negated
+             "if ! isnum 50 ; then"
+
+     Returns:
+           0 true
+           1 false
+
+
+-------------------------------------------------------------------------------------
+ function isset
+
+     Usage: isset var
+
+     Description: checks if a given variable is set (i.e. exist)
+
+     Examples:
+           "if isset your_var ; then
+             echo your variable is set
+           else
+             echo your variable is not set
+           fi"
+           statement may also be negated
+             "if ! isset your_var ; then"
+
+     Returns:
+           0 true
+           1 false
+
+
+-------------------------------------------------------------------------------------
+ function istextfile
+
+     Usage: istextfile filename
+
+     Description: checks if filename is a textfile
+
+     Examples:
+           "if istextfile /home/file ; then
+             echo is a textfile
+           else
+             echo is not a textfile
+           fi"
+           statement may also be negated
+             "if ! istextfile /home/file ; then"
+
+     Returns:
+           0 true
+           1 false
+
+
+-------------------------------------------------------------------------------------
+ function isuser
+
+     Usage: isuser {user}
+
+     Description: checks if the current user matches user
+
+     Examples:
+           "if isuser batch ; then
+             echo user is batch
+           else
+             echo user is not batch
+           fi"
+           statement may also be negated
+             "if ! isuser batch ; then"
+
+     Returns:
+           0 true
+           1 false
+
+
+-------------------------------------------------------------------------------------
+ function uniqname
+
+     Usage: uniqname
+
+     Description:
+           produces a uniq name based on the date and current process
+           this can be used to generate filenames etc.
+           output goes to stdout
+
+     Examples:
+           filename="`uniqname`.dat"
+
+     Returns:
+           0 success
+
+
+-------------------------------------------------------------------------------------
+ function fn_AtomicLock
+
+     Usage: fn AtomicLock lockfile [pid]
+
+     Description:
+           creates an atomic lock
+
+     Examples:
+           fn AtomicLock ${gl_vardir}/${gl_progname}.lock $$
+           #creates lock
+           fn AtomicLock ${gl_vardir}/${gl_progname}.lock
+           #removes lock
+
+     Returns:
+           0 success
+
+
+-------------------------------------------------------------------------------------
+ function fn_CheckHeaderFooter
+
+     Usage: fn CheckHeaderFooter file header footer
+
+     Description: checks file for both header and footer
+
+     Examples:
+           fn CheckHeaderFooter ${lc_main_checkfreefilename} ${lc_main_header} ${lc_main_footer}
+
+     Returns:
+           0 true
+           1 false
+
+
+-------------------------------------------------------------------------------------
+ function fn_CheckScriptBasedir
+
+     Usage: fn CheckScriptBasedir
+
+     Description: determins gl_basedir and gl_interface based on selected criteria
+           this allows a script and support files to be moved around without editing
+
+     Examples: same as usage
+
+     Returns:
+           0 success
+
+
+-------------------------------------------------------------------------------------
+ function fn_CheckScriptProgdir
+
+     Usage: fn CheckScriptProgdir
+
+     Description: validates gl_progdir based on selected criteria
+           this allows a script and support files to be moved around without editing
+
+     Examples: same as usage
+
+     Returns:
+           0 success
+
+
+-------------------------------------------------------------------------------------
+ function fn_CompareTime
+
+     Usage: fn CompareTime [-f] {{hour|day|dayhour}[.noholiday|bankholiday]} {{format} {string}|controltime|type} {-eq|gt|lt|ge|le} {{format} {string}|testtime}
+
+     Description:
+           sets var to a formatted time
+
+     Examples:
+           fn CompareTime day.noholiday YYYYMMDD ${lc_main_ctltime} -eq YYYYMMDD ${lc_main_testtime}
+           fn CompareTime day.bankholiday yesterday.nearbusinessday -eq YYYYMMDD ${lc_main_headertime}
+
+     Returns:
+
+     Returns:
+           0 success
+
+
+-------------------------------------------------------------------------------------
+ function fn_DisplayUsage
+
+     Usage: fn DisplayUsage
+
+     Description: displays the "description" section of the current running script
+             section definitions are created using code-browser
+
+     Examples:
+           fn DisplayUsage
+
+     Returns:
+           0 success
+
+
+-------------------------------------------------------------------------------------
+ function fn_FilePathBaseExtSplit
+
+     Usage: fn FileBaseExtSplit pathvar [basevar] [extvar] file
+
+     Description:
+           splits a filename into path, base, and extion
+           a basevar
+           splits a filename into path, base, and extion
+
+     Examples:
+           fn FileBaseExtSplit lc_RotateFiles_path lc_RotateFiles_base lc_RotateFiles_ext ${lc_RotateFiles_file}
+
+     Returns:
+           0 success
+
+
+-------------------------------------------------------------------------------------
+ function fn_FileSizeClip
+
+     Usage: fn FileSizeClip file chopsize maxsize
+
+     Description:
+           clips file to specified size
+
+     Examples:
+           fn FileSizeClip ${gl_logfile} ${gl_logchopsize:-5000} ${gl_logmaxsize:-10000}
+
+     Returns:
+           0 success
+
+
+-------------------------------------------------------------------------------------
+ function fn_FormatDos2Unix
+
+     Usage: fn FormatDos2Unix {-|srcfilename} [dstfilename]
+
+     Description: reformats data from dos to unix format
+
+     Examples:
+          convert srcfile to dstfile
+           fn FormatDos2Unix ${lc_main_srcfilename} ${lc_main_dstfilename}
+          convert srcfile to stdout
+           fn FormatDos2Unix ${lc_main_srcfilename}
+          convert stdin to dstfile
+           fn FormatDos2Unix - ${lc_main_dstfilename}
+
+     Returns:
+           0 success
+          21 dst file write permission error
+          22 src file read permission error
+          44 src file does not exist
+
+
+-------------------------------------------------------------------------------------
+ function fn_FormatTime
+
+     Usage: fn FormatTime {-|var} {format} [type [time]|time]
+
+     Description:
+           sets var to a formatted time
+
+     Examples:
+           fn FormatTime - "%a MM-DD-YYYY DDD Hh:mm:ss" previous.nearbusinessday
+
+     Returns:
+
+     Returns:
+           0 success
+
+
+-------------------------------------------------------------------------------------
+ function fn_FormatUnix2Dos
+
+     Usage: fn FormatUnix2Dos {-|srcfilename} [dstfilename]
+
+     Description: reformats data from unix to dos format
+
+     Examples:
+          convert srcfile to dstfile
+           fn FormatUnix2Dos ${lc_main_srcfilename} ${lc_main_dstfilename}
+          convert srcfile to stdout
+           fn FormatUnix2Dos ${lc_main_srcfilename}
+          convert stdin to dstfile
+           fn FormatUnix2Dos - ${lc_main_dstfilename}
+
+     Returns:
+           0 success
+          21 dst file write permission error
+          22 src file read permission error
+          44 src file does not exist
+
+
+-------------------------------------------------------------------------------------
+ function fn_GetTime
+
+     Usage: fn GetTime {var|-} {time_src|format {string}}
+
+     Description: get unix epoch - seconds since 00:00:00 1970-01-01 UTC
+         
+
+     Examples:
+           fn GetTime lc_main_time now
+
+     Returns:
+           0    success
+
+
+-------------------------------------------------------------------------------------
+ function fn_GlobalUsage
+
+     Usage: fn GlobalUsage [-h]
+
+     Description:
+           dumps all usage blocks from this function library
+             -h produces html output
+
+     Examples:
+           none
+
+     Returns:
+           0 success
+
+
+-------------------------------------------------------------------------------------
+ function fn_ResolveProgdir
+
+     Usage: fn ResolveProgdir
+
+     Description: determins and sets gl_progdir with a full qualified path
+           gl_basedir and gl_interface are both derived from gl_progdir
+           this allows a script and support files to be moved around without editing
+
+     Examples: same as usage
+
+     Returns:
+           0 success
+
+
+-------------------------------------------------------------------------------------
+ function fn_SetVars
+
+     Usage: fn SetVars [-r num] [start offset] [num of vars to set] [next offset] (lc|gl)_var [(lc|gl)_var] dataset
+                -r 1-?  requires the dataset to be an exact length" 
+
+     Description: sets variables from data in a controlled mannor.  used as a read replacement
+
+     Examples:
+           "fn SetVars 1 3 11 lc_func_year lc_func_month lc_func_day lc_func_dayname `${gl_xdate} ${lc_func_dshift}`"
+              if used the first offset is required.  the second value is assumed 0 (meaning continue until there
+              are no more vars or no more data
+         there is no limit to the number of offsets used
+           "fn SetVars 1 3 11 1 8 5 2 ........."
+              starting at data_1  3 vars are set
+              jumping to  data_11 1 var is set
+              jumping to  data_8  5 vars are set
+              jumping to  data_2  the remander of the vars are set
+              if there are more vars than data excess vars will be set empty
+
+     Returns:
+           0 success
+           1 failure
+
+
+-------------------------------------------------------------------------------------
+ function fn_ShiftTime
+
+     Usage: fn ShiftTime {var|-} {shift} [type] {time}
+
+     Description:
+           shift time forward or backwards depending on type
+           shifts are in 1 day increments
+           supported types are
+             farbusinessday
+               weekends days are skipped
+               if the starting day is sat|sun, starting day is first shifted backward to fri
+             nearbusinessday
+               weekends days are skipped
+               if the starting day is sat|sun, starting day is first shifted forward to mon
+             if no type specified
+               all days are considered
+
+     Examples:
+           go back one day
+             fn ShiftTime lc_main_time -1 ${lc_main_time}
+           go back one near businessday day
+             fn ShiftTime lc_main_time -1 businessday.near ${lc_main_time}
+
+     Returns:
+           0    success
+
+
+-------------------------------------------------------------------------------------
+ function fn_VerifyDir
+
+     Usage: fn VerifyDir DIRECTORY [DIRECTORY]...
+
+     Description:
+           checks for existence of one or more directories and rw permissions
+           if a directory does not exist it will be created
+
+     Examples:
+           fn VerifyDir ${gl_tmpdir} ${gl_recvdir} ${gl_senddir} ${gl_logdir} ${gl_histdir}
+
+     Returns:
+           0  success
+           20 location exist but is not a directory
+           21 requires at least rw access
+

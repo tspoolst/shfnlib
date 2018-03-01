@@ -1,0 +1,5 @@
+#!/bin/sh
+
+echo die 2 "test message"
+(die 2 "test message")
+checkresult -t -eq 2

@@ -103,7 +103,8 @@ function asplit {
   if [[ -z "$2" ]] ; then
     eval "
       shift;shift
-      typeset _string=\"\$*\"
+      typeset _string
+      _string=\"\$*\"
       typeset _array
       while [[ \${#_string} -gt 0 ]] ; do
         _array[\${#_array[@]}]=\"\${_string%\"\${_string#?}\"}\"
@@ -121,9 +122,12 @@ function asplit {
     eval "
       shift;shift
       typeset _array _char
-      typeset _lit=false
-      typeset _index=0
-      typeset _string=\"\$*\"
+      typeset _lit
+      _lit=false
+      typeset _index
+      _index=0
+      typeset _string
+      _string=\"\$*\"
 
       while [[ \${#_string} -gt 0 ]] ; do
         _char=\"\${_string%\"\${_string#?}\"}\"
@@ -138,7 +142,8 @@ function asplit {
           continue
         fi
         _lit=false
-        typeset _entry=\"\${_entry}\${_char}\"
+        typeset _entry
+        _entry=\"\${_entry}\${_char}\"
       done
       _array[\${_index}]=\"\${_entry}\"
 
@@ -153,8 +158,10 @@ function asplit {
   else
     eval "
       shift;shift
-      typeset IFS=\"$2\"
-      typeset _string=\"\$*\"
+      typeset IFS
+      IFS=\"$2\"
+      typeset _string
+      _string=\"\$*\"
       if isnum \"$1\" ; then
         set -- \$@
         eval \"echo \\\"\\\$\$(($1 +1))\\\" \"
@@ -190,7 +197,8 @@ function ajoin {
 #[cf]
   eval "
     shift;shift
-    typeset IFS=\"$2\"
+    typeset IFS
+    IFS=\"$2\"
     if [[ \"$1\" = \"-\" ]] ; then
       echo \"\$*\"
     else

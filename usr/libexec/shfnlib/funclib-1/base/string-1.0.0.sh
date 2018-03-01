@@ -74,7 +74,8 @@ function substr {
 if [[ -n "${BASH_VERSION}" ]] ; then
   ##when with bash do the bash
   function substr {
-    eval typeset lc_substr_string=\"\${2:$3${4:+:}$4}\"
+    typeset lc_substr_string
+    eval lc_substr_string=\"\${2:$3${4:+:}$4}\"
     if [[ "$1" = "-" ]] ; then
       echo "${lc_substr_string}"
     else
@@ -123,9 +124,11 @@ function tolower {
     lc_tolower_data="$2"
   fi
   if [ -n "$BASH_VERSION" ] ; then
-    typeset lc_tolower_result=$(echo "${lc_tolower_data}" | tr A-Z a-z)
+    typeset lc_tolower_result
+    lc_tolower_result=$(echo "${lc_tolower_data}" | tr A-Z a-z)
   else
-    typeset -l lc_tolower_result="${lc_tolower_data}"
+    typeset -l lc_tolower_result
+    lc_tolower_result="${lc_tolower_data}"
   fi
   if [[ "$1" = "-" ]] ; then
     echo "${lc_tolower_result}"
@@ -157,9 +160,11 @@ function toupper {
     lc_toupper_data="$2"
   fi
   if [ -n "$BASH_VERSION" ] ; then
-    typeset lc_toupper_result=$(echo "${lc_toupper_data}" | tr a-z A-Z)
+    typeset lc_toupper_result
+    lc_toupper_result=$(echo "${lc_toupper_data}" | tr a-z A-Z)
   else
-    typeset -u lc_toupper_result="${lc_toupper_data}"
+    typeset -u lc_toupper_result
+    lc_toupper_result="${lc_toupper_data}"
   fi
   if [[ "$1" = "-" ]] ; then
     echo "${lc_toupper_result}"

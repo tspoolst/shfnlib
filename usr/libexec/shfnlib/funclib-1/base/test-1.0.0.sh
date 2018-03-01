@@ -121,7 +121,8 @@ function isnum {
   fi
 #[cf]
   #set IFS to a sane value
-  typeset IFS=' 	
+  typeset IFS
+  IFS=' 	
 '
   if [[ "$1" == ?(+|-)+([0-9]) ]] ; then
    return 0
@@ -199,7 +200,8 @@ function isuser {
     exit 1
   fi
 #[cf]
-  typeset _user="$1"
+  typeset _user
+  _user="$1"
   [[ $(set -- $(id);a=${1#*\(};echo ${a%\)}) = "${_user}" ]]
 }
 #[cf]

@@ -1,7 +1,8 @@
 #!/bin/sh
 function msgdbg {
 #[c]level message
-  typeset lc_msgdbg_return=$?
+  typeset lc_msgdbg_return
+  lc_msgdbg_return=$?
   typeset lc_msgdbg_level lc_msgdbg_message
   lc_msgdbg_level="$1"
   lc_msgdbg_message="$2"

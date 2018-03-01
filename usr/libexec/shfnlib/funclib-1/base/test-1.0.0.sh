@@ -205,3 +205,4 @@ function isuser {
   [[ $(set -- $(id);a=${1#*\(};echo ${a%\)}) = "${_user}" ]]
 }
 #[cf]
+# vim:number:tabstop=2:shiftwidth=2:autoindent:foldmethod=marker:foldlevel=0:foldmarker=#[of]\:,#[cf]

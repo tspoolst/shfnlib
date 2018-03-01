@@ -130,3 +130,4 @@ function fn_GetTime {
   unset lc_GetTime_monthnames lc_GetTime_string
   unset lc_GetTime_position lc_GetTime_year lc_GetTime_dayofyear lc_GetTime_month lc_GetTime_monthname lc_GetTime_day lc_GetTime_hour lc_GetTime_min lc_GetTime_sec lc_GetTime_ampm
 }
+# vim:number:tabstop=2:shiftwidth=2:autoindent:foldmethod=marker:foldlevel=0:foldmarker=#[of]\:,#[cf]

@@ -72,3 +72,4 @@ fn_VerifyDir=". \"${gl_funcdir}/funclib-1/main/fn_VerifyDir-1.0.0.sh\""
 #[cf]
 #[of]:compat
 #[cf]
+# vim:number:tabstop=2:shiftwidth=2:autoindent:foldmethod=marker:foldlevel=0:foldmarker=#[of]\:,#[cf]

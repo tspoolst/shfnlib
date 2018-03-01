@@ -6,3 +6,4 @@ gl_pathprogname="${gl_funcdir}/funclib-1/main/fn_DisplayUsage-1.test"
 ###########################################################################################################
 #[cf]
 checkresult -v 'some test text '${gl_progname}' and some "quoted text" for testing' "$(fn DisplayUsage)"
+# vim:number:tabstop=2:shiftwidth=2:autoindent:foldmethod=marker:foldlevel=0:foldmarker=#[of]\:,#[cf]

@@ -38,3 +38,4 @@ function fn_VerifyDir {
   unset lc_VerifyDir_dir
   return 0
 }
+# vim:number:tabstop=2:shiftwidth=2:autoindent:foldmethod=marker:foldlevel=0:foldmarker=#[of]\:,#[cf]

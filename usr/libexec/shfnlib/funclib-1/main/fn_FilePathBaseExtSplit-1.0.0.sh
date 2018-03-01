@@ -30,3 +30,4 @@ function fn_FilePathBaseExtSplit {
   msgdbg 3 "${lc_FilePathBaseExtSplit_file} ${lc_FilePathBaseExtSplit_base} ${lc_FilePathBaseExtSplit_ext}"
   return 0
 }
+# vim:number:tabstop=2:shiftwidth=2:autoindent:foldmethod=marker:foldlevel=0:foldmarker=#[of]\:,#[cf]

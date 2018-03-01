@@ -429,3 +429,4 @@ for _libver in functions-{,dev-}[1-9]*.sh ; do
 done
 #[cf]
 exit 0
+# vim:number:tabstop=2:shiftwidth=2:autoindent:foldmethod=marker:foldlevel=0:foldmarker=#[of]\:,#[cf]

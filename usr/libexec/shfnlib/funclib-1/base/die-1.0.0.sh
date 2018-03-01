@@ -23,3 +23,4 @@ function die {
   msgdbg 0 "${lc_die_message:-no reason was given}"
   exit ${lc_die_return:-1}
 }
+# vim:number:tabstop=2:shiftwidth=2:autoindent:foldmethod=marker:foldlevel=0:foldmarker=#[of]\:,#[cf]

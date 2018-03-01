@@ -41,3 +41,4 @@ function fn_DisplayUsage {
     )
   return 0
 }
+# vim:number:tabstop=2:shiftwidth=2:autoindent:foldmethod=marker:foldlevel=0:foldmarker=#[of]\:,#[cf]

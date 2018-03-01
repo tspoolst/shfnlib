@@ -85,3 +85,4 @@ function fn_FormatTime {
   unset lc_FormatTime_type lc_FormatTime_time
   return 0  
 }
+# vim:number:tabstop=2:shiftwidth=2:autoindent:foldmethod=marker:foldlevel=0:foldmarker=#[of]\:,#[cf]

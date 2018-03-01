@@ -216,3 +216,4 @@ fi
 echo "$gl_outyear $gl_outmonth $gl_outday $gl_outtday $gl_outwday $gl_inhour $gl_inmin $gl_insec $((gl_inhour * 60 * 60 + gl_inmin * 60 + gl_insec)) ${gl_monthname[$((gl_outmonth - 1))]} ${gl_dayname[gl_outwday]}"
 
 #[cf]
+# vim:number:tabstop=2:shiftwidth=2:autoindent:foldmethod=marker:foldlevel=0:foldmarker=#[of]\:,#[cf]

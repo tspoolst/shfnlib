@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 function fn_CheckScriptProgdir {
 #[of]:  usage
   if false ; then

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
   #WARNING be sure your editor deos not break this WARNING
   #set IFS to a sane value
@@ -12,6 +12,13 @@
   gl_progargs="$@"
 
 #[of]:  parse command line
+#[c]
+#[c]write code to validate switches "a b c= name= on off".  if switch is not valid then die.
+#[c]if in bash we can use a hash, else how else to do this check?
+#[c]
+#[c]this should be moved to base, because there may be many times the command line parsing
+#[c]  code isn't wanted or just gets in the way.
+#[c]
 ##process command line into gl_progargs format.  the actual command line is not touched unless a -- is encountered.
 ##
 ##sample command line

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 function fn_CheckHeaderFooter {
 #[of]:  usage
   if [ -z "$3" ] ; then

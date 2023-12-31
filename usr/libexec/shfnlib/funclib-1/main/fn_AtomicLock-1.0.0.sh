@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 function fn_AtomicLock {
 #[of]:  usage
   if [[ -z "$1" ]] ; then
@@ -6,6 +6,8 @@ function fn_AtomicLock {
     echo "Error: none"
     echo "Description:"
     echo "  creates an atomic lock"
+    echo "  causes current process to wait until previous processes in the lock list finish"
+    echo "  the lock list file is checked every 5 seconds and deleted when last lock pid is removed"
     echo "Examples:"
     echo '  fn AtomicLock ${gl_vardir}/${gl_progname}.lock $$'
     echo '  #creates lock'
@@ -27,11 +29,11 @@ function fn_AtomicLock {
     echo "${lc_AtomicLock_progpid}" >> ${lc_AtomicLock_filename}
     while true
     do
-      if ! ps -p "$(head -1 ${lc_AtomicLock_filename} 2>/dev/null)" >/dev/null 2>&1 ; then
-        rm -f ${lc_AtomicLock_filename} 2>/dev/null
-      fi
-      if [[ ! -f ${lc_AtomicLock_filename} ]]
-      then
+      if [[ -s ${lc_AtomicLock_filename} ]] ; then
+        if ! ps -p "$(head -1 ${lc_AtomicLock_filename} 2>/dev/null)" >/dev/null 2>&1 ; then
+          rm -f ${lc_AtomicLock_filename} 2>/dev/null
+        fi
+      else
         echo "${lc_AtomicLock_progpid}" >> ${lc_AtomicLock_filename}
       fi
       if [[ "$(head -1 ${lc_AtomicLock_filename} 2>/dev/null)" = "${lc_AtomicLock_progpid}" ]] ; then

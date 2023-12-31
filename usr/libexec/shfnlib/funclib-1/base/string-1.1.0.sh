@@ -30,7 +30,7 @@ function instring {
   lc_instring_index=0
   if [[ -n "${lc_instring_pattern}" ]] ; then
     while [[ ${lc_instring_index} -lt ${lc_instring_searchlength} ]] ; do
-      if [[ "${lc_instring_string}" != "${lc_instring_string#@(${lc_instring_pattern})}" ]] ; then
+      if eval "[[ \"\${lc_instring_string}\" != \"\${lc_instring_string#@(${lc_instring_pattern})}\" ]]" ; then
         lc_instring_result=${lc_instring_index}
         lc_instring_return=0
         break
@@ -56,7 +56,7 @@ function instring {
 function substr {
 #[of]:  usage
   if false ; then
-    echo 'Usage: substr {var|-} "{string}" {index} [length]'
+    echo 'Usage: substr {-|var} "{string}" {index} [length]'
     echo "Error: must have at least 4 args"
     echo "Description:"
     echo "  returns, via stdout, a substring of the given string"
@@ -105,7 +105,7 @@ fi
 function tolower {
 #[of]:  usage
   if [ -z "$1" ] ; then
-    echo "Usage: tolower {var|-} [string]"
+    echo "Usage: tolower {-|var} [string]"
     echo "Error: must have at least 1 argument"
     echo "Description: transforms a variable to lower case"
     echo "Examples:"
@@ -139,7 +139,7 @@ function tolower {
 function toupper {
 #[of]:  usage
   if [ -z "$1" ] ; then
-    echo "Usage: toupper {var|-} [string]"
+    echo "Usage: toupper {-|var} [string]"
     echo "Error: must have at least 1 argument"
     echo "Description: transforms a variable to lower case"
     echo "Examples:"
@@ -211,3 +211,61 @@ function cleancat {
   fi
 }
 #[cf]
+#[of]:function urldecode {
+function urldecode {
+#[of]:  usage
+  if false ; then
+    echo 'Usage: urldecode [-|var] "{string}"'
+    echo "Error: none"
+    echo "Description:"
+    echo "  returns string decoded from url hex"
+    echo "Examples:"
+    echo "Returns:"
+    echo "  0 success"
+    exit 1
+  fi
+#[cf]
+  typeset lc_urldecode_string
+  lc_urldecode_string="${2:-$1}"
+  lc_urldecode_string="${lc_urldecode_string//+/ }"
+  if [[ $# -eq 1 ]] ; then
+    echo -e "${lc_urldecode_string//%/\\x}"
+  else
+    eval "$1=\"\$(echo -e \"\${lc_urldecode_string//%/\\\\x}\")\""
+  fi
+}
+#[cf]
+#[of]:function urlencode {
+function urlencode {
+  #would like to figure out how to do this without "xxd"
+#[of]:  usage
+  if ! which xxd >/dev/null ; then
+    echo 'Usage: urlencode [-|var] "{string}"'
+    echo 'Error: "xxd" must be installed to use this function'
+    echo "Description:"
+    echo "  returns url utf8 encoded hex string"
+    echo "Examples:"
+    echo "Returns:"
+    echo "  0 success"
+    exit 1
+  fi
+#[cf]
+  typeset lc_urlencode_string lc_urlencode_chr lc_urlencode_utf
+  lc_urlencode_string="${2:-$1}"
+  lc_urlencode_string=$(
+    echo -n "${lc_urlencode_string}" | while read -rN 1 lc_urlencode_chr ; do
+      echo -n "${lc_urlencode_chr}" | xxd -u -p | (while read -rN 2 lc_urlencode_utf;do
+        [[ -n "${lc_urlencode_utf}" ]] && echo -n "%${lc_urlencode_utf}"
+      done)
+    done
+    echo
+  )
+  if [[ $# -eq 1 ]] ; then
+    echo -e "${lc_urlencode_string}"
+  else
+    eval "$1=\"\${lc_urlencode_string}\""
+  fi
+}
+#[cf]
+
+

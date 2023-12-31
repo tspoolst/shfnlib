@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 function argexist {
 #[of]:  usage
   if [[ -z "$1" ]] ; then

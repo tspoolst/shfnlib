@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 function fn_ResolveProgdir {
 #[of]:  usage
   if false ; then

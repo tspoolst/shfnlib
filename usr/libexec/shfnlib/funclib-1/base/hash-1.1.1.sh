@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 ##a colloction of hash handling tools
 #[of]:function hashkeys {
 function hashkeys {

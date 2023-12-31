@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 function msgdbg {
 #[c]level message
   typeset lc_msgdbg_return=$?

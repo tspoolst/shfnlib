@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 gl_pathprogname="${gl_funcdir}/funclib-1/main/fn_DisplayUsage-1.test"
 #[of]:description
 #############################################################################################################

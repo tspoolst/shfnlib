@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 echo aset a= b g d e f a c
 aset a b g d e f a c

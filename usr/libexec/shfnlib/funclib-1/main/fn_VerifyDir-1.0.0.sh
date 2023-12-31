@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 function fn_VerifyDir {
 #[of]:usage
   if [ -z "$1" ] ; then

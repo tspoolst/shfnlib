@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 gl_funcver=1
 gl_funcbranch=prod
@@ -23,8 +23,8 @@ gl_funcbranch=prod
 #[l]:hash:funclib-1/base/hash-1.1.2.sh
 . "${gl_funcdir}/funclib-1/base/msgdbg-1.0.0.sh"
 #[l]:msgdbg:funclib-1/base/msgdbg-1.0.0.sh
-. "${gl_funcdir}/funclib-1/base/string-1.0.0.sh"
-#[l]:string:funclib-1/base/string-1.0.0.sh
+. "${gl_funcdir}/funclib-1/base/string-1.1.0.sh"
+#[l]:string:funclib-1/base/string-1.1.0.sh
 . "${gl_funcdir}/funclib-1/base/test-1.0.0.sh"
 #[l]:test:funclib-1/base/test-1.0.0.sh
 . "${gl_funcdir}/funclib-1/base/uniqname-1.0.0.sh"
@@ -72,3 +72,4 @@ fn_VerifyDir=". \"${gl_funcdir}/funclib-1/main/fn_VerifyDir-1.0.0.sh\""
 #[cf]
 #[of]:compat
 #[cf]
+# vim:number:tabstop=2:shiftwidth=2:autoindent:foldmethod=marker:foldlevel=0:foldmarker=#[of]\:,#[cf]

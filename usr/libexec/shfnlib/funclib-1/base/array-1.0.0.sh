@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 ##a colloction of array handling tools
 #[of]:function aset {
 function aset {
@@ -176,7 +176,7 @@ function asplit {
 function ajoin {
 #[of]:  usage
   if [[ $# -lt 2 ]] ; then
-    echo "Usage: ajoin {var} {delimiter} [val val val ...]"
+    echo "Usage: ajoin {-|var} {delimiter} [val val val ...]"
     echo "Error: must have at least 2 args"
     echo "Description:"
     echo "  joins a list into a single string"

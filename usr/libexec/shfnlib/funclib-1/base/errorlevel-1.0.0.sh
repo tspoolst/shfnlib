@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 function errorlevel {
 #[of]:  usage
   if false ; then

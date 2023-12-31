@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/ksh
 #[of]:header
 
 gl_logfile=${0%/*}/functions-devtest-1.log
@@ -546,7 +546,7 @@ echo ""
 #[c]
 #[c]
 #[c]
-#[l]:code string-1.0.0.sh:funclib-1/base/string-1.0.0.sh
+#[l]:code string-1.1.0.sh:funclib-1/base/string-1.1.0.sh
 _deathmessage="string-1 expected result did not match"
 #[l]:test string-1:funclib-1/base/string-1.test
 echo "-----------------------------------------------"

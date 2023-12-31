@@ -1,4 +1,14 @@
-#!/bin/sh
+#!/bin/bash
+
+#[of]:comments
+#[c]add a build option to merge all modules, including user modules into a single monolithic include file.
+#[c]    have to figure a way to deal with external calling functions like uniqname and xdate
+#[c]  add option to directly insert/remove the lib into/from a target script.
+#[c]create a function that can scan a script for functions used
+#[c]  use that as input for the mono include file builder
+#[c]figure out how to dynamically load base functions as well.
+#[c]  needs to be a lighter function than fn
+#[cf]
 
 if ! { echo "${PATH}" | grep -q gnu ; } ; then
   gl_kernelver=$(uname -s | tr A-Z a-z);gl_kernelver="${gl_kernelver%%-*}"
@@ -38,7 +48,7 @@ for _dir in funclib-+([0-9]) ; do
 #[of]:  write runtime headers
 for _section in "" "dev" ; do
   {
-    echo '#!/bin/sh'
+    echo '#!/bin/bash'
     echo ""
     echo "gl_funcver=${_libver}"
     echo "gl_funcbranch=${_section:-prod}"
@@ -290,12 +300,7 @@ echo "#[cf]"
         {
           echo "#[of]:${_package[0]}-${_package[6]}"
           echo "#[c]"
-          echo "#[c]"
-          echo "#[c]"
-          echo "#[c]  you are seeing this, because no test have been built for this function"
-          echo "#[c]"
-          echo "#[c]"
-          echo "#[c]"
+          echo "#[c]  if the test link is blank, no tests have been built for this function"
           echo "#[c]"
           echo "#[l]:code $(filename - ${_package[5]}):${_package[5]}"
           echo "_deathmessage=\"${_package[0]}-${_package[6]} expected result did not match\""
@@ -401,6 +406,8 @@ echo "#[cf]"
     } >> "functions-dev-${_libver}.sh"
 #[cf]
   done
+  echo '# vim:number:tabstop=2:shiftwidth=2:autoindent:foldmethod=marker:foldlevel=0:foldmarker=#[of]\:,#[cf]' | \
+    tee -a "functions-${_libver}.sh" >> "functions-dev-${_libver}.sh"
 #[cf]
 #[of]:  remove unneeded index files
   ##if this version is the same as the old version remove it
@@ -429,3 +436,4 @@ for _libver in functions-{,dev-}[1-9]*.sh ; do
 done
 #[cf]
 exit 0
+# vim:number:tabstop=2:shiftwidth=2:autoindent:foldmethod=marker:foldlevel=0:foldmarker=#[of]\:,#[cf]

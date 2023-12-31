@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 function fn_CheckScriptBasedir {
 #[of]:  usage
   if false ; then

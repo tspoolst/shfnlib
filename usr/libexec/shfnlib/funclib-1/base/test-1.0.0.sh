@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 ##if using bash insure extglob is on
 [[ -n "$BASH_VERSION" ]] && shopt -s extglob
@@ -6,7 +6,7 @@
 #[of]:function isdir {
 function isdir {
 #[of]:  usage
-  if [ -z "$1" ] ; then
+  if [[ -z "$1" ]] ; then
     echo "Usage: isdir dirname"
     echo "Error: must have at least 1 argument"
     echo "Description: a simplified way of testing if something is a directory."
@@ -24,14 +24,41 @@ function isdir {
     exit 1
   fi
 #[cf]
-  [ -d "$1" ] && return 0
+  [[ -d "$1" ]] && return 0
   return 1
+}
+#[cf]
+#[of]:function isdirempty {
+function isdirempty {
+#[of]:  usage
+  if [[ -z "$1" ]] ; then
+    echo "Usage: isdiremput dirname"
+    echo "Error: must have at least 1 argument"
+    echo "Description: check if a directory is empty."
+    echo "Examples:"
+    echo '  "if isdirempty /home ; then'
+    echo '    echo dir is empty'
+    echo '  else'
+    echo '    echo dir containes files'
+    echo '  fi"'
+    echo '  statement may also be negated'
+    echo '    "if ! isdirempty /home ; then"'
+    echo "Returns:"
+    echo "  0 true"
+    echo "  1 false"
+    exit 1
+  fi
+#[cf]
+  ## if target is not a dir just return false
+  [[ -d "$1" ]] || return 1
+  
+  ls -a "$1" | grep -q -v -e '^\.$' -e '^\..$' && return 1 || return 0
 }
 #[cf]
 #[of]:function isfile {
 function isfile {
 #[of]:  usage
-  if [ -z "$1" ] ; then
+  if [[ -z "$1" ]] ; then
     echo "Usage: isfile filename"
     echo "Error: must have at least 1 argument"
     echo "Description: a simplified way of testing if something is a file."
@@ -49,7 +76,7 @@ function isfile {
     exit 1
   fi
 #[cf]
-  [ -f "$1" ] && return 0
+  [[ -f "$1" ]] && return 0
   return 1
 }
 #[cf]
@@ -156,7 +183,7 @@ function isset {
 #[of]:function istextfile {
 function istextfile {
 #[of]:  usage
-  if [ -z "$1" ] ; then
+  if [[ -z "$1" ]] ; then
     echo "Usage: istextfile filename"
     echo "Error: must have at least 1 argument"
     echo "Description: checks if filename is a textfile"
@@ -174,14 +201,14 @@ function istextfile {
     exit 1
   fi
 #[cf]
-  [ `file "$1" | grep -c -e script -e ascii -e text 2>/dev/null` -gt 0 ] && return 0
+  [[ `file "$1" | grep -c -e script -e ascii -e text 2>/dev/null` -gt 0 ]] && return 0
   return 1
 }
 #[cf]
 #[of]:function isuser {
 function isuser {
 #[of]:  usage
-  if [ -z "$1" ] ; then
+  if [[ -z "$1" ]] ; then
     echo "Usage: isuser {user}"
     echo "Error: must have at least 1 argument"
     echo "Description: checks if the current user matches user"

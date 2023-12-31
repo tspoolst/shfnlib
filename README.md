@@ -22,5 +22,11 @@ http://scriptvoodoo.org/Projectsshfnlib.html
 * this library was build before bash 4.0.0, before bash supported hashes
 * bash still doesn't support multidimensional hashes, this library does.
 
-## todo
+## other random notes:
+* AIX ksh88 and mksh
+*   do NOT handle "while read" loops the same.  mksh forces a subshell.
+*   do NOT handle variable to glob expansion the same.  it doesn't work in mksh.
+
+## todo:
 * update lib to take advantage of new bash 4 features.
+* adapt this to detect and work this dash??? perhaps write a parser/converter?

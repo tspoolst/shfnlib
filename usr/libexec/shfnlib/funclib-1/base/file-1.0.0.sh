@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 ##if using bash insure extglob is on
 [[ -n "$BASH_VERSION" ]] && shopt -s extglob
@@ -113,7 +113,7 @@ function filepath {
   fi
 #[of]:  usage
   if [ -z "$2" ] ; then
-    echo "Usage: filepath [-r] {var|-} file"
+    echo "Usage: filepath [-r] {-|var} file"
     echo "Error: must have at least 2 arguments"
     echo "Description:"
     echo "  return the filepath only"
@@ -152,7 +152,7 @@ function filepath {
 function filename {
 #[of]:  usage
   if [ -z "$2" ] ; then
-    echo "Usage: filename {var|-} file"
+    echo "Usage: filename {-|var} file"
     echo "Error: must have at least 2 arguments"
     echo "Description:"
     echo "  return a filename without the path"
@@ -175,7 +175,7 @@ function filename {
 function filebase {
 #[of]:  usage
   if [ -z "$2" ] ; then
-    echo "Usage: filebase {var|-} file"
+    echo "Usage: filebase {-|var} file"
     echo "Error: must have at least 2 arguments"
     echo "Description:"
     echo "  returns only the base of a filename"
@@ -218,7 +218,7 @@ function filebase {
 function fileext {
 #[of]:  usage
   if [ -z "$2" ] ; then
-    echo "Usage: fileext {var|-} file"
+    echo "Usage: fileext {-|var} file"
     echo "Error: must have at least 2 arguments"
     echo "Description:"
     echo "  returns only the extention of a filename"

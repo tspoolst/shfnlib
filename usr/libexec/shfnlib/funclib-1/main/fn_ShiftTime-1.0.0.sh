@@ -1,8 +1,8 @@
-#!/bin/sh
+#!/bin/bash
 function fn_ShiftTime {
 #[of]:  usage
   if [[ -z "$3" ]] ; then
-    echo "Usage: fn ShiftTime {var|-} {shift} [type] {time}"
+    echo "Usage: fn ShiftTime {-|var} {shift} [type] {time}"
     echo "Error: must have at least 3 arguments"
     echo "Description:"
     echo "  shift time forward or backwards depending on type"

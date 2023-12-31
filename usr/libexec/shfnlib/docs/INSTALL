@@ -1,8 +1,19 @@
 Basic Installation
 ==================
 
-you must be the root user.
-run the "install" script.  with some luck it will work.
+copy the shfnlib dir to /usr/libexec
+and simply include the library in your script.
 
-if the install fails:
-  email me the error and/or the fix.
+#[l]:functions-1.sh:/usr/libexec/shfnlib/functions-1.sh
+. /usr/libexec/shfnlib/functions-1.sh
+
+or
+place the shfnlib dir wherever you want and set gl_funcdir to that location
+gl_funcdir="/home/username/shfnlib"
+
+#[l]:functions-1.sh:/home/username/shfnlib/functions-1.sh
+. ${gl_funcdir}/functions-1.sh
+
+
+the "base" script functions can be copied directly into your scripts,
+  just be careful as some of these have cross dependencies.

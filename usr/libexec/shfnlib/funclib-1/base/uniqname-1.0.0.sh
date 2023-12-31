@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 function uniqname {
 #[of]:  usage
   if false ; then

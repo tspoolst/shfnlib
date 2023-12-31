@@ -1,9 +1,12 @@
-#!/bin/sh
+#!/bin/bash
 
 echo 'instring {var|-} "{string}" {pattern}'
 echo instring _result aaarraaaa rr
 instring _result aaarraaaa rr
 checkresult -v "3" "${_result}"
+echo instring _result aabbccddee "dd|bb"
+instring _result aabbccddee "bb|dd"
+checkresult -v "2" "${_result}"
 echo 'instring _result "" rr'
 instring _result "" rr
 checkresult -t -eq 1
@@ -32,6 +35,15 @@ echo toupper _result AbC
 toupper _result AbC
 checkresult -v "ABC" "${_result}"
 
-echo ascii2hex _result abc
-ascii2hex _result abc
-checkresult -v "616263" "${_result}"
+echo ascii2hex _result abcM
+ascii2hex _result abcM
+checkresult -v "6162634D" "${_result}"
+
+echo urldecode _result "%E3%81%9D%E3%82%8C%E3%81%AF%2C%31%E7%95%AA%E7%9B%AE%E3%80%81%32%E7%95%AA%E7%9B%AE%E3%80%81%33%E7%95%AA%E7%9B%AE"
+urldecode _result "%E3%81%9D%E3%82%8C%E3%81%AF%2C%31%E7%95%AA%E7%9B%AE%E3%80%81%32%E7%95%AA%E7%9B%AE%E3%80%81%33%E7%95%AA%E7%9B%AE"
+checkresult -v "それは,1番目、2番目、3番目" "${_result}"
+
+echo urlencode _result "それは,1番目、2番目、3番目"
+urlencode _result "それは,1番目、2番目、3番目"
+checkresult -v "%E3%81%9D%E3%82%8C%E3%81%AF%2C%31%E7%95%AA%E7%9B%AE%E3%80%81%32%E7%95%AA%E7%9B%AE%E3%80%81%33%E7%95%AA%E7%9B%AE" "${_result}"
+

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 function fn_GlobalUsage {
 #[of]:  usage
   if false ; then

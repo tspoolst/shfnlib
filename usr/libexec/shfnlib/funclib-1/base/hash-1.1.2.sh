@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 ##a colloction of hash handling tools
 #[of]:function hashkeys {
 function hashkeys {
@@ -179,13 +179,11 @@ else
       lc_hashdel_hash="${lc_hashdel_hash}_${lc_hashdel_key}"
       shift
     done
-    set | grep \
-      -e "^${lc_hashdel_hash}_" | \
-      while read lc_hashdel_hash ; do
-        eval "
-          unset ${lc_hashdel_hash%%=*}
-        "
-      done
+    for lc_hashdel_hash in $(set | grep -e "^${lc_hashdel_hash}_") ; do
+      eval "
+        unset ${lc_hashdel_hash%%=*}
+      "
+    done
     unset lc_hashdel_key
     return 0
   }

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 function fn_CompareTime {
 #[of]:  usage
   if [[ -z "$2" ]] ; then

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 gl_debuglevel=2
 
@@ -101,7 +101,7 @@ hashsave -r mhash "${_file}"
 checkresult -t
 
 echo
-echo del
+echo hashdel
 hashdel mhash
 checkresult -v "0" "$(hashgetsize - mhash)"
 

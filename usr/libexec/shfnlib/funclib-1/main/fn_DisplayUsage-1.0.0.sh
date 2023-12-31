@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 function fn_DisplayUsage {
 #[of]:  usage
   if false ; then

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 function fn_FormatDos2Unix {
 #[of]:  setup vars
   typeset lc_FormatDos2Unix_reverse lc_FormatDos2Unix_append

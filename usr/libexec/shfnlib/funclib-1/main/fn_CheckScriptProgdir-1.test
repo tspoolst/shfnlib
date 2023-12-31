@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 echo fn CheckScriptProgdir /bin
 gl_progdir=/bin

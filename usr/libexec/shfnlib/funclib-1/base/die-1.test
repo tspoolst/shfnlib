@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 echo die 2 "test message"
 (die 2 "test message")

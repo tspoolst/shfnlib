@@ -1,7 +1,39 @@
-#!/bin/sh
+#!/bin/bash
 
 #[c]spawn 2 processes
 #[c]the first sleeps for 2 seconds
 #[c]  each process writes it's id into a file
 #[c]when the lock is removed the file must match crc check
 
+typeset lc_lockfile="atomic-lock-test.lock"
+echo '#!/bin/bash
+. /usr/libexec/shfnlib/functions-1.sh
+
+fn AtomicLock '${lc_lockfile}' $$
+sleep 2
+fn AtomicLock '${lc_lockfile}'
+echo
+echo "atomic lock process 1 has finished"
+' > atomic-lock-t1.sh
+chmod 755 atomic-lock-t1.sh
+
+./atomic-lock-t1.sh &
+sleep 1
+[[ ! -s ${lc_lockfile} ]] && {
+  echo "lock file \"${lc_lockfile}\" did not get created"
+  return 1
+}
+grep "^$!$" ${lc_lockfile} >/dev/null 2>&1 && echo "first process pid found" || return 1
+cat ${lc_lockfile};echo
+fn AtomicLock ${lc_lockfile} $$
+grep "^$!$" ${lc_lockfile} >/dev/null 2>&1 && echo "first process pid found" && return 1
+grep "^$$$" ${lc_lockfile} >/dev/null 2>&1 && echo "second process pid found" || return 1
+cat ${lc_lockfile};echo
+fn AtomicLock ${lc_lockfile}
+[[ -e ${lc_lockfile} ]] && {
+  echo "lock file \"${lc_lockfile}\" delete failed"
+  return 1
+}
+echo
+echo "atomic lock process 2 has finished"
+rm -f atomic-lock-t1.sh

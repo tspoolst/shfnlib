@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/ksh
 #[of]:header
 
 gl_logfile=${0%/*}/functions-test-1.log
@@ -195,12 +195,7 @@ function checkresult {
 #[cf]
 #[of]:argexist-1
 #[c]
-#[c]
-#[c]
-#[c]  you are seeing this, because no test have been built for this function
-#[c]
-#[c]
-#[c]
+#[c]  if the test link is blank, no tests have been built for this function
 #[c]
 #[l]:code argexist-1.0.0.sh:funclib-1/base/argexist-1.0.0.sh
 _deathmessage="argexist-1 expected result did not match"
@@ -224,12 +219,7 @@ echo ""
 #[cf]
 #[of]:array-1
 #[c]
-#[c]
-#[c]
-#[c]  you are seeing this, because no test have been built for this function
-#[c]
-#[c]
-#[c]
+#[c]  if the test link is blank, no tests have been built for this function
 #[c]
 #[l]:code array-1.0.0.sh:funclib-1/base/array-1.0.0.sh
 _deathmessage="array-1 expected result did not match"
@@ -253,12 +243,7 @@ echo ""
 #[cf]
 #[of]:die-1
 #[c]
-#[c]
-#[c]
-#[c]  you are seeing this, because no test have been built for this function
-#[c]
-#[c]
-#[c]
+#[c]  if the test link is blank, no tests have been built for this function
 #[c]
 #[l]:code die-1.0.0.sh:funclib-1/base/die-1.0.0.sh
 _deathmessage="die-1 expected result did not match"
@@ -282,12 +267,7 @@ echo ""
 #[cf]
 #[of]:errorlevel-1
 #[c]
-#[c]
-#[c]
-#[c]  you are seeing this, because no test have been built for this function
-#[c]
-#[c]
-#[c]
+#[c]  if the test link is blank, no tests have been built for this function
 #[c]
 #[l]:code errorlevel-1.0.0.sh:funclib-1/base/errorlevel-1.0.0.sh
 _deathmessage="errorlevel-1 expected result did not match"
@@ -311,12 +291,7 @@ echo ""
 #[cf]
 #[of]:file-1
 #[c]
-#[c]
-#[c]
-#[c]  you are seeing this, because no test have been built for this function
-#[c]
-#[c]
-#[c]
+#[c]  if the test link is blank, no tests have been built for this function
 #[c]
 #[l]:code file-1.0.0.sh:funclib-1/base/file-1.0.0.sh
 _deathmessage="file-1 expected result did not match"
@@ -340,12 +315,7 @@ echo ""
 #[cf]
 #[of]:fn-1
 #[c]
-#[c]
-#[c]
-#[c]  you are seeing this, because no test have been built for this function
-#[c]
-#[c]
-#[c]
+#[c]  if the test link is blank, no tests have been built for this function
 #[c]
 #[l]:code fn-1.0.0.sh:funclib-1/base/fn-1.0.0.sh
 _deathmessage="fn-1 expected result did not match"
@@ -369,12 +339,7 @@ echo ""
 #[cf]
 #[of]:hash-1
 #[c]
-#[c]
-#[c]
-#[c]  you are seeing this, because no test have been built for this function
-#[c]
-#[c]
-#[c]
+#[c]  if the test link is blank, no tests have been built for this function
 #[c]
 #[l]:code hash-1.1.2.sh:funclib-1/base/hash-1.1.2.sh
 _deathmessage="hash-1 expected result did not match"
@@ -398,12 +363,7 @@ echo ""
 #[cf]
 #[of]:msgdbg-1
 #[c]
-#[c]
-#[c]
-#[c]  you are seeing this, because no test have been built for this function
-#[c]
-#[c]
-#[c]
+#[c]  if the test link is blank, no tests have been built for this function
 #[c]
 #[l]:code msgdbg-1.0.0.sh:funclib-1/base/msgdbg-1.0.0.sh
 _deathmessage="msgdbg-1 expected result did not match"
@@ -427,14 +387,9 @@ echo ""
 #[cf]
 #[of]:string-1
 #[c]
+#[c]  if the test link is blank, no tests have been built for this function
 #[c]
-#[c]
-#[c]  you are seeing this, because no test have been built for this function
-#[c]
-#[c]
-#[c]
-#[c]
-#[l]:code string-1.0.0.sh:funclib-1/base/string-1.0.0.sh
+#[l]:code string-1.1.0.sh:funclib-1/base/string-1.1.0.sh
 _deathmessage="string-1 expected result did not match"
 #[l]:test string-1:funclib-1/base/string-1.test
 echo "-----------------------------------------------"
@@ -456,12 +411,7 @@ echo ""
 #[cf]
 #[of]:test-1
 #[c]
-#[c]
-#[c]
-#[c]  you are seeing this, because no test have been built for this function
-#[c]
-#[c]
-#[c]
+#[c]  if the test link is blank, no tests have been built for this function
 #[c]
 #[l]:code test-1.0.0.sh:funclib-1/base/test-1.0.0.sh
 _deathmessage="test-1 expected result did not match"
@@ -485,12 +435,7 @@ echo ""
 #[cf]
 #[of]:uniqname-1
 #[c]
-#[c]
-#[c]
-#[c]  you are seeing this, because no test have been built for this function
-#[c]
-#[c]
-#[c]
+#[c]  if the test link is blank, no tests have been built for this function
 #[c]
 #[l]:code uniqname-1.0.0.sh:funclib-1/base/uniqname-1.0.0.sh
 _deathmessage="uniqname-1 expected result did not match"
@@ -514,12 +459,7 @@ echo ""
 #[cf]
 #[of]:fn_AtomicLock-1
 #[c]
-#[c]
-#[c]
-#[c]  you are seeing this, because no test have been built for this function
-#[c]
-#[c]
-#[c]
+#[c]  if the test link is blank, no tests have been built for this function
 #[c]
 #[l]:code fn_AtomicLock-1.0.0.sh:funclib-1/main/fn_AtomicLock-1.0.0.sh
 _deathmessage="fn_AtomicLock-1 expected result did not match"
@@ -543,12 +483,7 @@ echo ""
 #[cf]
 #[of]:fn_CheckHeaderFooter-1
 #[c]
-#[c]
-#[c]
-#[c]  you are seeing this, because no test have been built for this function
-#[c]
-#[c]
-#[c]
+#[c]  if the test link is blank, no tests have been built for this function
 #[c]
 #[l]:code fn_CheckHeaderFooter-1.0.0.sh:funclib-1/main/fn_CheckHeaderFooter-1.0.0.sh
 _deathmessage="fn_CheckHeaderFooter-1 expected result did not match"
@@ -572,12 +507,7 @@ echo ""
 #[cf]
 #[of]:fn_CheckScriptBasedir-1
 #[c]
-#[c]
-#[c]
-#[c]  you are seeing this, because no test have been built for this function
-#[c]
-#[c]
-#[c]
+#[c]  if the test link is blank, no tests have been built for this function
 #[c]
 #[l]:code fn_CheckScriptBasedir-1.0.0.sh:funclib-1/main/fn_CheckScriptBasedir-1.0.0.sh
 _deathmessage="fn_CheckScriptBasedir-1 expected result did not match"
@@ -601,12 +531,7 @@ echo ""
 #[cf]
 #[of]:fn_CheckScriptProgdir-1
 #[c]
-#[c]
-#[c]
-#[c]  you are seeing this, because no test have been built for this function
-#[c]
-#[c]
-#[c]
+#[c]  if the test link is blank, no tests have been built for this function
 #[c]
 #[l]:code fn_CheckScriptProgdir-1.0.0.sh:funclib-1/main/fn_CheckScriptProgdir-1.0.0.sh
 _deathmessage="fn_CheckScriptProgdir-1 expected result did not match"
@@ -630,12 +555,7 @@ echo ""
 #[cf]
 #[of]:fn_CompareTime-1
 #[c]
-#[c]
-#[c]
-#[c]  you are seeing this, because no test have been built for this function
-#[c]
-#[c]
-#[c]
+#[c]  if the test link is blank, no tests have been built for this function
 #[c]
 #[l]:code fn_CompareTime-1.0.0.sh:funclib-1/main/fn_CompareTime-1.0.0.sh
 _deathmessage="fn_CompareTime-1 expected result did not match"
@@ -659,12 +579,7 @@ echo ""
 #[cf]
 #[of]:fn_DisplayUsage-1
 #[c]
-#[c]
-#[c]
-#[c]  you are seeing this, because no test have been built for this function
-#[c]
-#[c]
-#[c]
+#[c]  if the test link is blank, no tests have been built for this function
 #[c]
 #[l]:code fn_DisplayUsage-1.0.0.sh:funclib-1/main/fn_DisplayUsage-1.0.0.sh
 _deathmessage="fn_DisplayUsage-1 expected result did not match"
@@ -688,12 +603,7 @@ echo ""
 #[cf]
 #[of]:fn_FilePathBaseExtSplit-1
 #[c]
-#[c]
-#[c]
-#[c]  you are seeing this, because no test have been built for this function
-#[c]
-#[c]
-#[c]
+#[c]  if the test link is blank, no tests have been built for this function
 #[c]
 #[l]:code fn_FilePathBaseExtSplit-1.0.0.sh:funclib-1/main/fn_FilePathBaseExtSplit-1.0.0.sh
 _deathmessage="fn_FilePathBaseExtSplit-1 expected result did not match"
@@ -717,12 +627,7 @@ echo ""
 #[cf]
 #[of]:fn_FileSizeClip-1
 #[c]
-#[c]
-#[c]
-#[c]  you are seeing this, because no test have been built for this function
-#[c]
-#[c]
-#[c]
+#[c]  if the test link is blank, no tests have been built for this function
 #[c]
 #[l]:code fn_FileSizeClip-1.0.0.sh:funclib-1/main/fn_FileSizeClip-1.0.0.sh
 _deathmessage="fn_FileSizeClip-1 expected result did not match"
@@ -746,12 +651,7 @@ echo ""
 #[cf]
 #[of]:fn_FormatDos2Unix-1
 #[c]
-#[c]
-#[c]
-#[c]  you are seeing this, because no test have been built for this function
-#[c]
-#[c]
-#[c]
+#[c]  if the test link is blank, no tests have been built for this function
 #[c]
 #[l]:code fn_FormatDos2Unix-1.0.1.sh:funclib-1/main/fn_FormatDos2Unix-1.0.1.sh
 _deathmessage="fn_FormatDos2Unix-1 expected result did not match"
@@ -775,12 +675,7 @@ echo ""
 #[cf]
 #[of]:fn_FormatTime-1
 #[c]
-#[c]
-#[c]
-#[c]  you are seeing this, because no test have been built for this function
-#[c]
-#[c]
-#[c]
+#[c]  if the test link is blank, no tests have been built for this function
 #[c]
 #[l]:code fn_FormatTime-1.0.0.sh:funclib-1/main/fn_FormatTime-1.0.0.sh
 _deathmessage="fn_FormatTime-1 expected result did not match"
@@ -804,12 +699,7 @@ echo ""
 #[cf]
 #[of]:fn_FormatUnix2Dos-1
 #[c]
-#[c]
-#[c]
-#[c]  you are seeing this, because no test have been built for this function
-#[c]
-#[c]
-#[c]
+#[c]  if the test link is blank, no tests have been built for this function
 #[c]
 #[l]:code fn_FormatUnix2Dos-1.0.0.sh:funclib-1/main/fn_FormatUnix2Dos-1.0.0.sh
 _deathmessage="fn_FormatUnix2Dos-1 expected result did not match"
@@ -833,12 +723,7 @@ echo ""
 #[cf]
 #[of]:fn_GetTime-1
 #[c]
-#[c]
-#[c]
-#[c]  you are seeing this, because no test have been built for this function
-#[c]
-#[c]
-#[c]
+#[c]  if the test link is blank, no tests have been built for this function
 #[c]
 #[l]:code fn_GetTime-1.0.1.sh:funclib-1/main/fn_GetTime-1.0.1.sh
 _deathmessage="fn_GetTime-1 expected result did not match"
@@ -862,12 +747,7 @@ echo ""
 #[cf]
 #[of]:fn_GlobalUsage-1
 #[c]
-#[c]
-#[c]
-#[c]  you are seeing this, because no test have been built for this function
-#[c]
-#[c]
-#[c]
+#[c]  if the test link is blank, no tests have been built for this function
 #[c]
 #[l]:code fn_GlobalUsage-1.0.0.sh:funclib-1/main/fn_GlobalUsage-1.0.0.sh
 _deathmessage="fn_GlobalUsage-1 expected result did not match"
@@ -891,12 +771,7 @@ echo ""
 #[cf]
 #[of]:fn_ResolveProgdir-1
 #[c]
-#[c]
-#[c]
-#[c]  you are seeing this, because no test have been built for this function
-#[c]
-#[c]
-#[c]
+#[c]  if the test link is blank, no tests have been built for this function
 #[c]
 #[l]:code fn_ResolveProgdir-1.0.0.sh:funclib-1/main/fn_ResolveProgdir-1.0.0.sh
 _deathmessage="fn_ResolveProgdir-1 expected result did not match"
@@ -920,12 +795,7 @@ echo ""
 #[cf]
 #[of]:fn_SetVars-1
 #[c]
-#[c]
-#[c]
-#[c]  you are seeing this, because no test have been built for this function
-#[c]
-#[c]
-#[c]
+#[c]  if the test link is blank, no tests have been built for this function
 #[c]
 #[l]:code fn_SetVars-1.0.0.sh:funclib-1/main/fn_SetVars-1.0.0.sh
 _deathmessage="fn_SetVars-1 expected result did not match"
@@ -949,12 +819,7 @@ echo ""
 #[cf]
 #[of]:fn_ShiftTime-1
 #[c]
-#[c]
-#[c]
-#[c]  you are seeing this, because no test have been built for this function
-#[c]
-#[c]
-#[c]
+#[c]  if the test link is blank, no tests have been built for this function
 #[c]
 #[l]:code fn_ShiftTime-1.0.0.sh:funclib-1/main/fn_ShiftTime-1.0.0.sh
 _deathmessage="fn_ShiftTime-1 expected result did not match"
@@ -978,12 +843,7 @@ echo ""
 #[cf]
 #[of]:fn_VerifyDir-1
 #[c]
-#[c]
-#[c]
-#[c]  you are seeing this, because no test have been built for this function
-#[c]
-#[c]
-#[c]
+#[c]  if the test link is blank, no tests have been built for this function
 #[c]
 #[l]:code fn_VerifyDir-1.0.0.sh:funclib-1/main/fn_VerifyDir-1.0.0.sh
 _deathmessage="fn_VerifyDir-1 expected result did not match"
@@ -1007,12 +867,7 @@ echo ""
 #[cf]
 #[of]:inline-1
 #[c]
-#[c]
-#[c]
-#[c]  you are seeing this, because no test have been built for this function
-#[c]
-#[c]
-#[c]
+#[c]  if the test link is blank, no tests have been built for this function
 #[c]
 #[l]:code inline-1.0.0.sh:funclib-1/inline/inline-1.0.0.sh
 _deathmessage="inline-1 expected result did not match"

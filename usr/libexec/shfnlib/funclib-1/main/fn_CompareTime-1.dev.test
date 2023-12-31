@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 #function norun {
 #[c]fn GetTime lc_main_time L2O3F2YYYYMMDD dtest.txt

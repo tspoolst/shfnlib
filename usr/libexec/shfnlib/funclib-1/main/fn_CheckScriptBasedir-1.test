@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 #[c]gl_basedir="${gl_basedir%/*}"
 #[c]gl_interface="${gl_basedir##*/}"

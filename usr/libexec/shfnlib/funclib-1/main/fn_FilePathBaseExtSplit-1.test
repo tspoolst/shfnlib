@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 echo "FilePathBaseExtSplit test 1 of 2"
 a="/dir1/dir2/file.gz"

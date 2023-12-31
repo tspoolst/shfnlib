@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 function fn_SetVars {
   ##read has a tendency of merging variables if not all accounted for
   ##the end result could be useless variables i.e. hour="14 5" not exactly the correct hour is it
@@ -22,7 +22,7 @@ function fn_SetVars {
 
   if [ -z "$2" ] ; then
     echo "Usage: fn SetVars [-r num] [start offset] [num of vars to set] [next offset] (lc|gl)_var [(lc|gl)_var] dataset"
-    echo "       -r 1-?  requires the dataset to be an exact length" 
+    echo "         -r 1-?  requires the dataset to be an exact length" 
     echo "Error: must have at least 2 arguments"
     echo "Description: sets variables from data in a controlled mannor.  used as a read replacement"
     echo "Examples:"

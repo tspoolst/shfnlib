@@ -71,7 +71,7 @@ Function Library prod Branch Version 1
 -------------------------------------------------------------------------------------
  function ajoin
 
-     Usage: ajoin {var} {delimiter} [val val val ...]
+     Usage: ajoin {-|var} {delimiter} [val val val ...]
 
      Description:
            joins a list into a single string
@@ -264,7 +264,7 @@ Function Library prod Branch Version 1
 -------------------------------------------------------------------------------------
  function filepath
 
-     Usage: filepath [-r] {var|-} file
+     Usage: filepath [-r] {-|var} file
 
      Description:
            return the filepath only
@@ -281,7 +281,7 @@ Function Library prod Branch Version 1
 -------------------------------------------------------------------------------------
  function filename
 
-     Usage: filename {var|-} file
+     Usage: filename {-|var} file
 
      Description:
            return a filename without the path
@@ -296,7 +296,7 @@ Function Library prod Branch Version 1
 -------------------------------------------------------------------------------------
  function filebase
 
-     Usage: filebase {var|-} file
+     Usage: filebase {-|var} file
 
      Description:
            returns only the base of a filename
@@ -311,7 +311,7 @@ Function Library prod Branch Version 1
 -------------------------------------------------------------------------------------
  function fileext
 
-     Usage: fileext {var|-} file
+     Usage: fileext {-|var} file
 
      Description:
            returns only the extention of a filename
@@ -326,17 +326,23 @@ Function Library prod Branch Version 1
 -------------------------------------------------------------------------------------
  function fn
 
-     Usage: fn funcname [args]
+     Usage: fn [-d] funcname [args]
+                  -d enable line tracing for current function call" 
 
-     Description: fn is a function wrapper used for tracking current script processing states.
-           all main functions labeled fn_* must be called through this function
-             gl_funcname = current function name
-             gl_funcfrom = parent calling current function
-             gl_functree = complete calling tree (used for tracking dependancies)
-             gl_return   = errorlevel of last called function
+     Description: fn is a wrapper used for:
+           loading new functions into memory.
+           tracking and returning called function states.
+           tracking the current call chain/tree.
+           enabling/disabling verbose line tracing per each call.
+         all main functions labeled fn_* must be called through this function
+           gl_funcname = current function name
+           gl_funcfrom = parent calling current function
+           gl_functree = complete calling tree (used for tracking dependancies)
+           gl_return   = errorlevel of last called function
 
      Examples:
            i.e. fn SetVars 1 1 3 lc_func_var1 lc_func_var2 data1 data2 data3
+           i.e. fn -d AtomicLock ${gl_vardir}/${gl_progname}.lock $$
 
      Returns: errerlevel from called function
 
@@ -418,7 +424,7 @@ Function Library prod Branch Version 1
 -------------------------------------------------------------------------------------
  function substr
 
-     Usage: substr {var|-} "{string}" {index} [length]
+     Usage: substr {-|var} "{string}" {index} [length]
 
      Description:
            returns, via stdout, a substring of the given string
@@ -436,7 +442,7 @@ Function Library prod Branch Version 1
 -------------------------------------------------------------------------------------
  function tolower
 
-     Usage: tolower {var|-} [string]
+     Usage: tolower {-|var} [string]
 
      Description: transforms a variable to lower case
 
@@ -451,7 +457,7 @@ Function Library prod Branch Version 1
 -------------------------------------------------------------------------------------
  function toupper
 
-     Usage: toupper {var|-} [string]
+     Usage: toupper {-|var} [string]
 
      Description: transforms a variable to lower case
 
@@ -484,6 +490,34 @@ Function Library prod Branch Version 1
 
 
 -------------------------------------------------------------------------------------
+ function urldecode
+
+     Usage: urldecode [-|var] "{string}"
+
+     Description:
+           returns string decoded from url hex
+
+     Examples:
+
+     Returns:
+           0 success
+
+
+-------------------------------------------------------------------------------------
+ function urlencode
+
+     Usage: urlencode [-|var] "{string}"
+
+     Description:
+           returns url utf8 encoded hex string
+
+     Examples:
+
+     Returns:
+           0 success
+
+
+-------------------------------------------------------------------------------------
  function isdir
 
      Usage: isdir dirname
@@ -498,6 +532,27 @@ Function Library prod Branch Version 1
            fi"
            statement may also be negated
              "if ! isdir /home ; then"
+
+     Returns:
+           0 true
+           1 false
+
+
+-------------------------------------------------------------------------------------
+ function isdirempty
+
+     Usage: isdiremput dirname
+
+     Description: check if a directory is empty.
+
+     Examples:
+           "if isdirempty /home ; then
+             echo dir is empty
+           else
+             echo dir containes files
+           fi"
+           statement may also be negated
+             "if ! isdirempty /home ; then"
 
      Returns:
            0 true
@@ -673,6 +728,8 @@ Function Library prod Branch Version 1
 
      Description:
            creates an atomic lock
+           causes current process to wait until previous processes in the lock list finish
+           the lock list file is checked every 5 seconds and deleted when last lock pid is removed
 
      Examples:
            fn AtomicLock ${gl_vardir}/${gl_progname}.lock $$
@@ -856,7 +913,7 @@ Function Library prod Branch Version 1
 -------------------------------------------------------------------------------------
  function fn_GetTime
 
-     Usage: fn GetTime {var|-} {time_src|format {string}}
+     Usage: fn GetTime {-|var} {time_src|format {string}}
 
      Description: get unix epoch - seconds since 00:00:00 1970-01-01 UTC
          
@@ -903,7 +960,7 @@ Function Library prod Branch Version 1
  function fn_SetVars
 
      Usage: fn SetVars [-r num] [start offset] [num of vars to set] [next offset] (lc|gl)_var [(lc|gl)_var] dataset
-                -r 1-?  requires the dataset to be an exact length" 
+                  -r 1-?  requires the dataset to be an exact length" 
 
      Description: sets variables from data in a controlled mannor.  used as a read replacement
 
@@ -927,7 +984,7 @@ Function Library prod Branch Version 1
 -------------------------------------------------------------------------------------
  function fn_ShiftTime
 
-     Usage: fn ShiftTime {var|-} {shift} [type] {time}
+     Usage: fn ShiftTime {-|var} {shift} [type] {time}
 
      Description:
            shift time forward or backwards depending on type

@@ -1,3 +1,7 @@
+#[c]
+#[c]need to add usage examples as how this library shousd be install and included into scripts.
+#[c]perhaps add a check for scripts in the user directory.
+#[c]
 function commentblock_description { echo -n
 ###########################################################################################################
 ##  Scripting Conventions:
@@ -28,7 +32,7 @@ function commentblock_description { echo -n
 ##        global variables must have the following format   gl_(variable name)
 ##          ie. gl_progname or gl_confdir
 ##      unique names
-##        ksh has no real usable scope per say.  so great care must be taken to prevent variables
+##        ksh88 has no real usable scope per say.  so great care must be taken to prevent variables
 ##        from having the same name.
 ##      determining data vs variable
 ##        a nice side affect of using lc_ and gl_ prefixes is the added ability to decern variable vs data

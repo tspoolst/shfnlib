@@ -1,5 +1,5 @@
 #!/bin/bash
-function fn_VerifyDir {
+fn_VerifyDir() {
 #[of]:usage
   if [ -z "$1" ] ; then
     echo "Usage: fn VerifyDir DIRECTORY [DIRECTORY]..."

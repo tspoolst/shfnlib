@@ -3,8 +3,8 @@
 ##if using bash insure extglob is on
 [[ -n "$BASH_VERSION" ]] && shopt -s extglob
 
-#[of]:function isdir {
-function isdir {
+#[of]:isdir() {
+isdir() {
 #[of]:  usage
   if [[ -z "$1" ]] ; then
     echo "Usage: isdir dirname"
@@ -28,8 +28,8 @@ function isdir {
   return 1
 }
 #[cf]
-#[of]:function isdirempty {
-function isdirempty {
+#[of]:isdirempty() {
+isdirempty() {
 #[of]:  usage
   if [[ -z "$1" ]] ; then
     echo "Usage: isdiremput dirname"
@@ -55,8 +55,8 @@ function isdirempty {
   ls -a "$1" | grep -q -v -e '^\.$' -e '^\..$' && return 1 || return 0
 }
 #[cf]
-#[of]:function isfile {
-function isfile {
+#[of]:isfile() {
+isfile() {
 #[of]:  usage
   if [[ -z "$1" ]] ; then
     echo "Usage: isfile filename"
@@ -80,8 +80,8 @@ function isfile {
   return 1
 }
 #[cf]
-#[of]:function isfilelocked {
-function isfilelocked {
+#[of]:isfilelocked() {
+isfilelocked() {
 #[of]:  usage
   if false ; then
     echo "Usage: isfilelocked {filename}"
@@ -104,8 +104,8 @@ function isfilelocked {
   [[ -n $(fuser "$1" 2>/dev/null) ]]
 }
 #[cf]
-#[of]:function isinpath {
-function isinpath {
+#[of]:isinpath() {
+isinpath() {
 #[of]:  usage
   if false ; then
     echo "Usage: isinpath arg"
@@ -126,8 +126,8 @@ function isinpath {
   which "$1" >/dev/null 2>&1
 }
 #[cf]
-#[of]:function isnum {
-function isnum {
+#[of]:isnum() {
+isnum() {
 #[of]:  usage
   if false ; then
     echo "Usage: isnum arg"
@@ -156,8 +156,8 @@ function isnum {
   return 1
 }
 #[cf]
-#[of]:function isset {
-function isset {
+#[of]:isset() {
+isset() {
 #[of]:  usage
   if false ; then
     echo "Usage: isset var"
@@ -180,8 +180,8 @@ function isset {
   eval "(( \${$1+1} ))"
 }
 #[cf]
-#[of]:function istextfile {
-function istextfile {
+#[of]:istextfile() {
+istextfile() {
 #[of]:  usage
   if [[ -z "$1" ]] ; then
     echo "Usage: istextfile filename"
@@ -205,8 +205,8 @@ function istextfile {
   return 1
 }
 #[cf]
-#[of]:function isuser {
-function isuser {
+#[of]:isuser() {
+isuser() {
 #[of]:  usage
   if [[ -z "$1" ]] ; then
     echo "Usage: isuser {user}"

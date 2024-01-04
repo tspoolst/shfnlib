@@ -1,5 +1,5 @@
 #!/bin/bash
-function fn_FilePathBaseExtSplit {
+fn_FilePathBaseExtSplit() {
 #[of]:  usage
   if [ -z "$2" ] ; then
     echo "Usage: fn FileBaseExtSplit pathvar [basevar] [extvar] file"

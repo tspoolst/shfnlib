@@ -29,4 +29,4 @@ http://scriptvoodoo.org/Projectsshfnlib.html
 
 ## todo:
 * update lib to take advantage of new bash 4 features.
-* adapt this to detect and work this dash??? perhaps write a parser/converter?
+* adapt this to detect and work this dash??? nope, not yet.  giving up extglob and arrays is too much to ask.

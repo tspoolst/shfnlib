@@ -1,5 +1,5 @@
 #!/bin/bash
-function fn_SetVars {
+fn_SetVars() {
   ##read has a tendency of merging variables if not all accounted for
   ##the end result could be useless variables i.e. hour="14 5" not exactly the correct hour is it
   ##${gl_xdate} | read gl_year gl_month gl_day gl_totaldays gl_weekday 

@@ -1,5 +1,5 @@
 #!/bin/bash
-function fn_ShiftTime {
+fn_ShiftTime() {
 #[of]:  usage
   if [[ -z "$3" ]] ; then
     echo "Usage: fn ShiftTime {-|var} {shift} [type] {time}"

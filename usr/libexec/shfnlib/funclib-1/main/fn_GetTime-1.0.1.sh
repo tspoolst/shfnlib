@@ -1,5 +1,5 @@
 #!/bin/bash
-function fn_GetTime {
+fn_GetTime() {
 #[of]:  usage
   if [[ -z "$1" ]] ; then
     echo "Usage: fn GetTime {-|var} {time_src|format {string}}"

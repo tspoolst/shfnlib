@@ -1,5 +1,5 @@
 #!/bin/bash
-function fn_CompareTime {
+fn_CompareTime() {
 #[of]:  usage
   if [[ -z "$2" ]] ; then
     echo "Usage: fn CompareTime [-f] {{hour|day|dayhour}[.noholiday|bankholiday]} {{format} {string}|controltime|type} {-eq|gt|lt|ge|le} {{format} {string}|testtime}"

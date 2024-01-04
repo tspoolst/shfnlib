@@ -1,11 +1,11 @@
-#!/bin/ksh
+#!/bin/bash
 #[of]:header
 
 gl_logfile=${0%/*}/functions-devtest-1.log
 rm -f ${gl_logfile}
 
-#[of]:function pushd {
-function pushd {
+#[of]:pushd() {
+pushd() {
   if [ -z "$1" ] ; then
     echo "Usage: pushd dir"
     echo "Error: must have at least 1 argument"
@@ -42,8 +42,8 @@ function pushd {
   return 0
 }
 #[cf]
-#[of]:function popd {
-function popd {
+#[of]:popd() {
+popd() {
 #[of]:usage
   if false ; then
     echo "Usage: popd"
@@ -75,8 +75,8 @@ function popd {
   return 0
 }
 #[cf]
-#[of]:function filepath {
-function filepath {
+#[of]:filepath() {
+filepath() {
   typeset lc_filepath_relative lc_filepath_path
   if [[ "$1" = "-r" ]] ; then
     lc_filepath_relative=true
@@ -125,8 +125,8 @@ gl_funcdir="${gl_funcdir}"
 unset -f pushd popd filepath
 . "${gl_funcdir}/functions-dev-1.sh"
 
-#[of]:function checkresult {
-function checkresult {
+#[of]:checkresult() {
+checkresult() {
   typeset _lastexitcode=$?
   typeset _checktype="$1"
   shift

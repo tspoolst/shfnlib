@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#function norun {
+#norun() {
 #[c]fn GetTime lc_main_time L2O3F2YYYYMMDD dtest.txt
 #[c]fn FormatTime - "YYYY/MM/DD %a" ${lc_main_time}
 #[c]fn GetTime lc_main_time now

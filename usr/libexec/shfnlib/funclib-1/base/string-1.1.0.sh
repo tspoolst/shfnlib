@@ -3,8 +3,8 @@
 ##if using bash insure extglob is on
 [[ -n "$BASH_VERSION" ]] && shopt -s extglob
 
-#[of]:function instring {
-function instring {
+#[of]:instring() {
+instring() {
 #[of]:  usage
   if [ $# -ne 3 ] ; then
     echo 'Usage: instring {!|-|var} "{string}" {pattern}'
@@ -52,8 +52,8 @@ function instring {
   return ${lc_instring_return:-1}
 }
 #[cf]
-#[of]:function substr {
-function substr {
+#[of]:substr() {
+substr() {
 #[of]:  usage
   if false ; then
     echo 'Usage: substr {-|var} "{string}" {index} [length]'
@@ -73,7 +73,7 @@ function substr {
 }
 if [[ -n "${BASH_VERSION}" ]] ; then
   ##when with bash do the bash
-  function substr {
+  substr() {
     eval typeset lc_substr_string=\"\${2:$3${4:+:}$4}\"
     if [[ "$1" = "-" ]] ; then
       echo "${lc_substr_string}"
@@ -83,7 +83,7 @@ if [[ -n "${BASH_VERSION}" ]] ; then
     return 0
   }
 else
-  function substr {
+  substr() {
     typeset lc_substr_string
     lc_substr_string=$(
       if [[ ${4:-1} -eq 0 ]] ; then
@@ -101,8 +101,8 @@ else
   }
 fi
 #[cf]
-#[of]:function tolower {
-function tolower {
+#[of]:tolower() {
+tolower() {
 #[of]:  usage
   if [ -z "$1" ] ; then
     echo "Usage: tolower {-|var} [string]"
@@ -135,8 +135,8 @@ function tolower {
   return 0
 }
 #[cf]
-#[of]:function toupper {
-function toupper {
+#[of]:toupper() {
+toupper() {
 #[of]:  usage
   if [ -z "$1" ] ; then
     echo "Usage: toupper {-|var} [string]"
@@ -169,8 +169,8 @@ function toupper {
   return 0
 }
 #[cf]
-#[of]:function ascii2hex {
-function ascii2hex {
+#[of]:ascii2hex() {
+ascii2hex() {
 #[c][var] value
   typeset lc_ascii2hex_string lc_ascii2hex_hexpart lc_ascii2hex_hex
   lc_ascii2hex_string="${2:-$1}"
@@ -187,8 +187,8 @@ function ascii2hex {
   return 0
 }
 #[cf]
-#[of]:function cleancat {
-function cleancat {
+#[of]:cleancat() {
+cleancat() {
 #[of]:  usage
   if [ $# -gt 1 ] ; then
     echo "Usage: cleancat [filename]|[redirect]"
@@ -211,8 +211,8 @@ function cleancat {
   fi
 }
 #[cf]
-#[of]:function urldecode {
-function urldecode {
+#[of]:urldecode() {
+urldecode() {
 #[of]:  usage
   if false ; then
     echo 'Usage: urldecode [-|var] "{string}"'
@@ -235,8 +235,8 @@ function urldecode {
   fi
 }
 #[cf]
-#[of]:function urlencode {
-function urlencode {
+#[of]:urlencode() {
+urlencode() {
   #would like to figure out how to do this without "xxd"
 #[of]:  usage
   if ! which xxd >/dev/null ; then

@@ -123,11 +123,11 @@ unset lc_main_currentdata
   
   ##gnu tools
   gl_gnutooldir="${gl_funcdir}/gnu/${gl_kernelver}/bin"
-  function gnudate { "${gl_gnutooldir}/date" "$@" ; }
-  function gnused { "${gl_gnutooldir}/sed" "$@" ; }
-  function gnutar { "${gl_gnutooldir}/tar" "$@" ; }
+  gnudate() { "${gl_gnutooldir}/date" "$@" ; }
+  gnused() { "${gl_gnutooldir}/sed" "$@" ; }
+  gnutar() { "${gl_gnutooldir}/tar" "$@" ; }
 
-  function xdate { "${gl_tooldir}/kdate-0.sh" "$@" ; }
+  xdate() { "${gl_tooldir}/kdate-0.sh" "$@" ; }
   gl_xdate="xdate"
   if [[ ! -x "${gl_tooldir}/kdate-0.sh" ]] ; then
     die 22 "\"${gl_tooldir}/kdate-0.sh\" not found, or not executable"

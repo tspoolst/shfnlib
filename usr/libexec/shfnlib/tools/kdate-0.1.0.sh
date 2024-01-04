@@ -1,7 +1,7 @@
 #!/bin/ksh
 #set -xv
 
-function setarray {
+setarray() {
   if [ -z "$2" ] ; then
     echo "Usage: setarray var val [val val ...]"
     echo "Error: must have at least 2 args"
@@ -23,11 +23,11 @@ function setarray {
   unset lc_setarray_array
   return 0
 }
-function exit_malformed_date {
+exit_malformed_date() {
   echo "malformed date"
   exit 1
 }
-function isleapyear {
+isleapyear() {
 #if date matches any of these values it is a leap year
 #returns 0/true or 1/false
   case $1 in
@@ -41,7 +41,7 @@ function isleapyear {
   esac
   return 1
 }
-function fn_dateytddn {
+fn_dateytddn() {
   #day offset for 2000
   lc_dateytddn_doffet=6
   #starting year
@@ -60,7 +60,7 @@ function fn_dateytddn {
   eval $3=$(( (lc_dateytddn_dtotal + lc_dateytddn_doffet + ${2:-1} - 1) %7 ))
   #eval $3=$lc_dateytddn_day
 }
-function fn_dateymdtd {
+fn_dateymdtd() {
 #calculates the total days from the beginning of the current year
 #input    year,month,day
 #returns  totaldays
@@ -83,7 +83,7 @@ function fn_dateymdtd {
   lc_dateymdtd_tdays=$(( lc_dateymdtd_tdays + lc_dateymdtd_day ))
   eval $4=$lc_dateymdtd_tdays
 }
-function fn_datenowdays {
+fn_datenowdays() {
 #set -xv
 #calculates new date by subtracting x num of days
 #input    year,totaldays,num of days to subtract
@@ -106,7 +106,7 @@ function fn_datenowdays {
   eval $4=$lc_datenowdays_year
   eval $5=$lc_datenowdays_ndays
 }
-function fn_dateytdmd {
+fn_dateytdmd() {
 #set -xv
 #determins month and day for specified year from totaldays into year
 #input    year,totaldays
@@ -132,7 +132,7 @@ function fn_dateytdmd {
   eval $3=$lc_dateytdmd_month
   eval $4=$lc_dateytdmd_day
 }
-function fn_calcdays {
+fn_calcdays() {
   fn_datenowdays $gl_inyear $gl_intday $gl_dayshift gl_outyear gl_outtday
   fn_dateytddn $gl_outyear $gl_outtday gl_outwday
   fn_dateytdmd $gl_outyear $gl_outtday gl_outmonth gl_outday

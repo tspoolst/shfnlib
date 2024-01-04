@@ -1,7 +1,7 @@
 #!/bin/bash
 ##a colloction of hash handling tools
-#[of]:function hashkeys {
-function hashkeys {
+#[of]:hashkeys() {
+hashkeys() {
 #[c]-|var hash [key...key...]
   unset lc_hashkeys_key
   typeset lc_hashkeys_return lc_hashkeys_hash
@@ -41,8 +41,8 @@ function hashkeys {
   return 0
 }
 #[cf]
-#[of]:function hashdump {
-function hashdump {
+#[of]:hashdump() {
+hashdump() {
 #[c]-r hash [key...key...]
   typeset lc_hashdump_hash lc_hashdump_key lc_hashdump_id lc_hashdump_raw lc_hashdump_tmp lc_hashdump_filter
   lc_hashdump_filter=true
@@ -93,8 +93,8 @@ function hashdump {
   return 0
 }
 #[cf]
-#[of]:function hashsave {
-function hashsave {
+#[of]:hashsave() {
+hashsave() {
 #[c]-r hash [key...key...] filename
   unset lc_hashsave_file
   aset lc_hashsave_hash "$@"
@@ -115,8 +115,8 @@ function hashsave {
   return 0
 }
 #[cf]
-#[of]:function hashload {
-function hashload {
+#[of]:hashload() {
+hashload() {
 #[c]hash [key...key...] filename
   typeset lc_hashload_hash lc_hashload_key lc_hashload_file
   lc_hashload_hash=$1
@@ -152,9 +152,9 @@ function hashload {
   return 0
 }
 #[cf]
-#[of]:function hashdel {
+#[of]:hashdel() {
 if [[ -n "$BASH_VERSION" ]] ; then
-  function hashdel {
+  hashdel() {
 #[c]  hash
     typeset lc_hashdel_hash
     lc_hashdel_hash="$1"
@@ -169,7 +169,7 @@ if [[ -n "$BASH_VERSION" ]] ; then
     return 0
   }
 else
-  function hashdel {
+  hashdel() {
 #[c]  hash
     unset lc_hashdel_key
     typeset lc_hashdel_hash
@@ -189,8 +189,8 @@ else
   }
 fi
 #[cf]
-#[of]:function hashsetkey {
-function hashsetkey {
+#[of]:hashsetkey() {
+hashsetkey() {
 #[c][-l] hash key [key...key...] [+=|-=|=] value
 #[c]
 #[c]hash key key += value
@@ -252,8 +252,8 @@ function hashsetkey {
   return 0
 }
 #[cf]
-#[of]:function hashgetkey {
-function hashgetkey {
+#[of]:hashgetkey() {
+hashgetkey() {
 #[c]!|-|var hash key [key...key...]
   unset lc_hashgetkey_hashpart lc_hashgetkey_key
   typeset lc_hashgetkey_return lc_hashgetkey_hash
@@ -285,8 +285,8 @@ function hashgetkey {
   return ${lc_hashgetkey_return}
 }
 #[cf]
-#[of]:function hashdelkey {
-function hashdelkey {
+#[of]:hashdelkey() {
+hashdelkey() {
 #[c]hash key [key...key...]
   unset lc_hashdelkey_hashpart lc_hashdelkey_key
   typeset lc_hashdelkey_hash
@@ -335,8 +335,8 @@ function hashdelkey {
   return 0
 }
 #[cf]
-#[of]:function hashgetsize {
-function hashgetsize {
+#[of]:hashgetsize() {
+hashgetsize() {
 #[c]!|-|var hash [key...key...]
   unset lc_hashgetsize_hashpart
   typeset lc_hashgetsize_var lc_hashgetsize_hash lc_hashgetsize_count lc_hashgetsize_return
@@ -358,8 +358,8 @@ function hashgetsize {
   isset "${lc_hashgetsize_hash}__count"
 }
 #[cf]
-#[of]:function hashgetfirst {
-function hashgetfirst {
+#[of]:hashgetfirst() {
+hashgetfirst() {
 #[c]!|-|var [-k key] hash [key...key...]
   unset lc_hashgetfirst_key lc_hashgetfirst_hashpart
   typeset lc_hashgetfirst_return lc_hashgetfirst_hash
@@ -405,8 +405,8 @@ function hashgetfirst {
   return 0
 }
 #[cf]
-#[of]:function hashgetnext {
-function hashgetnext {
+#[of]:hashgetnext() {
+hashgetnext() {
 #[c]!|-|var hash [key...key...]
   unset lc_hashgetnext_hashpart
   typeset lc_hashgetnext_return lc_hashgetnext_hash lc_hashgetnext_key
@@ -444,9 +444,9 @@ function hashgetnext {
   return 0
 }
 #[cf]
-#[of]:function hashconvert2key {
+#[of]:hashconvert2key() {
 if [[ -n "$BASH_VERSION" ]] ; then
-  function hashconvert2key {
+  hashconvert2key() {
 #[c]  [var] value
     typeset lc_hashconvert2key_string lc_hashconvert2key_char lc_hashconvert2key_hexpart lc_hashconvert2key_key
     typeset lc_hashconvert2key_forcelower
@@ -487,7 +487,7 @@ if [[ -n "$BASH_VERSION" ]] ; then
     return 0
   }
 else
-  function hashconvert2key {
+  hashconvert2key() {
 #[c]  [var] value
     typeset lc_hashconvert2key_string lc_hashconvert2key_char lc_hashconvert2key_hexpart lc_hashconvert2key_key
     typeset lc_hashconvert2key_forcelower

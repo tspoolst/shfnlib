@@ -1,5 +1,5 @@
 #!/bin/bash
-function die {
+die() {
 #[of]:  usage
   if false ; then
     echo 'Usage: die exitcode "message"'

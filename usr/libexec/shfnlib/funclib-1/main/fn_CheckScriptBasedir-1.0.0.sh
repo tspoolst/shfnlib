@@ -1,5 +1,5 @@
 #!/bin/bash
-function fn_CheckScriptBasedir {
+fn_CheckScriptBasedir() {
 #[of]:  usage
   if false ; then
     echo "Usage: fn CheckScriptBasedir"

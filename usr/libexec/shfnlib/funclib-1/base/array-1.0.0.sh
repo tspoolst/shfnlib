@@ -1,7 +1,7 @@
 #!/bin/bash
 ##a colloction of array handling tools
-#[of]:function aset {
-function aset {
+#[of]:aset() {
+aset() {
 #[of]:  usage
   if false ; then
     echo "Usage: aset var [val val val ...]"
@@ -18,14 +18,14 @@ function aset {
 #[cf]
 }
 if [[ -n "$BASH_VERSION" ]] ; then
-  function aset {
+  aset() {
     eval "
       shift
       $1=(\"\$@\")
     "
   }
 else
-  function aset {
+  aset() {
     eval "
       shift
       set -A $1 -- \"\$@\"
@@ -33,8 +33,8 @@ else
   }
 fi
 #[cf]
-#[of]:function asort {
-function asort {
+#[of]:asort() {
+asort() {
 #[of]:  usage
   if [[ $# -lt 2 ]] ; then
     echo "Usage: asort {-|array} [val val val ...]"
@@ -78,8 +78,8 @@ function asort {
 }
 #[cf]
 
-#[of]:function asplit {
-function asplit {
+#[of]:asplit() {
+asplit() {
 #[of]:  usage
   if [[ $# -lt 2 ]] ; then
     echo "Usage: asplit {array} {delimiter} [string]"
@@ -172,8 +172,8 @@ function asplit {
 ##if first arg is a number it is a zero based position in the string
 ##ugh.  yet another lovely backslash forrest.
 #[cf]
-#[of]:function ajoin {
-function ajoin {
+#[of]:ajoin() {
+ajoin() {
 #[of]:  usage
   if [[ $# -lt 2 ]] ; then
     echo "Usage: ajoin {-|var} {delimiter} [val val val ...]"
@@ -200,8 +200,8 @@ function ajoin {
 }
 #[cf]
 
-#[of]:function apush {
-function apush {
+#[of]:apush() {
+apush() {
 #[of]:  usage
   if [[ $# -eq 0 ]] ; then
     echo "Usage: apush {array} [val val val ...]"
@@ -222,8 +222,8 @@ function apush {
   "
 }
 #[cf]
-#[of]:function apop {
-function apop {
+#[of]:apop() {
+apop() {
 #[of]:  usage
   if [[ $# -ne 2 ]] ; then
     echo "Usage: apop {!|-|var} {array}"
@@ -256,8 +256,8 @@ function apop {
 }
 #[cf]
 
-#[of]:function aunshift {
-function aunshift {
+#[of]:aunshift() {
+aunshift() {
 #[of]:  usage
   if [[ $# -eq 0 ]] ; then
     echo "Usage: aunshift {array} [val val val ...]"
@@ -278,8 +278,8 @@ function aunshift {
   "
 }
 #[cf]
-#[of]:function ashift {
-function ashift {
+#[of]:ashift() {
+ashift() {
 #[of]:  usage
   if [[ $# -ne 2 ]] ; then
     echo "Usage: ashift {!|-|var} {array}"
@@ -314,8 +314,8 @@ function ashift {
 }
 #[cf]
 
-#[of]:function awalkl {
-function awalkl {
+#[of]:awalkl() {
+awalkl() {
 #[of]:  usage
   if [[ $# -ne 2 ]] ; then
     echo "Usage: awalkl {left array} {right array}"
@@ -336,8 +336,8 @@ function awalkl {
   return 0
 }
 #[cf]
-#[of]:function awalkr {
-function awalkr {
+#[of]:awalkr() {
+awalkr() {
 #[of]:  usage
   if [[ $# -ne 2 ]] ; then
     echo "Usage: awalkr {left array} {right array}"

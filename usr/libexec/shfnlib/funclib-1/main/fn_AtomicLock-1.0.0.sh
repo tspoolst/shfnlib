@@ -1,5 +1,5 @@
 #!/bin/bash
-function fn_AtomicLock {
+fn_AtomicLock() {
 #[of]:  usage
   if [[ -z "$1" ]] ; then
     echo "Usage: fn AtomicLock lockfile [pid]"

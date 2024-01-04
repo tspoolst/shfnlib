@@ -1,5 +1,5 @@
 #!/bin/bash
-function fn_FileSizeClip {
+fn_FileSizeClip() {
 #[of]:  usage
   if [[ -z "$2" ]] ; then
     echo "Usage: fn FileSizeClip file chopsize maxsize"

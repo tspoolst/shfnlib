@@ -1,5 +1,5 @@
 #!/bin/bash
-function errorlevel {
+errorlevel() {
 #[of]:  usage
   if false ; then
     echo "Usage: errorlevel [arg]"

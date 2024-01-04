@@ -1,5 +1,5 @@
 #!/bin/bash
-function fn_CheckHeaderFooter {
+fn_CheckHeaderFooter() {
 #[of]:  usage
   if [ -z "$3" ] ; then
     echo "Usage: fn CheckHeaderFooter file header footer"

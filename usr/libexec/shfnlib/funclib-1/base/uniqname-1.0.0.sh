@@ -1,5 +1,5 @@
 #!/bin/bash
-function uniqname {
+uniqname() {
 #[of]:  usage
   if false ; then
     echo "Usage: uniqname"

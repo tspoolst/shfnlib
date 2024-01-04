@@ -1,5 +1,5 @@
 #!/bin/bash
-function fn_ResolveProgdir {
+fn_ResolveProgdir() {
 #[of]:  usage
   if false ; then
     echo "Usage: fn ResolveProgdir"

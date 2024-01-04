@@ -1,5 +1,5 @@
 #!/bin/bash
-function fn_DisplayUsage {
+fn_DisplayUsage() {
 #[of]:  usage
   if false ; then
     echo "Usage: fn DisplayUsage"

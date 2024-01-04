@@ -1,5 +1,5 @@
 #!/bin/bash
-function fn_FormatDos2Unix {
+fn_FormatDos2Unix() {
 #[of]:  setup vars
   typeset lc_FormatDos2Unix_reverse lc_FormatDos2Unix_append
   typeset lc_FormatDos2Unix_src lc_FormatDos2Unix_dst lc_FormatDos2Unix_csrc lc_FormatDos2Unix_cdst

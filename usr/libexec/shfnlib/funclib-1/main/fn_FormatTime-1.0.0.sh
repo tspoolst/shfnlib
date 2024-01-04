@@ -1,5 +1,5 @@
 #!/bin/bash
-function fn_FormatTime {
+fn_FormatTime() {
 #[of]:  usage
   if [[ -z "$2" ]] ; then
     echo "Usage: fn FormatTime {-|var} {format} [type [time]|time]"

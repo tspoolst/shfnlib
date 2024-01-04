@@ -1,5 +1,5 @@
 #!/bin/bash
-function argexist {
+argexist() {
 #[of]:  usage
   if [[ -z "$1" ]] ; then
     echo "Usage: argexist arg [argline]"

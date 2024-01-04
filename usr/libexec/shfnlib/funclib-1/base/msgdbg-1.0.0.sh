@@ -1,5 +1,5 @@
 #!/bin/bash
-function msgdbg {
+msgdbg() {
 #[c]level message
   typeset lc_msgdbg_return=$?
   typeset lc_msgdbg_level lc_msgdbg_message

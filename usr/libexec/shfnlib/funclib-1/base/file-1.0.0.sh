@@ -4,9 +4,9 @@
 [[ -n "$BASH_VERSION" ]] && shopt -s extglob
 
 ##a colloction of filename handling tools
-#[of]:function pushd {
+#[of]:pushd() {
 unset DIRSTACK
-function pushd {
+pushd() {
 #[of]:  usage
   if [ -z "$1" ] ; then
     echo "Usage: pushd dir"
@@ -46,8 +46,8 @@ function pushd {
   return 0
 }
 #[cf]
-#[of]:function popd {
-function popd {
+#[of]:popd() {
+popd() {
 #[of]:  usage
   if false ; then
     echo "Usage: popd"
@@ -64,7 +64,7 @@ function popd {
   fi
 #[cf]
 }
-  function popd {
+  popd() {
     if [[ -n "${DIRSTACK}" ]] ; then
       cd "${DIRSTACK[0]}"
       if [[ $? -gt 0 ]] ; then
@@ -82,8 +82,8 @@ function popd {
     return 0
   }
 #[cf]
-#[of]:function dirs {
-function dirs {
+#[of]:dirs() {
+dirs() {
 #[of]:  usage
   if false ; then
     echo "Usage: dirs [-c]"
@@ -98,14 +98,14 @@ function dirs {
   fi
 #[cf]
 }
-  function dirs {
+  dirs() {
     [[ "$1" = "-c" ]] && unset DIRSTACK
     echo "${DIRSTACK[@]}"
   }
 #[cf]
 
-#[of]:function filepath {
-function filepath {
+#[of]:filepath() {
+filepath() {
   typeset lc_filepath_relative lc_filepath_path
   if [[ "$1" = "-r" ]] ; then
     lc_filepath_relative=true
@@ -148,8 +148,8 @@ function filepath {
   return 0
 }
 #[cf]
-#[of]:function filename {
-function filename {
+#[of]:filename() {
+filename() {
 #[of]:  usage
   if [ -z "$2" ] ; then
     echo "Usage: filename {-|var} file"
@@ -171,8 +171,8 @@ function filename {
   return 0
 }
 #[cf]
-#[of]:function filebase {
-function filebase {
+#[of]:filebase() {
+filebase() {
 #[of]:  usage
   if [ -z "$2" ] ; then
     echo "Usage: filebase {-|var} file"
@@ -214,8 +214,8 @@ function filebase {
   return 0
 }
 #[cf]
-#[of]:function fileext {
-function fileext {
+#[of]:fileext() {
+fileext() {
 #[of]:  usage
   if [ -z "$2" ] ; then
     echo "Usage: fileext {-|var} file"

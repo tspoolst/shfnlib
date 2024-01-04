@@ -7,7 +7,7 @@
 ##
 ###########################################################################################################
 #[of]:function setarray
-function setarray {
+setarray() {
   if [ -z "$2" ] ; then
     echo "Usage: setarray var val [val val ...]"
     echo "Error: must have at least 2 args"
@@ -31,13 +31,13 @@ function setarray {
 }
 #[cf]
 #[of]:function exit_malformed_date
-function exit_malformed_date {
+exit_malformed_date() {
   echo "malformed date"
   exit 1
 }
 #[cf]
 #[of]:function isleapyear
-function isleapyear {
+isleapyear() {
 #if date matches any of these values it is a leap year
 #returns 0/true or 1/false
   case $1 in
@@ -53,7 +53,7 @@ function isleapyear {
 }
 #[cf]
 #[of]:function fn_dateytddn
-function fn_dateytddn {
+fn_dateytddn() {
   #day offset for 2000
   lc_dateytddn_doffet=6
   #starting year
@@ -74,7 +74,7 @@ function fn_dateytddn {
 }
 #[cf]
 #[of]:function fn_dateymdtd
-function fn_dateymdtd {
+fn_dateymdtd() {
 #calculates the total days from the beginning of the current year
 #input    year,month,day
 #returns  totaldays
@@ -99,7 +99,7 @@ function fn_dateymdtd {
 }
 #[cf]
 #[of]:function fn_datenowdays
-function fn_datenowdays {
+fn_datenowdays() {
 #set -xv
 #calculates new date by subtracting x num of days
 #input    year,totaldays,num of days to subtract
@@ -124,7 +124,7 @@ function fn_datenowdays {
 }
 #[cf]
 #[of]:function fn_dateytdmd
-function fn_dateytdmd {
+fn_dateytdmd() {
 #set -xv
 #determins month and day for specified year from totaldays into year
 #input    year,totaldays
@@ -152,7 +152,7 @@ function fn_dateytdmd {
 }
 #[cf]
 #[of]:function fn_calcdays
-function fn_calcdays {
+fn_calcdays() {
   fn_datenowdays $gl_inyear $gl_intday $gl_dayshift gl_outyear gl_outtday
   fn_dateytddn $gl_outyear $gl_outtday gl_outwday
   fn_dateytdmd $gl_outyear $gl_outtday gl_outmonth gl_outday

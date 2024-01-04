@@ -2,7 +2,7 @@ Function Library dev Branch Version 1
 
 
 -------------------------------------------------------------------------------------
- function argexist
+ argexist() {
 
      Usage: argexist arg [argline]
 
@@ -22,7 +22,7 @@ Function Library dev Branch Version 1
 
 
 -------------------------------------------------------------------------------------
- function aset
+ aset() {
 
      Usage: aset var [val val val ...]
 
@@ -38,7 +38,7 @@ Function Library dev Branch Version 1
 
 
 -------------------------------------------------------------------------------------
- function asort
+ asort() {
 
      Usage: asort {-|array} [val val val ...]
 
@@ -53,7 +53,7 @@ Function Library dev Branch Version 1
 
 
 -------------------------------------------------------------------------------------
- function asplit
+ asplit() {
 
      Usage: asplit {array} {delimiter} [string]
 
@@ -69,7 +69,7 @@ Function Library dev Branch Version 1
 
 
 -------------------------------------------------------------------------------------
- function ajoin
+ ajoin() {
 
      Usage: ajoin {-|var} {delimiter} [val val val ...]
 
@@ -85,7 +85,7 @@ Function Library dev Branch Version 1
 
 
 -------------------------------------------------------------------------------------
- function apush
+ apush() {
 
      Usage: apush {array} [val val val ...]
 
@@ -101,7 +101,7 @@ Function Library dev Branch Version 1
 
 
 -------------------------------------------------------------------------------------
- function apop
+ apop() {
 
      Usage: apop {!|-|var} {array}
 
@@ -117,7 +117,7 @@ Function Library dev Branch Version 1
 
 
 -------------------------------------------------------------------------------------
- function aunshift
+ aunshift() {
 
      Usage: aunshift {array} [val val val ...]
 
@@ -133,7 +133,7 @@ Function Library dev Branch Version 1
 
 
 -------------------------------------------------------------------------------------
- function ashift
+ ashift() {
 
      Usage: ashift {!|-|var} {array}
 
@@ -149,7 +149,7 @@ Function Library dev Branch Version 1
 
 
 -------------------------------------------------------------------------------------
- function awalkl
+ awalkl() {
 
      Usage: awalkl {left array} {right array}
 
@@ -165,7 +165,7 @@ Function Library dev Branch Version 1
 
 
 -------------------------------------------------------------------------------------
- function awalkr
+ awalkr() {
 
      Usage: awalkr {left array} {right array}
 
@@ -181,7 +181,7 @@ Function Library dev Branch Version 1
 
 
 -------------------------------------------------------------------------------------
- function die
+ die() {
 
      Usage: die exitcode "message"
 
@@ -196,7 +196,7 @@ Function Library dev Branch Version 1
 
 
 -------------------------------------------------------------------------------------
- function errorlevel
+ errorlevel() {
 
      Usage: errorlevel [arg]
 
@@ -211,7 +211,7 @@ Function Library dev Branch Version 1
 
 
 -------------------------------------------------------------------------------------
- function pushd
+ pushd() {
 
      Usage: pushd dir
 
@@ -230,7 +230,7 @@ Function Library dev Branch Version 1
 
 
 -------------------------------------------------------------------------------------
- function popd
+ popd() {
 
      Usage: popd
 
@@ -247,7 +247,7 @@ Function Library dev Branch Version 1
 
 
 -------------------------------------------------------------------------------------
- function dirs
+ dirs() {
 
      Usage: dirs [-c]
 
@@ -262,7 +262,7 @@ Function Library dev Branch Version 1
 
 
 -------------------------------------------------------------------------------------
- function filepath
+ filepath() {
 
      Usage: filepath [-r] {-|var} file
 
@@ -279,7 +279,7 @@ Function Library dev Branch Version 1
 
 
 -------------------------------------------------------------------------------------
- function filename
+ filename() {
 
      Usage: filename {-|var} file
 
@@ -294,7 +294,7 @@ Function Library dev Branch Version 1
 
 
 -------------------------------------------------------------------------------------
- function filebase
+ filebase() {
 
      Usage: filebase {-|var} file
 
@@ -309,7 +309,7 @@ Function Library dev Branch Version 1
 
 
 -------------------------------------------------------------------------------------
- function fileext
+ fileext() {
 
      Usage: fileext {-|var} file
 
@@ -324,7 +324,7 @@ Function Library dev Branch Version 1
 
 
 -------------------------------------------------------------------------------------
- function fn
+ fn() {
 
      Usage: fn [-d] funcname [args]
                   -d enable line tracing for current function call" 
@@ -348,47 +348,47 @@ Function Library dev Branch Version 1
 
 
 -------------------------------------------------------------------------------------
- function hashkeys
+ hashkeys() {
 
 
 -------------------------------------------------------------------------------------
- function hashdump
+ hashdump() {
 
 
 -------------------------------------------------------------------------------------
- function hashsave
+ hashsave() {
 
 
 -------------------------------------------------------------------------------------
- function hashload
+ hashload() {
 
 
 -------------------------------------------------------------------------------------
- function hashsetkey
+ hashsetkey() {
 
 
 -------------------------------------------------------------------------------------
- function hashgetkey
+ hashgetkey() {
 
 
 -------------------------------------------------------------------------------------
- function hashdelkey
+ hashdelkey() {
 
 
 -------------------------------------------------------------------------------------
- function hashgetsize
+ hashgetsize() {
 
 
 -------------------------------------------------------------------------------------
- function hashgetfirst
+ hashgetfirst() {
 
 
 -------------------------------------------------------------------------------------
- function hashgetnext
+ hashgetnext() {
 
 
 -------------------------------------------------------------------------------------
- function msgdbg
+ msgdbg() {
 
      Usage: msgdbg debuglevel message
 
@@ -402,7 +402,7 @@ Function Library dev Branch Version 1
 
 
 -------------------------------------------------------------------------------------
- function instring
+ instring() {
 
      Usage: instring {!|-|var} "{string}" {pattern}
 
@@ -422,7 +422,7 @@ Function Library dev Branch Version 1
 
 
 -------------------------------------------------------------------------------------
- function substr
+ substr() {
 
      Usage: substr {-|var} "{string}" {index} [length]
 
@@ -440,7 +440,7 @@ Function Library dev Branch Version 1
 
 
 -------------------------------------------------------------------------------------
- function tolower
+ tolower() {
 
      Usage: tolower {-|var} [string]
 
@@ -455,7 +455,7 @@ Function Library dev Branch Version 1
 
 
 -------------------------------------------------------------------------------------
- function toupper
+ toupper() {
 
      Usage: toupper {-|var} [string]
 
@@ -470,11 +470,11 @@ Function Library dev Branch Version 1
 
 
 -------------------------------------------------------------------------------------
- function ascii2hex
+ ascii2hex() {
 
 
 -------------------------------------------------------------------------------------
- function cleancat
+ cleancat() {
 
      Usage: cleancat [filename]|[redirect]
 
@@ -490,7 +490,7 @@ Function Library dev Branch Version 1
 
 
 -------------------------------------------------------------------------------------
- function urldecode
+ urldecode() {
 
      Usage: urldecode [-|var] "{string}"
 
@@ -504,7 +504,7 @@ Function Library dev Branch Version 1
 
 
 -------------------------------------------------------------------------------------
- function urlencode
+ urlencode() {
 
      Usage: urlencode [-|var] "{string}"
 
@@ -518,7 +518,7 @@ Function Library dev Branch Version 1
 
 
 -------------------------------------------------------------------------------------
- function isdir
+ isdir() {
 
      Usage: isdir dirname
 
@@ -539,7 +539,7 @@ Function Library dev Branch Version 1
 
 
 -------------------------------------------------------------------------------------
- function isdirempty
+ isdirempty() {
 
      Usage: isdiremput dirname
 
@@ -560,7 +560,7 @@ Function Library dev Branch Version 1
 
 
 -------------------------------------------------------------------------------------
- function isfile
+ isfile() {
 
      Usage: isfile filename
 
@@ -581,7 +581,7 @@ Function Library dev Branch Version 1
 
 
 -------------------------------------------------------------------------------------
- function isfilelocked
+ isfilelocked() {
 
      Usage: isfilelocked {filename}
 
@@ -602,7 +602,7 @@ Function Library dev Branch Version 1
 
 
 -------------------------------------------------------------------------------------
- function isinpath
+ isinpath() {
 
      Usage: isinpath arg
 
@@ -621,7 +621,7 @@ Function Library dev Branch Version 1
 
 
 -------------------------------------------------------------------------------------
- function isnum
+ isnum() {
 
      Usage: isnum arg
 
@@ -642,7 +642,7 @@ Function Library dev Branch Version 1
 
 
 -------------------------------------------------------------------------------------
- function isset
+ isset() {
 
      Usage: isset var
 
@@ -663,7 +663,7 @@ Function Library dev Branch Version 1
 
 
 -------------------------------------------------------------------------------------
- function istextfile
+ istextfile() {
 
      Usage: istextfile filename
 
@@ -684,7 +684,7 @@ Function Library dev Branch Version 1
 
 
 -------------------------------------------------------------------------------------
- function isuser
+ isuser() {
 
      Usage: isuser {user}
 
@@ -705,7 +705,7 @@ Function Library dev Branch Version 1
 
 
 -------------------------------------------------------------------------------------
- function uniqname
+ uniqname() {
 
      Usage: uniqname
 
@@ -722,7 +722,7 @@ Function Library dev Branch Version 1
 
 
 -------------------------------------------------------------------------------------
- function fn_AtomicLock
+ fn_AtomicLock() {
 
      Usage: fn AtomicLock lockfile [pid]
 
@@ -742,7 +742,7 @@ Function Library dev Branch Version 1
 
 
 -------------------------------------------------------------------------------------
- function fn_CheckHeaderFooter
+ fn_CheckHeaderFooter() {
 
      Usage: fn CheckHeaderFooter file header footer
 
@@ -757,7 +757,7 @@ Function Library dev Branch Version 1
 
 
 -------------------------------------------------------------------------------------
- function fn_CheckScriptBasedir
+ fn_CheckScriptBasedir() {
 
      Usage: fn CheckScriptBasedir
 
@@ -771,7 +771,7 @@ Function Library dev Branch Version 1
 
 
 -------------------------------------------------------------------------------------
- function fn_CheckScriptProgdir
+ fn_CheckScriptProgdir() {
 
      Usage: fn CheckScriptProgdir
 
@@ -785,7 +785,7 @@ Function Library dev Branch Version 1
 
 
 -------------------------------------------------------------------------------------
- function fn_CompareTime
+ fn_CompareTime() {
 
      Usage: fn CompareTime [-f] {{hour|day|dayhour}[.noholiday|bankholiday]} {{format} {string}|controltime|type} {-eq|gt|lt|ge|le} {{format} {string}|testtime}
 
@@ -803,7 +803,7 @@ Function Library dev Branch Version 1
 
 
 -------------------------------------------------------------------------------------
- function fn_DisplayUsage
+ fn_DisplayUsage() {
 
      Usage: fn DisplayUsage
 
@@ -818,7 +818,7 @@ Function Library dev Branch Version 1
 
 
 -------------------------------------------------------------------------------------
- function fn_FilePathBaseExtSplit
+ fn_FilePathBaseExtSplit() {
 
      Usage: fn FileBaseExtSplit pathvar [basevar] [extvar] file
 
@@ -835,7 +835,7 @@ Function Library dev Branch Version 1
 
 
 -------------------------------------------------------------------------------------
- function fn_FileSizeClip
+ fn_FileSizeClip() {
 
      Usage: fn FileSizeClip file chopsize maxsize
 
@@ -850,7 +850,7 @@ Function Library dev Branch Version 1
 
 
 -------------------------------------------------------------------------------------
- function fn_FormatDos2Unix
+ fn_FormatDos2Unix() {
 
      Usage: fn FormatDos2Unix {-|srcfilename} [dstfilename]
 
@@ -872,7 +872,7 @@ Function Library dev Branch Version 1
 
 
 -------------------------------------------------------------------------------------
- function fn_FormatTime
+ fn_FormatTime() {
 
      Usage: fn FormatTime {-|var} {format} [type [time]|time]
 
@@ -889,7 +889,7 @@ Function Library dev Branch Version 1
 
 
 -------------------------------------------------------------------------------------
- function fn_FormatUnix2Dos
+ fn_FormatUnix2Dos() {
 
      Usage: fn FormatUnix2Dos {-|srcfilename} [dstfilename]
 
@@ -911,7 +911,7 @@ Function Library dev Branch Version 1
 
 
 -------------------------------------------------------------------------------------
- function fn_GetTime
+ fn_GetTime() {
 
      Usage: fn GetTime {-|var} {time_src|format {string}}
 
@@ -926,7 +926,7 @@ Function Library dev Branch Version 1
 
 
 -------------------------------------------------------------------------------------
- function fn_GlobalUsage
+ fn_GlobalUsage() {
 
      Usage: fn GlobalUsage [-h]
 
@@ -942,7 +942,7 @@ Function Library dev Branch Version 1
 
 
 -------------------------------------------------------------------------------------
- function fn_ResolveProgdir
+ fn_ResolveProgdir() {
 
      Usage: fn ResolveProgdir
 
@@ -957,7 +957,7 @@ Function Library dev Branch Version 1
 
 
 -------------------------------------------------------------------------------------
- function fn_SetVars
+ fn_SetVars() {
 
      Usage: fn SetVars [-r num] [start offset] [num of vars to set] [next offset] (lc|gl)_var [(lc|gl)_var] dataset
                   -r 1-?  requires the dataset to be an exact length" 
@@ -982,7 +982,7 @@ Function Library dev Branch Version 1
 
 
 -------------------------------------------------------------------------------------
- function fn_ShiftTime
+ fn_ShiftTime() {
 
      Usage: fn ShiftTime {-|var} {shift} [type] {time}
 
@@ -1010,7 +1010,7 @@ Function Library dev Branch Version 1
 
 
 -------------------------------------------------------------------------------------
- function fn_VerifyDir
+ fn_VerifyDir() {
 
      Usage: fn VerifyDir DIRECTORY [DIRECTORY]...
 
@@ -1025,4 +1025,112 @@ Function Library dev Branch Version 1
            0  success
            20 location exist but is not a directory
            21 requires at least rw access
+
+
+###########################################################################################################
+##  Scripting Conventions:
+##    version function/file naming
+##             functions-0.1.0-060101
+##                      /  |  \     \
+##                     /   |   \     \
+##                    /    |    \     \
+##                   /     |     \     \
+##                  /      |      \     \
+##                 major   minor   fix   date
+##        first number  - major change   - old functions removed/changed
+##        second number - minor change   - new functions added/enhanced
+##        third number  - fix/patch      - bugfix
+##        date          - year/month/day - indicates work in progress/needs to be tested
+##      ln -s progname-0.9.0.ksh progname-0.ksh
+##      ln -s progname-1.2.3.ksh progname-1.ksh
+##
+##    variable naming
+##      all variable must be lowercase
+##      scope local vs global
+##        all local variable must be defined with "typeset"
+##        variables outside of a function can not be local
+##        local variables must have the following format    lc_(function name)_(variable name)
+##          if the variable is not in a function, and not defined global
+##          it should be named lc_main_(variable name)
+##          ie. lc_BigFunction_file or lc_BigFunction_tag or not in a function lc_main_currentlinenumber
+##        global variables must have the following format   gl_(variable name)
+##          ie. gl_progname or gl_confdir
+##      unique names
+##        ksh88 has no real usable scope per say.  so great care must be taken to prevent variables
+##        from having the same name.
+##      determining data vs variable
+##        a nice side affect of using lc_ and gl_ prefixes is the added ability to decern variable vs data
+##        in a command line or a text string.  Some functions that use this are: fn_SetVars and fn_GetParamGroup
+##
+##
+##  gl_debuglevel=0
+##    critical messages
+##  gl_debuglevel=1
+##    info messages
+##  gl_debuglevel=2
+##    function trace messages
+##  gl_debuglevel=3
+##    function operation messages - generic messages to say what we are working on in a function
+##  gl_debuglevel=4
+##    function operation diagnostic messages - shows arguments used to call functions and some important function variable settings
+##  gl_debuglevel=5
+##    function operation diagnostic messages - shows as much script detail as possible
+##
+##  rem levels
+##  #test code - used during code development
+##  ##operation comments - what is happening and general info
+##  ###development comments - what optional code can be changed
+##  ####planned development comments - what should/could be added/removed/changed
+##
+##  reserved exit/errorlevel blocks
+##  block           scope     - exit type
+##  1               all       - all usage errors
+##  2               main      - function lib is not readable or does not exist
+##  3               main      - function lib does not have read permissions
+##  4-9,11-19       main      - available for calling programs
+##  10              autosys   - reserved for autosys - do not use
+##                                causes restart processes to fail
+##  20-39           functions - init sanity checks - file existance/permissions/filetypes
+##  40-49           functions - file movements
+##  50-59           functions - config file processing
+##  60-69           functions - file compression/decompression
+##  70-79           functions - networking
+##  80-89           functions - file date/older/newer
+##  90-99           functions - called program execution  ie "could not find program" or "permission denied"
+##  100-109         functions - file encryption/decryption
+##  110-126,128-254 undefined
+##  127             shell     - command not found
+##
+##  reserved global variables
+##  gl_configfileindex  - stores current location in config file
+##  gl_configfilesize   - stores size of config file after empty lines and comments are removed
+##  gl_pathprogname     - same as $0
+##  gl_progname         - program name only
+##  gl_progargs         - program arguments only
+##  gl_return           - contains rutern value from last called function
+##  gl_user             - 
+##  gl_basedir          = /progs/apps
+##  gl_progdir          = ${gl_basedir}/bin
+##  gl_confdir          = ${gl_basedir}/conf
+##  gl_tmpdir           = ${gl_basedir}/tmp
+##  gl_vardir           = ${gl_basedir}/var
+##  gl_erecvdir         = ${gl_basedir}/ext/recv
+##  gl_esenddir         = ${gl_basedir}/ext/send
+##  gl_irecvdir         = ${gl_basedir}/int/recv
+##  gl_isenddir         = ${gl_basedir}/int/send
+##  gl_logdir           = ${gl_basedir}/log
+##  gl_logfile          = ${gl_logdir}/activity-${gl_progname##*/}.log
+##  gl_iarchdir         = ${gl_basedir}/archive/int
+##  gl_earchdir         = ${gl_basedir}/archive/ext
+##  gl_histdir          = ${gl_iarchdir}
+##
+##
+##
+##
+##
+##
+##
+##
+##
+###########################################################################################################
 

@@ -1,7 +1,7 @@
 #!/bin/bash
 
-#[of]:function filepath {
-function filepath {
+#[of]:filepath() {
+filepath() {
   typeset lc_filepath_relative lc_filepath_path
   if [[ "$1" = "-r" ]] ; then
     lc_filepath_relative=true

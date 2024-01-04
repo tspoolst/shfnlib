@@ -1,5 +1,5 @@
 #!/bin/bash
-function fn {
+fn() {
   lc_fn_return=$?
 #[of]:  usage
   if [ -z "$1" ] ; then

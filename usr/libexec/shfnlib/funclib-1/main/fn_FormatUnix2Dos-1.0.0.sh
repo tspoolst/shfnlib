@@ -1,5 +1,5 @@
 #!/bin/bash
-function fn_FormatUnix2Dos {
+fn_FormatUnix2Dos() {
 #[of]:  usage
   if [ -z "$1" ] ; then
     echo "Usage: fn FormatUnix2Dos {-|srcfilename} [dstfilename]"

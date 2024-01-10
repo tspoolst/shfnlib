@@ -460,7 +460,7 @@ if [[ -n "$BASH_VERSION" ]] ; then
       echo "hash error, empty keys are not permitted."
       exit 1
     fi
-    if ! ${lc_hashconvert2key_forcelower} && [[ "${lc_hashconvert2key_string}" = +([[:alnum:]]) ]] ; then
+    if ! ${lc_hashconvert2key_forcelower} && [[ -n "${lc_hashconvert2key_string##*[^[:alnum:]]*}" ]] ; then
       lc_hashconvert2key_key="${lc_hashconvert2key_string}"
     else
       while [[ ${#lc_hashconvert2key_string} -gt 0 ]] ; do
@@ -502,7 +502,7 @@ else
       echo "hash error, attempted to create an empty key."
       exit 1
     fi
-    if ! ${lc_hashconvert2key_forcelower} && [[ "${lc_hashconvert2key_string}" = +([[:alnum:]]) ]] ; then
+    if ! ${lc_hashconvert2key_forcelower} && [[ -n "${lc_hashconvert2key_string##*[^[:alnum:]]*}" ]] ; then
       lc_hashconvert2key_key="${lc_hashconvert2key_string}"
     else
       while [[ ${#lc_hashconvert2key_string} -gt 0 ]] ; do

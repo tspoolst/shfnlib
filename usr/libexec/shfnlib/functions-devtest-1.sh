@@ -460,7 +460,7 @@ echo ""
 #[c]
 #[c]
 #[c]
-#[l]:code hash-1.1.2.sh:funclib-1/base/hash-1.1.2.sh
+#[l]:code hash-1.2.0.sh:funclib-1/base/hash-1.2.0.sh
 _deathmessage="hash-1 expected result did not match"
 #[l]:test hash-1:funclib-1/base/hash-1.test
 echo "-----------------------------------------------"

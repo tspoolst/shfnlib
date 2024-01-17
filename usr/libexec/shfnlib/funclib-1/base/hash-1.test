@@ -7,36 +7,36 @@ _file=${gl_tmpdir}/testfile.dat
 
 echo "setkey/getkey with math += 1"
 i=0;while [[ ${i:-0} -lt 5 ]] && ((i+=1)) ; do
-  hashsetkey mhash aaaaabbbbbk$i += 1
-  hashgetkey _value mhash aaaaabbbbbk$i
+  hashsetkey mhash aaaaa_bbbbbk$i += 1
+  hashgetkey _value mhash aaaaa_bbbbbk$i
   checkresult -v "1" "${_value}"
 done
 
 echo
 echo "setkey/getkey with math += 4"
 i=0;while [[ ${i:-0} -lt 5 ]] && ((i+=1)) ; do
-  hashsetkey mhash aaaaabbbbbk$i += 4
-  hashgetkey _value mhash aaaaabbbbbk$i
+  hashsetkey mhash aaaaa_bbbbbk$i += 4
+  hashgetkey _value mhash aaaaa_bbbbbk$i
   checkresult -v "5" "${_value}"
 done
 
 echo
 echo setkey/getkey
 i=0;while [[ ${i:-0} -lt 5 ]] && ((i+=1)) ; do
-  hashsetkey mhash aaaaabbbbbk$i v$i
-  hashgetkey _value mhash aaaaabbbbbk$i
+  hashsetkey mhash aaaaa_bbbbbk$i v$i
+  hashgetkey _value mhash aaaaa_bbbbbk$i
   checkresult -v "v$i" "${_value}"
 done
 
 echo
 echo raw dump
 #hashdump -r mhash
-checkresult -v "1606903241" $(set -- $(hashdump -r mhash | cksum);echo $1)
+checkresult -v "4017083083" $(set -- $(hashdump -r mhash | cksum);echo $1)
 
 echo
 echo dump
 #hashdump mhash
-checkresult -v "385221821" $(set -- $(hashdump mhash | cksum);echo $1)
+checkresult -v "717598927" $(set -- $(hashdump mhash | cksum);echo $1)
 
 echo
 echo key count
@@ -45,13 +45,13 @@ checkresult -v "5" "$(hashgetsize - mhash)"
 echo
 echo list keys
 hashkeys _keys mhash
-checkresult -v "aaaaabbbbbk1 aaaaabbbbbk2 aaaaabbbbbk3 aaaaabbbbbk4 aaaaabbbbbk5" "${_keys[*]}"
+checkresult -v "aaaaa_bbbbbk1 aaaaa_bbbbbk2 aaaaa_bbbbbk3 aaaaa_bbbbbk4 aaaaa_bbbbbk5" "${_keys[*]}"
 
 echo
 echo delkey
-hashdelkey mhash aaaaabbbbbk2
+hashdelkey mhash aaaaa_bbbbbk2
 hashkeys _keys mhash
-checkresult -v "aaaaabbbbbk1 aaaaabbbbbk3 aaaaabbbbbk4 aaaaabbbbbk5" "${_keys[*]}"
+checkresult -v "aaaaa_bbbbbk1 aaaaa_bbbbbk3 aaaaa_bbbbbk4 aaaaa_bbbbbk5" "${_keys[*]}"
 checkresult -v "4" "$(hashgetsize - mhash)"
 
 echo
@@ -66,12 +66,12 @@ checkresult -v "v3" "${_value}"
 
 echo
 echo getfirst with bad key
-hashgetfirst _value mhash aaaaabbbbbk20
+hashgetfirst _value mhash aaaaa_bbbbbk20
 checkresult -t -eq 1
 
 echo
 echo getfirst with key
-hashgetfirst _value -k aaaaabbbbbk4 mhash
+hashgetfirst _value -k aaaaa_bbbbbk4 mhash
 checkresult -v "v4" "${_value}"
 
 echo
@@ -109,7 +109,7 @@ echo
 echo loading raw
 . "${_file}"
 #hashdump -r mhash
-checkresult -v "2293336647" $(set -- $(hashdump -r mhash | cksum);echo $1)
+checkresult -v "3333386219" $(set -- $(hashdump -r mhash | cksum);echo $1)
 
 echo
 echo save
@@ -122,6 +122,6 @@ echo
 echo load
 hashload mhash "${_file}"
 #hashdump -r mhash
-checkresult -v "2293336647" $(set -- $(hashdump -r mhash | cksum);echo $1)
+checkresult -v "3333386219" $(set -- $(hashdump -r mhash | cksum);echo $1)
 
 rm -f "${_file}"

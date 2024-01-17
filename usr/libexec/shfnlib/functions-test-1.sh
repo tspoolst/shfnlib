@@ -341,7 +341,7 @@ echo ""
 #[c]
 #[c]  if the test link is blank, no tests have been built for this function
 #[c]
-#[l]:code hash-1.1.2.sh:funclib-1/base/hash-1.1.2.sh
+#[l]:code hash-1.2.0.sh:funclib-1/base/hash-1.2.0.sh
 _deathmessage="hash-1 expected result did not match"
 #[l]:test hash-1:funclib-1/base/hash-1.test
 echo "-----------------------------------------------"

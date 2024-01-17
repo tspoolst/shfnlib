@@ -19,8 +19,8 @@ gl_funcbranch=prod
 #[l]:file:funclib-1/base/file-1.0.0.sh
 . "${gl_funcdir}/funclib-1/base/fn-1.0.0.sh"
 #[l]:fn:funclib-1/base/fn-1.0.0.sh
-. "${gl_funcdir}/funclib-1/base/hash-1.1.2.sh"
-#[l]:hash:funclib-1/base/hash-1.1.2.sh
+. "${gl_funcdir}/funclib-1/base/hash-1.2.0.sh"
+#[l]:hash:funclib-1/base/hash-1.2.0.sh
 . "${gl_funcdir}/funclib-1/base/msgdbg-1.0.0.sh"
 #[l]:msgdbg:funclib-1/base/msgdbg-1.0.0.sh
 . "${gl_funcdir}/funclib-1/base/string-1.1.0.sh"

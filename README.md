@@ -29,4 +29,6 @@ http://scriptvoodoo.org/Projectsshfnlib.html
 
 ## todo:
 * update lib to take advantage of new bash 4 features.
-* adapt this to detect and work this dash??? nope, not yet.  giving up extglob and arrays is too much to ask.
+* adapt this to detect and work this dash??? nope, not yet.
+*   giving up extglob, arrays, and char substitution is too much to ask.
+*   not having these builtins kills all speed advantages and makes the code more complex.
